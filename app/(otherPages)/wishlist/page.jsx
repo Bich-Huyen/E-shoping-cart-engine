@@ -16,7 +16,7 @@ export default function page() {
       <Header2 />
       <div className="tf-page-title ">
         <div className="container-full">
-          <div className="heading text-center">Your wishlist</div>
+          <div className="heading text-center">Yêu thích</div>
         </div>
       </div>
 

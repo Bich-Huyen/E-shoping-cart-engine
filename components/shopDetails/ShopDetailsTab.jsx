@@ -3,10 +3,10 @@
 import { useEffect, useState } from "react";
 
 const tabs = [
-  { title: "Description", active: true },
+  { title: "Chi tiết sản phẩm", active: true },
   { title: "Review", active: false },
-  { title: "Shiping", active: false },
-  { title: "Return Polocies", active: false },
+  { title: "Giao hàng", active: false },
+  { title: "Chính sách đổi trả", active: false },
 ];
 
 export default function ShopDetailsTab() {
@@ -42,28 +42,32 @@ export default function ShopDetailsTab() {
                 >
                   <div className="">
                     <p className="mb_30">
-                      Button-up shirt sleeves and a relaxed silhouette. It’s
-                      tailored with drapey, crinkle-texture fabric that’s made
-                      from LENZING™ ECOVERO™ Viscose — responsibly sourced
-                      wood-based fibres produced through a process that reduces
-                      impact on forests, biodiversity and water supply.
+                    Serum La Roche-Posay Mela B3 Serum Giảm Thâm Nám & Dưỡng Sáng Da 30ml 
+                    là sản phẩm tinh chất đến từ thương hiệu La Roche-Posay - Pháp. 
+                    Sản phẩm giúp giảm thâm nám & ngăn ngừa đốm nâu sâu từng nanomet 
+                    tế bào da Mela B3 với 18 năm nghiên cứu và phát triển từ các chuyên gia 
+                    da liễu hàng đầu trên thế giới. Với thành phần Melasyl TM độc quyền cùng 
+                    10% Niacinamide giúp hiệu quả rõ rệt sau 1 tuần sử dụng.
                     </p>
                     <div className="tf-product-des-demo">
                       <div className="right">
-                        <h3 className="fs-16 fw-5">Features</h3>
+                        <h3 className="fs-16 fw-5">Thành phần sản phẩm</h3>
                         <ul>
-                          <li>Front button placket</li>
-                          <li>Adjustable sleeve tabs</li>
-                          <li>Babaton embroidered crest at placket and hem</li>
+                          <li>Melasyl TM: thành phần ngăn chặn và triệt tiêu đốm nâu sâu từng nanomet tế bào da.</li>
+                          <li>10% Niacinamide và K2G: giảm sự hình thành sau viêm và ngăn ngừa oxy hóa.</li>
+                          <li>LHA: thúc đẩy quá trình sản sinh tế bào mới.</li>
+                          <li>Retinyl Palmitate: cải thiện bề mặt da.</li>
+                          <li>Carnosine: ngăn ngừa oxy hóa.</li>
+                          <li>Hyaluronic Acid, Glycerin và Thermal Water: dưỡng ẩm và bảo vệ hàng rào da.</li>
+                          <li>Dipotassium và Glycyrrphizate, chiết xuất cam thảo: ức chế hình thành sắc tố.</li>
                         </ul>
-                        <h3 className="fs-16 fw-5">Materials Care</h3>
+                        <h3 className="fs-16 fw-5">Hướng dẫn sử dụng</h3>
                         <ul className="mb-0">
-                          <li>Content: 100% LENZING™ ECOVERO™ Viscose</li>
-                          <li>Care: Hand wash</li>
-                          <li>Imported</li>
+                          <li>Thoa 2 - 3 giọt lên mặt và cổ.</li>
+                          <li>Sử dụng vào buối sáng hoặc tối sau bước làm sạch.</li>
                         </ul>
                       </div>
-                      <div className="left">
+                      {/* <div className="left">
                         <h3 className="fs-16 fw-5">Materials Care</h3>
                         <div className="d-flex gap-10 mb_15 align-items-center">
                           <div className="icon">
@@ -95,7 +99,7 @@ export default function ShopDetailsTab() {
                           </div>
                           <span>Tumble dry, medium hear.</span>
                         </div>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>

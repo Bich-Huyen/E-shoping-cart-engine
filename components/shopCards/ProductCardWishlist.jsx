@@ -27,6 +27,7 @@ export const ProductCardWishlist = ({ product }) => {
             alt="image-product"
             width={720}
             height={1005}
+            objectFit="contain"
           />
           <Image
             className="lazyload img-hover"
@@ -44,7 +45,7 @@ export const ProductCardWishlist = ({ product }) => {
             onClick={() => removeFromWishlist(product.id)}
             className="box-icon bg_white wishlist"
           >
-            <span className="tooltip">Remove Wishlist</span>
+            <span className="tooltip">Xóa khỏi yêu thích</span>
             <span className="icon icon-delete" />
           </a>
         </div>
@@ -57,7 +58,7 @@ export const ProductCardWishlist = ({ product }) => {
             className="box-icon bg_white quick-add tf-btn-loading"
           >
             <span className="icon icon-bag" />
-            <span className="tooltip">Quick Add</span>
+            <span className="tooltip">Thêm nhanh</span>
           </a>
           <a
             onClick={() => addToWishlist(product.id)}
@@ -102,7 +103,7 @@ export const ProductCardWishlist = ({ product }) => {
             className="box-icon bg_white quickview tf-btn-loading"
           >
             <span className="icon icon-view" />
-            <span className="tooltip">Quick View</span>
+            <span className="tooltip">Xem nhanh</span>
           </a>
         </div>
         {product.countdown && (
@@ -124,8 +125,8 @@ export const ProductCardWishlist = ({ product }) => {
         <Link href={`/product-detail/${product.id}`} className="title link">
           {product.title}
         </Link>
-        <span className="price">${product.price.toFixed(2)}</span>
-        {product.colors && (
+        <span className="price">{product.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</span>
+        {/* {product.colors && (
           <ul className="list-color-product">
             {product.colors.map((color) => (
               <li
@@ -148,7 +149,7 @@ export const ProductCardWishlist = ({ product }) => {
               </li>
             ))}
           </ul>
-        )}
+        )} */}
       </div>
     </div>
   );

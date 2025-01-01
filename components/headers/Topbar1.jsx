@@ -83,17 +83,17 @@ export default function Topbar1() {
             </Swiper>
           </div>
           <div className="top-bar-language tf-cur justify-content-end">
-            <div className="tf-currencies">
+            {/* <div className="tf-currencies">
               <CurrencySelect topStart />
-            </div>
-            <div className="tf-languages">
+            </div> */}
+            {/* <div className="tf-languages">
               <LanguageSelect
                 parentClassName={
                   "image-select center style-default type-languages"
                 }
                 topStart
               />
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

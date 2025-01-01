@@ -116,7 +116,7 @@ export const ProductCard = ({ product }) => {
         <Link href={`/product-detail/${product.id}`} className="title link">
           {product.title}
         </Link>
-        <span className="price">${product.price.toFixed(2)}</span>
+        <span className="price">{product.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</span>
         {product.colors && (
           <ul className="list-color-product">
             {product.colors.map((color) => (

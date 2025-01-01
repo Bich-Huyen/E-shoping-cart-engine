@@ -11,25 +11,24 @@ export default function Collection() {
               className="lazyload"
               data-src="/images/collections/collection-58.jpg"
               alt="collection-img"
-              src="/images/collections/collection-58.jpg"
+              src="https://media.hcdn.vn/hsk/1735121707poptdic2512_img_410x410_8c5088_fit_center.jpg"
               width={800}
               height={760}
             />
           </div>
           <div className="tf-content-wrap wow fadeInUp" data-wow-delay="0s">
             <div className="heading">
-              Redefining Fashion <br />
-              Excellence
+              Ưu đãi cuối năm <br />
+              Giảm giá lên tới 50%
             </div>
             <p className="description">
-              Here is your chance to upgrade your wardrobe with a variation of
-              styles
+              Chương trình ưu đãi cuối năm với nhiều mặt hàng, giảm giá lên tới 50%!
             </p>
             <Link
               href={`/shop-collection-list`}
               className="tf-btn style-2 btn-fill rounded-full animate-hover-btn"
             >
-              Read our stories
+              Mua ngay
             </Link>
           </div>
         </div>

@@ -10,7 +10,7 @@ export default function RecentProducts() {
     <section className="flat-spacing-4 pt_0">
       <div className="container">
         <div className="flat-title">
-          <span className="title">Recently Viewed</span>
+          <span className="title">Sản phẩm đã xem</span>
         </div>
         <div className="hover-sw-nav hover-sw-2">
           <Swiper
@@ -36,7 +36,7 @@ export default function RecentProducts() {
             }}
             pagination={{ clickable: true, el: ".spd308" }}
           >
-            {products1.slice(4, 12).map((product, i) => (
+            {products1.slice(1, 4).map((product, i) => (
               <SwiperSlide key={i} className="swiper-slide">
                 <ProductCard product={product} />
               </SwiperSlide>

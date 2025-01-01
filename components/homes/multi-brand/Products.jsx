@@ -10,9 +10,9 @@ export default function Products() {
     <section className="flat-spacing-15 pb_0">
       <div className="container">
         <div className="flat-title wow fadeInUp" data-wow-delay="0s">
-          <span className="title">Ecomus’s Favorites</span>
+          <span className="title">Mặt hàng yêu thích</span>
           <p className="sub-title">
-            Beautifully Functional. Purposefully Designed. Consciously Crafted.
+              Đẹp mắt, tiện dụng. Thiết kế có mục đích. Chế tác có chủ đích.
           </p>
         </div>
         <div className="hover-sw-nav hover-sw-3">

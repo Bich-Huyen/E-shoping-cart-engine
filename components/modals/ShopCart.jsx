@@ -32,7 +32,7 @@ export default function ShopCart() {
       <div className="modal-dialog">
         <div className="modal-content">
           <div className="header">
-            <div className="title fw-5">Shopping cart</div>
+            <div className="title fw-5">Giỏ hàng</div>
             <span
               className="icon-close icon-close-popup"
               data-bs-dismiss="modal"
@@ -60,8 +60,8 @@ export default function ShopCart() {
                 </span>
               </div>
               <div className="tf-progress-msg">
-                Buy <span className="price fw-6">$75.00</span> more to enjoy
-                <span className="fw-6">Free Shipping</span>
+                Mua trên <span className="price fw-6">200,000 </span> để được ưu đãi
+                <span className="fw-6"> Giao hàng miễn phí</span>
               </div>
             </div>
             <div className="tf-mini-cart-wrap">
@@ -88,9 +88,9 @@ export default function ShopCart() {
                           >
                             {elm.title}
                           </Link>
-                          <div className="meta-variant">Light gray</div>
+                          {/* <div className="meta-variant">Light gray</div> */}
                           <div className="price fw-6">
-                            ${elm.price?.toFixed(2)}
+                            {elm.price?.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
                           </div>
                           <div className="tf-mini-cart-btns">
                             <div className="wg-quantity small">
@@ -125,7 +125,7 @@ export default function ShopCart() {
                               style={{ cursor: "pointer" }}
                               onClick={() => removeItem(elm.id)}
                             >
-                              Remove
+                              Xóa
                             </div>
                           </div>
                         </div>
@@ -154,7 +154,7 @@ export default function ShopCart() {
                   <div className="tf-minicart-recommendations">
                     <div className="tf-minicart-recommendations-heading">
                       <div className="tf-minicart-recommendations-title">
-                        You may also like
+                        Có thể bạn cũng thích
                       </div>
                       <div className="sw-dots small style-2 cart-slide-pagination spdsc1" />
                     </div>
@@ -167,7 +167,7 @@ export default function ShopCart() {
                       }}
                       className="swiper tf-cart-slide"
                     >
-                      {products1.slice(0, 2).map((elm, i) => (
+                      {products1.slice(2, 4).map((elm, i) => (
                         <SwiperSlide key={i} className="swiper-slide">
                           <div className="tf-minicart-recommendations-item">
                             <div className="tf-minicart-recommendations-item-image">
@@ -188,7 +188,7 @@ export default function ShopCart() {
                                 {elm.title}
                               </Link>
                               <div className="price">
-                                ${elm.price.toFixed(2)}
+                                {elm.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
                               </div>
                             </div>
                             <div className="tf-minicart-recommendations-item-quickview">
@@ -264,13 +264,10 @@ export default function ShopCart() {
                 </div>
                 <div className="tf-mini-cart-bottom-wrap">
                   <div className="tf-cart-totals-discounts">
-                    <div className="tf-cart-total">Subtotal</div>
+                    <div className="tf-cart-total">Tổng cộng</div>
                     <div className="tf-totals-total-value fw-6">
-                      ${totalPrice.toFixed(2)} USD
+                      {totalPrice.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
                     </div>
-                  </div>
-                  <div className="tf-cart-tax">
-                    Taxes and <a href="#">shipping</a> calculated at checkout
                   </div>
                   <div className="tf-mini-cart-line" />
                   <div className="tf-cart-checkbox">
@@ -286,9 +283,9 @@ export default function ShopCart() {
                       </div>
                     </div>
                     <label htmlFor="CartDrawer-Form_agree">
-                      I agree with the
+                      Tôi đồng ý với tất cả {" "}
                       <a href="#" title="Terms of Service">
-                        terms and conditions
+                        Điều khoản và Dịch vụ.
                       </a>
                     </label>
                   </div>
@@ -297,13 +294,13 @@ export default function ShopCart() {
                       href={`/view-cart`}
                       className="tf-btn btn-outline radius-3 link w-100 justify-content-center"
                     >
-                      View cart
+                      Xem giỏ hàng
                     </Link>
                     <Link
                       href={`/checkout`}
                       className="tf-btn btn-fill animate-hover-btn radius-3 w-100 justify-content-center"
                     >
-                      <span>Check out</span>
+                      <span>Thanh toán</span>
                     </Link>
                   </div>
                 </div>

@@ -11,7 +11,7 @@ export default function Categories2() {
       <div className="container">
         <div className="flat-title">
           <span className="title wow fadeInUp" data-wow-delay="0s">
-            Categories you might like
+            Doanh mục
           </span>
         </div>
         <div className="hover-sw-nav">

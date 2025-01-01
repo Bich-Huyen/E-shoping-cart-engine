@@ -1,11 +1,22 @@
 import { products1 } from "@/data/products";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { ProductCard } from "../shopCards/ProductCard";
+
+import productsPromise from "@/data/fetchProducts";
 
 export default function ProductGrid({
   gridItems = 4,
-  allproducts = products1,
+  allproducts,
 }) {
+
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    productsPromise
+      .then(data => { setProducts(data)})
+      .catch(err => setError('Failed to fetch products'));
+  })
+
   return (
     <>
       <div
