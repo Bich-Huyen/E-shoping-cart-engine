@@ -3,10 +3,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 const accountLinks = [
   { href: "/my-account", label: "Dashboard" },
-  { href: "/my-account-orders", label: "Orders" },
-  { href: "/my-account-address", label: "Addresses" },
-  { href: "/my-account-edit", label: "Account Details" },
-  { href: "/my-account-wishlist", label: "Wishlist" },
+  { href: "/my-account-orders", label: "Đơn hàng" },
+  { href: "/my-account-address", label: "Địa chỉ" },
+  { href: "/my-account-edit", label: "Thông tin tài khoản" },
+  { href: "/my-account-wishlist", label: "Yêu thích" },
 ];
 
 export default function DashboardNav() {

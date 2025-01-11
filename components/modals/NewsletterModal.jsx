@@ -60,11 +60,11 @@ export default function NewsletterModal() {
           <div className="modal-top">
             <Image
               className="lazyload"
-              data-src="/images/item/banner-newleter.jpg"
+              data-src="/images/item/banner-newleter.png"
               alt="home-01"
               width={938}
               height={538}
-              src="/images/item/banner-newleter.jpg"
+              src="/images/item/banner-newleter.png"
             />
             <span
               className="icon icon-close btn-hide-popup"
@@ -72,17 +72,17 @@ export default function NewsletterModal() {
             />
           </div>
           <div className="modal-bottom">
-            <h4 className="text-center">Don’t mis out</h4>
+            <h4 className="text-center">Đừng bỏ lỡ</h4>
             <h6 className="text-center">
-              Be the first one to get the new product at early bird prices.
+              Hãy là người đầu tiên sở hữu sản phẩm mới với mức giá ưu đãi.
             </h6>
             <div className={`tfSubscribeMsg ${showMessage ? "active" : ""}`}>
               {success ? (
                 <p style={{ color: "rgb(52, 168, 83)" }}>
-                  You have successfully subscribed.
+                  Bạn đã đăng ký thành công.
                 </p>
               ) : (
-                <p style={{ color: "red" }}>Something went wrong</p>
+                <p style={{ color: "red" }}>Có gì đó không ổn!</p>
               )}
             </div>
             <form
@@ -108,7 +108,7 @@ export default function NewsletterModal() {
                   type="submit"
                   className="tf-btn btn-fill radius-3 animate-hover-btn w-100 justify-content-center"
                 >
-                  Keep me updated
+                  Hãy cập nhật cho tôi nhé!
                 </button>
               </div>
               <div id="subscribe-msg" />
@@ -119,7 +119,7 @@ export default function NewsletterModal() {
                 data-bs-dismiss="modal"
                 className="tf-btn btn-line fw-6 btn-hide-popup"
               >
-                Not interested
+                Không quan tâm
               </a>
             </div>
           </div>

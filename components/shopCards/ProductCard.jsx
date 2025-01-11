@@ -104,6 +104,13 @@ export const ProductCard = ({ product }) => {
             </div>
           </div>
         )}
+      </div>
+      <div className="card-product-info">
+        <Link href={`/product-detail/${product.id}`} className="title link">
+          {product.title}
+        </Link>
+        <span className="price">{product.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</span>
+        
         {product.sizes && (
           <div className="size-list">
             {product.sizes.map((size) => (
@@ -111,13 +118,7 @@ export const ProductCard = ({ product }) => {
             ))}
           </div>
         )}
-      </div>
-      <div className="card-product-info">
-        <Link href={`/product-detail/${product.id}`} className="title link">
-          {product.title}
-        </Link>
-        <span className="price">{product.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</span>
-        {product.colors && (
+        {/* {product.colors && (
           <ul className="list-color-product">
             {product.colors.map((color) => (
               <li
@@ -140,7 +141,7 @@ export const ProductCard = ({ product }) => {
               </li>
             ))}
           </ul>
-        )}
+        )} */}
       </div>
     </div>
   );

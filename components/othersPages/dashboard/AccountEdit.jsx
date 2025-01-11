@@ -18,13 +18,13 @@ export default function AccountEdit() {
               type="text"
               id="property1"
               required
-              name="first name"
+              name="name"
             />
             <label
               className="tf-field-label fw-4 text_black-2"
               htmlFor="property1"
             >
-              First name
+              Họ tên
             </label>
           </div>
           <div className="tf-field style-1 mb_15">
@@ -34,13 +34,13 @@ export default function AccountEdit() {
               type="text"
               required
               id="property2"
-              name="last name"
+              name="phone number"
             />
             <label
               className="tf-field-label fw-4 text_black-2"
               htmlFor="property2"
             >
-              Last name
+              Số điện thoại
             </label>
           </div>
           <div className="tf-field style-1 mb_15">
@@ -60,7 +60,7 @@ export default function AccountEdit() {
               Email
             </label>
           </div>
-          <h6 className="mb_20">Password Change</h6>
+          <h6 className="mb_20">Đổi mật khẩu</h6>
           <div className="tf-field style-1 mb_30">
             <input
               className="tf-field-input tf-input"
@@ -75,7 +75,7 @@ export default function AccountEdit() {
               className="tf-field-label fw-4 text_black-2"
               htmlFor="property4"
             >
-              Current password
+              Mật khẩu hiện tại
             </label>
           </div>
           <div className="tf-field style-1 mb_30">
@@ -92,7 +92,7 @@ export default function AccountEdit() {
               className="tf-field-label fw-4 text_black-2"
               htmlFor="property5"
             >
-              New password
+              Mật khẩu mới
             </label>
           </div>
           <div className="tf-field style-1 mb_30">
@@ -109,7 +109,7 @@ export default function AccountEdit() {
               className="tf-field-label fw-4 text_black-2"
               htmlFor="property6"
             >
-              Confirm password
+              Xác nhận mật khẩu
             </label>
           </div>
           <div className="mb_20">
@@ -117,7 +117,7 @@ export default function AccountEdit() {
               type="submit"
               className="tf-btn w-100 radius-3 btn-fill animate-hover-btn justify-content-center"
             >
-              Save Changes
+              Lưu
             </button>
           </div>
         </form>

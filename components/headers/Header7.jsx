@@ -27,11 +27,11 @@ export default function Header7() {
                     Kids
                   </Link>
                 </li> */}
-                <li className="categories-item">
+                {/* <li className="categories-item">
                   <Link href={`/store-locations`} className="text-uppercase">
                     Find a Store
                   </Link>
-                </li>
+                </li> */}
               </ul>
             </div>
             <div className="col-md-4 col-3 tf-lg-hidden">
@@ -55,7 +55,7 @@ export default function Header7() {
               </a>
             </div>
             <div className="col-xl-2 col-md-4 col-6 text-center">
-              <Link href={`/home-multi-brand`} className="logo-header">
+              <Link href={`/`} className="logo-header">
                 <Image
                   alt="logo"
                   className="logo"

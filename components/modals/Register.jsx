@@ -10,7 +10,7 @@ export default function Register() {
       <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">
           <div className="header">
-            <div className="demo-title">Register</div>
+            <div className="demo-title">Đăng ký</div>
             <span
               className="icon-close icon-close-popup"
               data-bs-dismiss="modal"
@@ -27,7 +27,7 @@ export default function Register() {
                   name=""
                 />
                 <label className="tf-field-label" htmlFor="">
-                  First name
+                  Họ tên
                 </label>
               </div>
               <div className="tf-field style-1">
@@ -39,7 +39,7 @@ export default function Register() {
                   name=""
                 />
                 <label className="tf-field-label" htmlFor="">
-                  Last name
+                Số điện thoại
                 </label>
               </div>
               <div className="tf-field style-1">
@@ -65,7 +65,7 @@ export default function Register() {
                   autoComplete="current-password"
                 />
                 <label className="tf-field-label" htmlFor="">
-                  Password *
+                  Mật khẩu *
                 </label>
               </div>
               <div className="bottom">
@@ -74,7 +74,7 @@ export default function Register() {
                     href={`/register`}
                     className="tf-btn btn-fill animate-hover-btn radius-3 w-100 justify-content-center"
                   >
-                    <span>Register</span>
+                    <span>Đăng ký</span>
                   </Link>
                 </div>
                 <div className="w-100">

@@ -10,6 +10,7 @@ export default function ProductGrid({
 }) {
 
   const [products, setProducts] = useState([]);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     productsPromise

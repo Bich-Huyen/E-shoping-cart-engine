@@ -13,7 +13,7 @@ export default function page() {
       <Header2 />
       <div className="tf-page-title style-2">
         <div className="container-full">
-          <div className="heading text-center">Log in</div>
+          <div className="heading text-center">Đăng nhập</div>
         </div>
       </div>
 

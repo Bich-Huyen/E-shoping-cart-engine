@@ -7,10 +7,10 @@ export default function Register() {
       <div className="container">
         <div className="form-register-wrap">
           <div className="flat-title align-items-start gap-0 mb_30 px-0">
-            <h5 className="mb_18">Register</h5>
+            <h5 className="mb_18">Đăng ký</h5>
             <p className="text_black-2">
-              Sign up for early Sale access plus tailored new arrivals, trends
-              and promotions. To opt out, click unsubscribe in our emails
+              Đăng ký để được tiếp cận chương trình Khuyến mại sớm cùng với các sản phẩm mới, 
+              xu hướng và chương trình khuyến mại được thiết kế riêng. Để từ chối, hãy nhấp vào hủy đăng ký trong email của chúng tôi
             </p>
           </div>
           <div>
@@ -29,14 +29,14 @@ export default function Register() {
                   placeholder=" "
                   type="text"
                   id="property1"
-                  name="first name"
+                  name="name"
                   required
                 />
                 <label
                   className="tf-field-label fw-4 text_black-2"
                   htmlFor="property1"
                 >
-                  First name
+                  Họ tên
                 </label>
               </div>
               <div className="tf-field style-1 mb_15">
@@ -45,14 +45,14 @@ export default function Register() {
                   placeholder=" "
                   type="text"
                   id="property2"
-                  name="last name"
+                  name="phone number"
                   required
                 />
                 <label
                   className="tf-field-label fw-4 text_black-2"
                   htmlFor="property2"
                 >
-                  Last name
+                  Số điện thoại
                 </label>
               </div>
               <div className="tf-field style-1 mb_15">
@@ -86,7 +86,7 @@ export default function Register() {
                   className="tf-field-label fw-4 text_black-2"
                   htmlFor="property4"
                 >
-                  Password *
+                  Mật khẩu *
                 </label>
               </div>
               <div className="mb_20">
@@ -94,12 +94,12 @@ export default function Register() {
                   type="submit"
                   className="tf-btn w-100 radius-3 btn-fill animate-hover-btn justify-content-center"
                 >
-                  Register
+                  Đăng ký
                 </button>
               </div>
               <div className="text-center">
                 <Link href={`/login`} className="tf-btn btn-line">
-                  Already have an account? Log in here
+                  Đã có tài khoản? Đăng nhập tại đây
                   <i className="icon icon-arrow1-top-left" />
                 </Link>
               </div>

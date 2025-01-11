@@ -1,10 +1,12 @@
 "use client";
 import { useContextElement } from "@/context/Context";
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import Image from "next/image";
 import Link from "next/link";
 import AddressSelector from "./address/AddressSelector";
 import ShippingFee from "./address/ShippingFee";
+import { vnpay } from "@/data/payment/vnpay";
 
 const addressUrl = process.env.NEXT_PUBLIC_ADDRESS_URL;
 const token = process.env.NEXT_PUBLIC_API_TOKEN;
@@ -12,10 +14,14 @@ const token = process.env.NEXT_PUBLIC_API_TOKEN;
 export default function Checkout() {
   const { cartProducts, setCartProducts, totalPrice } = useContextElement();
   const [district, setDistrict] = useState("");
-  
+
   const [selectedWard, setSelectedWard] = useState("");
 
   const [shippingFee, setShippingFee] = useState("");
+
+  const [paymentUrl, setPaymentUrl] = useState('');
+
+  const router = useRouter();
 
   async function fetchData(endpoint, params = {}) {
     const url = new URL(`${addressUrl}/${endpoint}`);
@@ -33,6 +39,20 @@ export default function Checkout() {
     }
 
     return response.json();
+  }
+
+  const handleVnpay = async () => {
+    try {
+      const response = await vnpay(totalPrice + shippingFee, 'NCB');
+      setPaymentUrl(response.data.paymentUrl);
+      if (paymentUrl) {
+        router.push(paymentUrl); // Chuyển hướng đến trang thanh toán
+      } else {
+        console.error('Không nhận được URL thanh toán');
+      }
+    } catch (error) {
+      console.error('Error creating payment:', error);
+    }
   }
 
   return (
@@ -133,7 +153,7 @@ export default function Checkout() {
                   </div>
                 )}
                 <div className="coupon-box">
-                  <input required type="text" placeholder="Mã giảm giá" />
+                  <input type="text" placeholder="Mã giảm giá" />
                   <a
                     href="#"
                     className="tf-btn btn-sm radius-3 btn-fill btn-icon animate-hover-btn"
@@ -236,7 +256,10 @@ export default function Checkout() {
                     </label>
                   </div>
                 </div>
-                <button className="tf-btn radius-3 btn-fill btn-icon animate-hover-btn justify-content-center">
+                <button 
+                  className="tf-btn radius-3 btn-fill btn-icon animate-hover-btn justify-content-center"
+                  onClick={handleVnpay}
+                >
                   Đặt hàng
                 </button>
               </form>
