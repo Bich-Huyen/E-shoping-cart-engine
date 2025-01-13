@@ -31,7 +31,7 @@ export default function Compare() {
                       className="tf-compare-remove link"
                       onClick={() => removeFromCompareItem(elm.id)}
                     >
-                      Remove
+                      Xóa
                     </div>
                     <Link
                       className="tf-compare-image"
@@ -54,7 +54,7 @@ export default function Compare() {
                     </Link>
                     <div className="price">
                       <span className="price-on-sale">
-                        ${elm.price.toFixed(2)}
+                        {elm.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
                       </span>
                     </div>
                     <div className="tf-compare-group-btns d-flex gap-10">

@@ -1,7 +1,31 @@
 "use client";
-import React from "react";
+import React, {useState} from "react";
+import { loginUser } from "@/data/auth/login";
 
 export default function Login() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [err, setErr] = useState('');
+  const [status, setStatus] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setErr(null);
+
+    try {
+        const userData = await loginUser({ email, password });
+        console.log('Login successful:', userData);
+
+        setStatus(true);
+    } catch (error) {
+      setErr('Login failed. Please try again.');
+    } finally {
+        setLoading(false);
+    }
+};
+
   return (
     <div
       className="modal modalCentered fade form-sign-in modal-part-content"
@@ -10,7 +34,7 @@ export default function Login() {
       <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">
           <div className="header">
-            <div className="demo-title">Log in</div>
+            <div className="demo-title">Đăng nhập</div>
             <span
               className="icon-close icon-close-popup"
               data-bs-dismiss="modal"
@@ -18,7 +42,7 @@ export default function Login() {
           </div>
           <div className="tf-login-form">
             <form
-              onSubmit={(e) => e.preventDefault()}
+              onSubmit={handleSubmit}
               className=""
               acceptCharset="utf-8"
             >
@@ -27,6 +51,8 @@ export default function Login() {
                   className="tf-field-input tf-input"
                   placeholder=" "
                   type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   name=""
                   required
                   autoComplete="abc@xyz.com"
@@ -40,12 +66,14 @@ export default function Login() {
                   className="tf-field-input tf-input"
                   placeholder=" "
                   type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   name=""
                   required
                   autoComplete="current-password"
                 />
                 <label className="tf-field-label" htmlFor="">
-                  Password *
+                  Mật khẩu *
                 </label>
               </div>
               <div>
@@ -54,16 +82,19 @@ export default function Login() {
                   data-bs-toggle="modal"
                   className="btn-link link"
                 >
-                  Forgot your password?
+                  Quên mật khẩu?
                 </a>
               </div>
+              {err && <p style={{ color: 'red' }}>{err}</p>}
               <div className="bottom">
                 <div className="w-100">
                   <button
                     type="submit"
                     className="tf-btn btn-fill animate-hover-btn radius-3 w-100 justify-content-center"
+                    {...(status && { "data-bs-dismiss": "modal" })}
+                    disabled={loading}
                   >
-                    <span>Log in</span>
+                    <span>Đăng nhập</span>
                   </button>
                 </div>
                 <div className="w-100">

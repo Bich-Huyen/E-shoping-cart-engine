@@ -1,6 +1,12 @@
-import React from "react";
+"use client"
+import React, { useState } from "react";
+import AddressSelector from "../address/AddressSelector";
 
 export default function AccountAddress() {
+  const [district, setDistrict] = useState("");
+  
+  const [selectedWard, setSelectedWard] = useState("");
+
   return (
     <div className="my-account-content account-address">
       <div className="">
@@ -11,6 +17,7 @@ export default function AccountAddress() {
           <p>New York</p>
           <p>info@fashionshop.com</p>
           <p className="mb_10">(212) 555-1234</p>
+              <AddressSelector onWardSelect={setSelectedWard} onDistrictSelect={setDistrict} />
           <div className="d-flex gap-10">
             <a
               href="#"

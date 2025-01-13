@@ -38,7 +38,7 @@ interface Product {
   isAvailable: boolean;
 }
 
-const apiUrl = `${process.env.NEXT_PUBLIC_URL}/products`;
+const apiUrl = `${process.env.NEXT_PUBLIC_URL}/product/products`;
 
 // Tạo một Promise để trực tiếp trả về dữ liệu
 const productsPromise: Promise<Product[]> = axios.get(apiUrl)

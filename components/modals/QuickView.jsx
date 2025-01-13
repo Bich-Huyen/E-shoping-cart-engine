@@ -110,7 +110,7 @@ export default function QuickView() {
                   </div>
                 </div>
                 <div className="tf-product-info-price">
-                  <div className="price">${quickViewItem.price.toFixed(2)}</div>
+                  <div className="price">{quickViewItem.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</div>
                 </div>
                 <div className="tf-product-description">
                   <p>
@@ -160,12 +160,6 @@ export default function QuickView() {
                           {currentSize.value}
                         </span>
                       </div>
-                      <div
-                        className="find-size btn-choose-size fw-6"
-                        onClick={() => openModalSizeChoice()}
-                      >
-                        Find your size
-                      </div>
                     </div>
                     <form className="variant-picker-values">
                       {sizeOptions.map((size) => (
@@ -191,7 +185,7 @@ export default function QuickView() {
                   </div>
                 </div>
                 <div className="tf-product-info-quantity">
-                  <div className="quantity-title fw-6">Quantity</div>
+                  <div className="quantity-title fw-6">Số lượng</div>
                   <Quantity />
                 </div>
                 <div className="tf-product-info-buy-button">
@@ -203,11 +197,11 @@ export default function QuickView() {
                     >
                       <span>
                         {isAddedToCartProducts(quickViewItem.id)
-                          ? "Already Added - "
-                          : "Add to cart - "}
+                          ? "Đã có trong giỏ hàng - "
+                          : "Thêm vào giỏ hàng - "}
                       </span>
                       <span className="tf-qty-price">
-                        ${quickViewItem.price.toFixed(2)}
+                        {quickViewItem.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
                       </span>
                     </a>
                     <a
@@ -248,16 +242,7 @@ export default function QuickView() {
                     </a>
                     <div className="w-100">
                       <a href="#" className="btns-full">
-                        Buy with
-                        <Image
-                          alt=""
-                          src="/images/payments/paypal.png"
-                          width={64}
-                          height={18}
-                        />
-                      </a>
-                      <a href="#" className="payment-more-option">
-                        More payment options
+                        Mua ngay
                       </a>
                     </div>
                   </form>

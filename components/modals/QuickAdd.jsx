@@ -49,7 +49,7 @@ export default function QuickAdd() {
               <div className="content">
                 <Link href={`/product-detail/${item.id}`}>{item.title}</Link>
                 <div className="tf-product-info-price">
-                  <div className="price">${item.price.toFixed(2)}</div>
+                  <div className="price">{item.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</div>
                 </div>
               </div>
             </div>
@@ -112,7 +112,7 @@ export default function QuickAdd() {
               </div>
             </div>
             <div className="tf-product-info-quantity mb_15">
-              <div className="quantity-title fw-6">Quantity</div>
+              <div className="quantity-title fw-6">Số lượng</div>
               <Quantity />
             </div>
             <div className="tf-product-info-buy-button">
@@ -123,10 +123,10 @@ export default function QuickAdd() {
                 >
                   <span>
                     {isAddedToCartProducts(item.id)
-                      ? "Already Added - "
-                      : "Add to cart - "}
+                      ? "Đã có trong giỏ hàng - "
+                      : "Thêm vào giỏ hàng - "}
                   </span>
-                  <span className="tf-qty-price">${item.price.toFixed(2)}</span>
+                  <span className="tf-qty-price">{item.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</span>
                 </a>
                 <div className="tf-product-btn-wishlist btn-icon-action">
                   <i className="icon-heart" />
@@ -144,16 +144,7 @@ export default function QuickAdd() {
                 </a>
                 <div className="w-100">
                   <a href="#" className="btns-full">
-                    Buy with
-                    <Image
-                      alt=""
-                      src="/images/payments/paypal.png"
-                      width={64}
-                      height={18}
-                    />
-                  </a>
-                  <a href="#" className="payment-more-option">
-                    More payment options
+                    Mua ngay
                   </a>
                 </div>
               </form>
