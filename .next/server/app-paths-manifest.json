@@ -1,8 +1,5 @@
 {
-  "/(otherPages)/checkout/page": "app/(otherPages)/checkout/page.js",
   "/page": "app/page.js",
-  "/(otherPages)/wishlist/page": "app/(otherPages)/wishlist/page.js",
-  "/(otherPages)/compare/page": "app/(otherPages)/compare/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/(shop-details)/product-detail/[id]/page": "app/(shop-details)/product-detail/[id]/page.js"
+  "/(otherPages)/checkout/page": "app/(otherPages)/checkout/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js"
 }

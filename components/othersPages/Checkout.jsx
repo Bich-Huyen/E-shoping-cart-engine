@@ -7,12 +7,16 @@ import Link from "next/link";
 import AddressSelector from "./address/AddressSelector";
 import ShippingFee from "./address/ShippingFee";
 import { vnpay } from "@/data/payment/vnpay";
+import { momo } from "@/data/payment/momo";
 
 const addressUrl = process.env.NEXT_PUBLIC_ADDRESS_URL;
 const token = process.env.NEXT_PUBLIC_API_TOKEN;
 
 export default function Checkout() {
   const { cartProducts, setCartProducts, totalPrice } = useContextElement();
+
+  const [selectedPayment, setSelectedPayment] = useState('vnpay');
+
   const [district, setDistrict] = useState("");
 
   const [selectedWard, setSelectedWard] = useState("");
@@ -22,6 +26,10 @@ export default function Checkout() {
   const [paymentUrl, setPaymentUrl] = useState('');
 
   const router = useRouter();
+
+  const handlePaymentChange = (event) => {
+    setSelectedPayment(event.target.id);
+  };
 
   async function fetchData(endpoint, params = {}) {
     const url = new URL(`${addressUrl}/${endpoint}`);
@@ -54,6 +62,41 @@ export default function Checkout() {
       console.error('Error creating payment:', error);
     }
   }
+
+  const handleMomo = async () => {
+    try {
+      const response = await momo(totalPrice + shippingFee);
+      setPaymentUrl(response.payUrl);
+      if (paymentUrl) {
+        router.push(paymentUrl);
+      } else {
+        console.error('Error creating payment:', error);
+      }
+    } catch (error) {
+      console.error('Error creating payment:', error);
+    }
+  }
+
+  const handleCashOnDelivery = () => {
+    console.log('Xử lý thanh toán khi nhận hàng');
+    // Thêm logic xử lý thanh toán COD ở đây
+  };
+
+  const processPayment = () => {
+    switch (selectedPayment) {
+      case 'vnpay':
+        handleVnpay();
+        break;
+      case 'momo':
+        handleMomo();
+        break;
+      case 'delivery':
+        handleCashOnDelivery();
+        break;
+      default:
+        alert('Vui lòng chọn phương thức thanh toán hợp lệ.');
+    }
+  };
 
   return (
     <section className="flat-spacing-11">
@@ -180,9 +223,10 @@ export default function Checkout() {
                       required
                       type="radio"
                       name="payment"
-                      id="bank"
+                      id="vnpay"
                       className="tf-check"
-                      defaultChecked
+                      defaultChecked={selectedPayment === 'vnpay'}
+                      onChange={handlePaymentChange}
                     />
                     <div style={{ width: '38px', height: '24px', position: 'relative' }}>
                       <Image
@@ -200,9 +244,10 @@ export default function Checkout() {
                       required
                       type="radio"
                       name="payment"
-                      id="bank"
+                      id="momo"
                       className="tf-check"
-                      defaultChecked
+                      defaultChecked={selectedPayment === 'momo'}
+                      onChange={handlePaymentChange}
                     />
                     <div style={{ width: '38px', height: '24px', position: 'relative' }}>
                       <Image
@@ -222,6 +267,8 @@ export default function Checkout() {
                       name="payment"
                       id="delivery"
                       className="tf-check"
+                      defaultChecked={selectedPayment === 'delivery'}
+                      onChange={handlePaymentChange}
                     />
                     <label htmlFor="delivery">Thanh toán khi nhận hàng</label>
                   </div>
@@ -258,7 +305,7 @@ export default function Checkout() {
                 </div>
                 <button 
                   className="tf-btn radius-3 btn-fill btn-icon animate-hover-btn justify-content-center"
-                  onClick={handleVnpay}
+                  onClick={processPayment}
                 >
                   Đặt hàng
                 </button>

@@ -17,7 +17,7 @@ export const vnpay = async (amount: number, bankCode: string): Promise<PaymentRe
         });
         return response.data;
     } catch (error) {
-        console.error('Payment API error:', error);
+        console.error('Payment VNPay API error:', error);
         throw error;
     }
 };

@@ -21,70 +21,10 @@
       "static/chunks/main-app.js",
       "static/chunks/app/(otherPages)/checkout/page.js"
     ],
-    "/(dashboard)/my-account/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(dashboard)/my-account/page.js"
-    ],
-    "/(dashboard)/my-account-edit/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(dashboard)/my-account-edit/page.js"
-    ],
-    "/(dashboard)/my-account-address/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(dashboard)/my-account-address/page.js"
-    ],
-    "/(dashboard)/my-account-wishlist/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(dashboard)/my-account-wishlist/page.js"
-    ],
-    "/(dashboard)/my-account-orders/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(dashboard)/my-account-orders/page.js"
-    ],
     "/_not-found/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/_not-found/page.js"
-    ],
-    "/(otherPages)/payment-confirmation/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(otherPages)/payment-confirmation/page.js"
-    ],
-    "/(otherPages)/payment-failure/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(otherPages)/payment-failure/page.js"
-    ],
-    "/(shop)/shop-filter-sidebar/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(shop)/shop-filter-sidebar/page.js"
-    ],
-    "/(homes)/home-skincare/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(homes)/home-skincare/page.js"
-    ],
-    "/(otherPages)/wishlist/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(otherPages)/wishlist/page.js"
-    ],
-    "/(otherPages)/compare/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(otherPages)/compare/page.js"
-    ],
-    "/(shop-details)/product-detail/[id]/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(shop-details)/product-detail/[id]/page.js"
     ]
   }
 }
