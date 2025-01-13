@@ -57,7 +57,7 @@ export default function Categories() {
                       href={`/shop-collection-sub`}
                       className="link title fw-6"
                     >
-                      Shop all
+                      Xem thêm
                     </Link>
                   </div>
                 </div>

@@ -47,7 +47,7 @@ export default function Testimonials() {
                       />
                     </div>
                     <div className="heading fs-12 mb_18">
-                      PEOPLE ARE TALKING
+                      Mọi người nói gì về Beautique
                     </div>
                     <div className="rating">
                       <i className="icon-start" />
@@ -57,9 +57,9 @@ export default function Testimonials() {
                       <i className="icon-start" />
                     </div>
                     <p className="text">
-                      "The shipping is always fast and the customer service team
-                      is friendly and helpful. I highly recommend this site to
-                      anyone looking for affordable clothing."
+                      "Việc vận chuyển luôn nhanh chóng và đội ngũ dịch vụ khách hàng
+                      thân thiện và hữu ích. Tôi thực sự giới thiệu trang web này cho
+                      bất kỳ ai đang tìm kiếm mỹ phẩm giá cả phải chăng."
                     </p>
                     <div className="author box-author">
                       <div className="box-img d-md-none rounded-0">
@@ -72,7 +72,7 @@ export default function Testimonials() {
                           height={513}
                         />
                       </div>
-                      <div className="content">
+                      {/* <div className="content">
                         <div className="name">{testimonial.name}</div>
                         <a
                           href={`#`} // Directly added href here
@@ -81,7 +81,7 @@ export default function Testimonials() {
                           Purchase item :{" "}
                           <span>{testimonial.purchaseItem}</span>
                         </a>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </SwiperSlide>

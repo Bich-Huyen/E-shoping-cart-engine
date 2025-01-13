@@ -77,18 +77,18 @@ export default function Footer1({ bgColor = "" }) {
                   <ul>
                     <li>
                       <p>
-                        Address: 1234 Fashion Street, Suite 567, <br />
-                        New York, NY 10001
+                        Địa chỉ: Đường Hàn Thuyên, Linh Trung, <br />
+                        Thành phố Thủ Đức
                       </p>
                     </li>
                     <li>
                       <p>
-                        Email: <a href="#">info@fashionshop.com</a>
+                        Email: <a href="#">beautique@gmail.com</a>
                       </p>
                     </li>
                     <li>
                       <p>
-                        Phone: <a href="#">(212) 555-1234</a>
+                        SĐT: <a href="#">0385 000 000</a>
                       </p>
                     </li>
                   </ul>
@@ -142,10 +142,10 @@ export default function Footer1({ bgColor = "" }) {
               </div>
               <div className="col-xl-3 col-md-6 col-12 footer-col-block">
                 <div className="footer-heading footer-heading-desktop">
-                  <h6>Help</h6>
+                  <h6>Hỗ trợ</h6>
                 </div>
                 <div className="footer-heading footer-heading-moblie">
-                  <h6>Help</h6>
+                  <h6>Hỗ trợ</h6>
                 </div>
                 <ul className="footer-menu-list tf-collapse-content">
                   {footerLinks.map((link, index) => (
@@ -177,15 +177,14 @@ export default function Footer1({ bgColor = "" }) {
               <div className="col-xl-3 col-md-6 col-12">
                 <div className="footer-newsletter footer-col-block">
                   <div className="footer-heading footer-heading-desktop">
-                    <h6>Sign Up for Email</h6>
+                    <h6>Đăng ký bằng Email</h6>
                   </div>
                   <div className="footer-heading footer-heading-moblie">
-                    <h6>Sign Up for Email</h6>
+                    <h6>Đăng ký bằng Email</h6>
                   </div>
                   <div className="tf-collapse-content">
                     <div className="footer-menu_item">
-                      Sign up to get first dibs on new arrivals, sales,
-                      exclusive content, events and more!
+                      Đăng ký để nhận các thông tin về sản phẩm mới, giảm giá và các chương trình ưu đãi, ...!
                     </div>
                     <div
                       className={`tfSubscribeMsg ${
@@ -194,7 +193,7 @@ export default function Footer1({ bgColor = "" }) {
                     >
                       {success ? (
                         <p style={{ color: "rgb(52, 168, 83)" }}>
-                          You have successfully subscribed.
+                          Đăng ký thành công.
                         </p>
                       ) : (
                         <p style={{ color: "red" }}>Something went wrong</p>
@@ -219,7 +218,7 @@ export default function Footer1({ bgColor = "" }) {
                             type="email"
                             name="email-form"
                             className="subscribe-email"
-                            placeholder="Enter your email...."
+                            placeholder="Nhập email...."
                             tabIndex={0}
                             aria-required="true"
                             autoComplete="abc@xyz.com"
@@ -230,28 +229,28 @@ export default function Footer1({ bgColor = "" }) {
                             className="subscribe-button tf-btn btn-sm radius-3 btn-fill btn-icon animate-hover-btn"
                             type="submit"
                           >
-                            Subscribe
+                            Theo dõi
                             <i className="icon icon-arrow1-top-left" />
                           </button>
                         </div>
                       </div>
                       <div className="subscribe-msg" />
                     </form>
-                    <div className="tf-cur">
+                    {/* <div className="tf-cur">
                       <div className="tf-currencies">
                         <CurrencySelect />
                       </div>
                       <div className="tf-languages">
                         <LanguageSelect />
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="footer-bottom">
+        {/* <div className="footer-bottom">
           <div className="container">
             <div className="row">
               <div className="col-12">
@@ -275,7 +274,7 @@ export default function Footer1({ bgColor = "" }) {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </footer>
   );

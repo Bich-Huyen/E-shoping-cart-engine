@@ -3,7 +3,7 @@ import { options } from "@/data/singleProductOptions";
 import Image from "next/image";
 import React from "react";
 import Quantity from "./Quantity";
-import { products4 } from "@/data/products";
+import { products1 } from "@/data/products";
 import { useContextElement } from "@/context/Context";
 
 export default function StickyItem({ soldOut = false }) {
@@ -16,20 +16,20 @@ export default function StickyItem({ soldOut = false }) {
             <div className="tf-sticky-atc-img">
               <Image
                 className="lazyloaded"
-                data-src={products4[2].imgSrc}
+                data-src={products1[0].imgSrc}
                 alt=""
-                src={products4[2].imgSrc}
+                src={products1[0].imgSrc}
                 width={770}
                 height={1075}
               />
             </div>
             <div className="tf-sticky-atc-title fw-5 d-xl-block d-none">
-              {products4[2].title}
+              {products1[0].title}
             </div>
           </div>
           <div className="tf-sticky-atc-infos">
             <form onSubmit={(e) => e.preventDefault()} className="">
-              <div className="tf-sticky-atc-variant-price text-center">
+              {/* <div className="tf-sticky-atc-variant-price text-center">
                 <select className="tf-select">
                   {options.map((option) => (
                     <option key={option.value} value={option.value}>
@@ -37,7 +37,7 @@ export default function StickyItem({ soldOut = false }) {
                     </option>
                   ))}
                 </select>
-              </div>
+              </div> */}
               <div className="tf-sticky-atc-btns">
                 <div className="tf-product-info-quantity">
                   <Quantity />
@@ -48,13 +48,13 @@ export default function StickyItem({ soldOut = false }) {
                   </a>
                 ) : (
                   <a
-                    onClick={() => addProductToCart(products4[2].id)}
+                    onClick={() => addProductToCart(products1[0].id)}
                     className="tf-btn btn-fill radius-3 justify-content-center fw-6 fs-14 flex-grow-1 animate-hover-btn"
                   >
                     <span>
-                      {isAddedToCartProducts(products4[2].id)
-                        ? "Already Added"
-                        : "Add to cart"}
+                      {isAddedToCartProducts(products1[0].id)
+                        ? "Đã trong giỏ hàng"
+                        : "Thêm vào giỏ hàng"}
                     </span>
                   </a>
                 )}

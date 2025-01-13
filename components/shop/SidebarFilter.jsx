@@ -1,13 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-const categories = [
-  { id: 1, name: "Fashion", isActive: true, link: "/shop-default" },
-  { id: 2, name: "Men", isActive: false, link: "/shop-men" },
-  { id: 3, name: "Women", isActive: false, link: "/shop-women" },
-  { id: 4, name: "Denim", isActive: false, link: "/shop-default" },
-  { id: 5, name: "Dress", isActive: false, link: "/shop-default" },
-];
+import categoriesPromise from "@/data/fetchCategories";
+import productsPromise from "@/data/fetchProducts";
+
+
 const filterColors = [
   { name: "Orange", colorClass: "bg_orange-3" },
   { name: "Black", colorClass: "bg_dark" },
@@ -31,10 +28,17 @@ const availabilities = [
 ];
 const sizes = ["S", "M", "L", "XL"];
 import Slider from "rc-slider";
-import { products1 } from "@/data/products";
 import Link from "next/link";
+
 export default function SidebarFilter({ setProducts }) {
   const [price, setPrice] = useState([10, 20]);
+
+  const [categories, setCategories] = useState([]);
+  const [productList, setProductList] = useState([]);
+
+
+  const [error, setError] = useState(null);
+
   const handlePrice = (value) => {
     setPrice(value);
   };
@@ -76,10 +80,24 @@ export default function SidebarFilter({ setProducts }) {
   useEffect(() => {
     let filteredArrays = [];
 
+
+    categoriesPromise
+      .then(data => setCategories(data))
+      .catch(err => setError('Failed to fetch categories'));
+
+      productsPromise
+      .then((data) => {
+        setProductList(data);
+        setProducts(data); // Lưu danh sách sản phẩm ban đầu
+      })
+      .catch((error) => {
+        setError("Unable to fetch products");
+      });
+
     filteredArrays = [
       ...filteredArrays,
       [
-        ...products1.filter(
+        ...productList.filter(
           (elm) => elm.price >= price[0] && elm.price <= price[1]
         ),
       ],
@@ -89,7 +107,7 @@ export default function SidebarFilter({ setProducts }) {
       filteredArrays = [
         ...filteredArrays,
         [
-          ...products1.filter((elm) =>
+          ...productList.filter((elm) =>
             elm.colors
               ?.map((el2) => el2.name)
               .some((el3) => selectedColors.includes(el3))
@@ -102,7 +120,7 @@ export default function SidebarFilter({ setProducts }) {
     if (selectedBrands.length) {
       filteredArrays = [
         ...filteredArrays,
-        [...products1.filter((elm) => selectedBrands.includes(elm.brand))],
+        [...productList.filter((elm) => selectedBrands.includes(elm.brand))],
       ];
     }
 
@@ -111,7 +129,7 @@ export default function SidebarFilter({ setProducts }) {
       filteredArrays = [
         ...filteredArrays,
         [
-          ...products1.filter((elm) =>
+          ...productList.filter((elm) =>
             elm.sizes?.some((elm2) => selectedSizes.includes(elm2))
           ),
         ],
@@ -123,7 +141,7 @@ export default function SidebarFilter({ setProducts }) {
       filteredArrays = [
         ...filteredArrays,
         [
-          ...products1.filter((elm) =>
+          ...productList.filter((elm) =>
             selectedAvailabilities
               .map((elm3) => elm3.isAvailable)
               .some((elm4) => elm4 == elm.isAvailable)
@@ -132,7 +150,7 @@ export default function SidebarFilter({ setProducts }) {
       ];
     }
 
-    const commonItems = products1.filter((item) =>
+    const commonItems = productList.filter((item) =>
       filteredArrays.every((array) => array.includes(item))
     );
     setProducts(commonItems);
@@ -216,7 +234,7 @@ export default function SidebarFilter({ setProducts }) {
                     <span>
                       (
                       {
-                        products1.filter(
+                        productList.filter(
                           (elm) => elm.isAvailable == availability.isAvailable
                         ).length
                       }
@@ -295,7 +313,7 @@ export default function SidebarFilter({ setProducts }) {
                   <label className="label">
                     <span>{brand}</span>&nbsp;
                     <span>
-                      ({products1.filter((elm) => elm.brand == brand).length})
+                      ({productList.filter((elm) => elm.brand == brand).length})
                     </span>
                   </label>
                 </li>
@@ -334,7 +352,7 @@ export default function SidebarFilter({ setProducts }) {
                     <span>
                       (
                       {
-                        products1.filter((el) =>
+                        productList.filter((el) =>
                           el.colors?.map((col) => col?.name)?.includes(elm.name)
                         ).length
                       }
@@ -375,7 +393,7 @@ export default function SidebarFilter({ setProducts }) {
                     <span>{elm}</span>&nbsp;
                     <span>
                       (
-                      {products1.filter((el) => el.sizes?.includes(elm)).length}
+                      {productList.filter((el) => el.sizes?.includes(elm)).length}
                       )
                     </span>
                   </label>

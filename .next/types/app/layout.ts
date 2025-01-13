@@ -1,4 +1,4 @@
-// File: D:\H\học\UIT\kỳ 7\KLTN\3. Code\2. FE\themeforest-g7Yxv70g-ecomus-ultimate-ecommerce-react-nextjs-bootstrap-template\ecomus-package\ecomus-nextjs\app\layout.js
+// File: C:\Users\tranh\src\E-shoping-cart-engine\app\layout.js
 import * as entry from '../../../app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

@@ -1,4 +1,4 @@
-// File: D:\H\học\UIT\kỳ 7\KLTN\3. Code\2. FE\themeforest-g7Yxv70g-ecomus-ultimate-ecommerce-react-nextjs-bootstrap-template\ecomus-package\ecomus-nextjs\app\(shop-details)\product-detail\[id]\page.jsx
+// File: C:\Users\tranh\src\E-shoping-cart-engine\app\(shop-details)\product-detail\[id]\page.jsx
 import * as entry from '../../../../../../app/(shop-details)/product-detail/[id]/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

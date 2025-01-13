@@ -12,7 +12,7 @@ export default function Header7() {
           <div className="row wrapper-header align-items-center">
             <div className="col-xl-5 tf-md-hidden">
               <ul className="header-list-categories">
-                <li className="categories-item active">
+                {/* <li className="categories-item active">
                   <Link href={`/home-multi-brand`} className="text-uppercase">
                     Women
                   </Link>
@@ -26,7 +26,7 @@ export default function Header7() {
                   <Link href={`/home-kids`} className="text-uppercase">
                     Kids
                   </Link>
-                </li>
+                </li> */}
                 <li className="categories-item">
                   <Link href={`/store-locations`} className="text-uppercase">
                     Find a Store
@@ -59,7 +59,7 @@ export default function Header7() {
                 <Image
                   alt="logo"
                   className="logo"
-                  src="/images/logo/women-logo.svg"
+                  src="/images/logo/logo.svg"
                   width={143}
                   height={21}
                 />

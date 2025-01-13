@@ -32,14 +32,14 @@ export default function Wishlist() {
               style={{ rowGap: "20px" }}
             >
               <div className="col-lg-3 col-md-6 fs-18">
-                Your wishlist is empty
+                Trống
               </div>
               <div className="col-lg-3  col-md-6">
                 <Link
                   href={`/shop-default`}
                   className="tf-btn btn-fill animate-hover-btn radius-3 w-100 justify-content-center"
                 >
-                  Explore Products!
+                  Khám phá thêm sản phẩm
                 </Link>
               </div>
             </div>

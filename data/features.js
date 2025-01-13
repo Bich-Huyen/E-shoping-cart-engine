@@ -20,23 +20,23 @@ export const iconBoxes = [
 export const iconBoxData = [
   {
     iconClass: "icon-shipping",
-    title: "Free Shipping",
-    description: "Free shipping over order $120",
+    title: "Miễn phí giao hàng",
+    description: "Miễn phí giao hàng cho đơn hàng dưới 200.000₫",
   },
   {
     iconClass: "icon-payment fs-22",
-    title: "Flexible Payment",
-    description: "Pay with Multiple Credit Cards",
+    title: "Thanh toán linh hoạt",
+    description: "Thanh toán với VNPay và Momo",
   },
   {
     iconClass: "icon-return fs-20",
-    title: "14 Day Returns",
-    description: "Within 30 days for an exchange",
+    title: "14 ngày trả hàng",
+    description: "Trong vòng 14 ngày đổi trả",
   },
   {
     iconClass: "icon-suport",
-    title: "Premium Support",
-    description: "Outstanding premium support",
+    title: "Hỗ trợ vượt trội",
+    description: "Hỗ trợ cao cấp vượt trội",
   },
   {
     iconClass: "icon-shipping",

@@ -1,18 +1,17 @@
 export const footerLinks = [
-  { href: "/privacy-policy", text: "Privacy Policy" },
-  { href: "/delivery-return", text: "Returns + Exchanges" },
-  { href: "/shipping-delivery", text: "Shipping" },
-  { href: "/terms-conditions", text: "Terms & Conditions" },
+  { href: "/privacy-policy", text: "Chính sách bảo mật" },
+  { href: "/delivery-return", text: "Đổi + Trả" },
+  { href: "/shipping-delivery", text: "Giao hàng" },
+  { href: "/terms-conditions", text: "Điều khoản & Dịch vụ" },
   { href: "/faq-1", text: "FAQ’s" },
-  { href: "/compare", text: "Compare" },
-  { href: "/wishlist", text: "My Wishlist" },
+  { href: "/compare", text: "So sánh" },
+  { href: "/wishlist", text: "Yêu thích" },
 ];
 export const aboutLinks = [
-  { href: "/about-us", text: "Our Story" },
-  { href: "/our-store", text: "Visit Our Store" },
-  { href: "/contact-1", text: "Contact Us" },
-  { href: "/about-us", text: "About Us" },
-  { href: "/login", text: "Account" },
+  { href: "/about-us", text: "Tiểu sử" },
+  { href: "/contact-1", text: "Liên hệ" },
+  { href: "/about-us", text: "Về chúng tôi" },
+  { href: "/login", text: "Tài khoản" },
 ];
 export const paymentImages = [
   { src: "/images/payments/visa.png", width: 48, height: 30, alt: "" },

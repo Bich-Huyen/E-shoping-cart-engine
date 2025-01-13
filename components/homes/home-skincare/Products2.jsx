@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useContextElement } from "@/context/Context";
 import Link from "next/link";
 import { Navigation, Pagination } from "swiper/modules";
+
 export default function Products2() {
   const { setQuickViewItem } = useContextElement();
   const {

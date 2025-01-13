@@ -87,10 +87,8 @@ export const colorOptions3 = [
 ];
 
 export const sizeOptions = [
-  { id: "values-s", value: "S", defaultChecked: true },
-  { id: "values-m", value: "M", defaultChecked: false },
-  { id: "values-l", value: "L", defaultChecked: false },
-  { id: "values-xl", value: "XL", defaultChecked: false },
+  { id: "values-s", value: "30ml", defaultChecked: true },
+  { id: "values-m", value: "50ml", defaultChecked: false },
 ];
 
 export const paymentImages = [

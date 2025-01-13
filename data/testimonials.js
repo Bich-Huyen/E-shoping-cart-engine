@@ -105,13 +105,13 @@ export const imagesData = [
 
 export const testimonials3 = [
   {
-    imgSrc: "/images/slider/te4.jpg",
+    imgSrc: "https://media.hcdn.vn/rating/173262805510820_img_80x80_d200c5_fit_center.jpg",
     altText: "image-product",
     name: "Robert Smith",
     purchaseItem: "Boxy T-shirt",
   },
   {
-    imgSrc: "/images/slider/te6.jpg",
+    imgSrc: "https://media.hcdn.vn/rating/173156379039020_img_80x80_d200c5_fit_center.jpg",
     altText: "image-product",
     name: "Jenifer Unix",
     purchaseItem: "Sweetheart-neckline Top",
@@ -122,13 +122,13 @@ export const slides = [
   {
     images: [
       {
-        src: "/images/slider/te4.jpg",
+        src: "https://media.hcdn.vn/rating/173156379039020_img_80x80_d200c5_fit_center.jpg",
         alt: "img-slider",
         width: 450,
         height: 513,
       },
       {
-        src: "/images/slider/te3.jpg",
+        src: "https://media.hcdn.vn/rating/173262805510820_img_80x80_d200c5_fit_center.jpg",
         alt: "img-slider",
         width: 750,
         height: 797,

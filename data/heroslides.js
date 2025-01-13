@@ -147,21 +147,21 @@ export const sliderData = [
 
 export const slides4 = [
   {
-    imgSrc: "/images/slider/women-slideshow-1.jpg",
+    imgSrc: "https://www.shutterstock.com/image-photo/makeup-professional-cosmetics-on-pink-600nw-1398700589.jpg",
     imgAlt: "women-slideshow-01",
     heading: "Elegance",
     description: "From casual to formal, we've got you covered",
     buttonText: "Shop collection",
   },
   {
-    imgSrc: "/images/slider/women-slideshow-2.jpg",
+    imgSrc: "https://t3.ftcdn.net/jpg/07/10/38/86/360_F_710388659_LWsZYejhgnsPzRlxSYpk1qiAcoCbhZFW.jpg",
     imgAlt: "women-slideshow-02",
     heading: "Boutique",
     description: "From casual to formal, we've got you covered",
     buttonText: "Shop collection",
   },
   {
-    imgSrc: "/images/slider/women-slideshow-3.jpg",
+    imgSrc: "https://img.freepik.com/free-photo/top-view-beauty-products-with-copy-space_23-2149446515.jpg",
     imgAlt: "women-slideshow-03",
     heading: "Luxury",
     description: "From casual to formal, we've got you covered",
