@@ -246,7 +246,7 @@ export default function SidebarFilter({ setProducts }) {
             </ul>
           </div>
         </div>
-        <div className="widget-facet wrap-price">
+        {/* <div className="widget-facet wrap-price">
           <div
             className="facet-title"
             data-bs-target="#price"
@@ -284,7 +284,7 @@ export default function SidebarFilter({ setProducts }) {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
         <div className="widget-facet">
           <div
             className="facet-title"
@@ -314,87 +314,6 @@ export default function SidebarFilter({ setProducts }) {
                     <span>{brand}</span>&nbsp;
                     <span>
                       ({productList.filter((elm) => elm.brand == brand).length})
-                    </span>
-                  </label>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-        <div className="widget-facet">
-          <div
-            className="facet-title"
-            data-bs-target="#color"
-            data-bs-toggle="collapse"
-            aria-expanded="true"
-            aria-controls="color"
-          >
-            <span>Color</span>
-            <span className="icon icon-arrow-up" />
-          </div>
-          <div id="color" className="collapse show">
-            <ul className="tf-filter-group filter-color current-scrollbar mb_36">
-              {filterColors.map((elm, i) => (
-                <li
-                  key={i}
-                  className="list-item d-flex gap-12 align-items-center"
-                  onClick={() => handleSelectColor(elm.name)}
-                >
-                  <input
-                    type="checkbox"
-                    name="color"
-                    className={`tf-check-color ${elm.colorClass}`}
-                    readOnly
-                    checked={selectedColors.includes(elm.name)}
-                  />
-                  <label className="label">
-                    <span>{elm.name}</span>&nbsp;
-                    <span>
-                      (
-                      {
-                        productList.filter((el) =>
-                          el.colors?.map((col) => col?.name)?.includes(elm.name)
-                        ).length
-                      }
-                      )
-                    </span>
-                  </label>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-        <div className="widget-facet">
-          <div
-            className="facet-title"
-            data-bs-target="#size"
-            data-bs-toggle="collapse"
-            aria-expanded="true"
-            aria-controls="size"
-          >
-            <span>Size</span>
-            <span className="icon icon-arrow-up" />
-          </div>
-          <div id="size" className="collapse show">
-            <ul className="tf-filter-group current-scrollbar">
-              {sizes.map((elm, i) => (
-                <li
-                  key={i}
-                  onClick={() => handleSelectSizes(elm)}
-                  className="list-item d-flex gap-12 align-items-center"
-                >
-                  <input
-                    type="radio"
-                    className="tf-check tf-check-size"
-                    readOnly
-                    checked={selectedSizes.includes(elm)}
-                  />
-                  <label className="label">
-                    <span>{elm}</span>&nbsp;
-                    <span>
-                      (
-                      {productList.filter((el) => el.sizes?.includes(elm)).length}
-                      )
                     </span>
                   </label>
                 </li>

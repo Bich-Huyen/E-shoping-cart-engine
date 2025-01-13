@@ -1,3 +1,5 @@
+import productsPromise from "./fetchProducts";
+
 export const products1 = [
   {
     id: 1,
@@ -5490,4 +5492,5 @@ export const allProducts = [
   ...products48,
   ...products49,
   ...products50,
+  // ...productsPromise
 ];

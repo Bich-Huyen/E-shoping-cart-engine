@@ -117,14 +117,6 @@ export default function Header7() {
             <nav className="box-navigation text-center">
               <ul className="box-nav-ul d-flex align-items-center justify-content-center gap-30">
                 <Nav />
-                <li className="menu-item">
-                  <a
-                    href="https://themeforest.net/item/ecomus-ultimate-html5-template/53417990?s_rank=3"
-                    className="item-link"
-                  >
-                    Buy now
-                  </a>
-                </li>
               </ul>
             </nav>
             <ul className="header-list-categories tf-lg-hidden">
