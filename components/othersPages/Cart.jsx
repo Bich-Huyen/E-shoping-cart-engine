@@ -16,10 +16,14 @@ export default function Cart() {
     script.onload = () => {
       new CozeWebSDK.WebChatClient({
         config: {
-          bot_id: "7459343149057097744", // Thay ID bot bằng của bạn
+          bot_id: "7459343149057097744", 
         },
         componentProps: {
-          title: "Coze",
+          title: "Beautique Advisor",
+          style: {
+            height: "50vh", 
+            titleColor: "#000000", 
+          },
         },
       });
     };
