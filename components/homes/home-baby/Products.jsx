@@ -5,7 +5,7 @@ import { products49 } from "@/data/products";
 import Image from "next/image";
 import Link from "next/link";
 import { Pagination } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swipered, SwiperSlide } from "swiper/react";
 
 export default function Products() {
   const { setQuickViewItem } = useContextElement();
@@ -56,7 +56,7 @@ export default function Products() {
             </svg>
             Flash sale
           </div>
-          <Swiperd
+          <Swipered
             modules={[Pagination]}
             className="swiper tf-sw-product-sell"
             {...swiperOptions}
@@ -203,7 +203,7 @@ export default function Products() {
                 </div>
               </SwiperSlide>
             ))}
-          </Swiperd>
+          </Swipered>
           <div className="sw-dots d-md-none style-2 sw-pagination-product justify-content-center spdp2" />
         </div>
       </div>

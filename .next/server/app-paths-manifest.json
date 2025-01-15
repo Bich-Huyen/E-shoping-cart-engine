@@ -1,5 +1,0 @@
-{
-  "/(otherPages)/checkout/page": "app/(otherPages)/checkout/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/(shop)/shop-filter-sidebar/page": "app/(shop)/shop-filter-sidebar/page.js"
-}

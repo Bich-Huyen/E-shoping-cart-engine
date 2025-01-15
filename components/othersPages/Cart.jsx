@@ -2,8 +2,34 @@
 import { useContextElement } from "@/context/Context";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect } from "react";
+
 export default function Cart() {
+
   const { cartProducts, setCartProducts, totalPrice } = useContextElement();
+
+  // Tải và khởi tạo bot Coze
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src =
+      "https://sf-cdn.coze.com/obj/unpkg-va/flow-platform/chat-app-sdk/1.1.0-beta.0/libs/oversea/index.js";
+    script.onload = () => {
+      new CozeWebSDK.WebChatClient({
+        config: {
+          bot_id: "7459343149057097744", 
+        },
+        componentProps: {
+          title: "Beautique Advisor",
+          style: {
+            height: "50vh", 
+            titleColor: "#000000", 
+          },
+        },
+      });
+    };
+    document.body.appendChild(script);
+  }, []);
+
   const setQuantity = (id, quantity) => {
     if (quantity >= 1) {
       const item = cartProducts.filter((elm) => elm.id == id)[0];
@@ -25,6 +51,10 @@ export default function Cart() {
               <p className="mb_24">You may check out all the available products and buy some in the shop</p>
               <Link href={`/shop-default`} className="tf-btn btn-sm radius-3 btn-fill btn-icon animate-hover-btn">Return to shop<i className="icon icon-arrow1-top-left"></i></Link>
           </div> */}
+
+         {/* Container cho bot */}
+      <div id="coze-bot-container"></div>
+
         <div className="tf-cart-countdown">
           <div className="title-left">
             <svg
