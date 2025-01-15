@@ -7,19 +7,19 @@ export default function Sorting({ products = products1, setFinalSorted }) {
   const [selectedOptions, setSelectedOptions] = useState(sortingOptions[0]);
 
   useEffect(() => {
-    if (selectedOptions.text == "Default") {
+    if (selectedOptions.text == "Mặc định") {
       setFinalSorted([...products]);
-    } else if (selectedOptions.text == "Alphabetically, A-Z") {
+    } else if (selectedOptions.text == "Tên, A-Z") {
       setFinalSorted(
         [...products].sort((a, b) => a.title.localeCompare(b.title))
       );
-    } else if (selectedOptions.text == "Alphabetically, Z-A") {
+    } else if (selectedOptions.text == "Tên, Z-A") {
       setFinalSorted(
         [...products].sort((a, b) => b.title.localeCompare(a.title))
       );
-    } else if (selectedOptions.text == "Price, low to high") {
+    } else if (selectedOptions.text == "Giá, thấp - cao") {
       setFinalSorted([...products].sort((a, b) => a.price - b.price));
-    } else if (selectedOptions.text == "Price, high to low") {
+    } else if (selectedOptions.text == "Giá, cao - thấp") {
       setFinalSorted([...products].sort((a, b) => b.price - a.price));
     }
   }, [products, selectedOptions]);

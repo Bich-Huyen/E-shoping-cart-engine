@@ -463,7 +463,7 @@ export default function SidebarFilter({ setProducts }) {
         ...filteredArrays,
         [
           ...products1.filter((elm) => 
-            elm.sizes.some((elm2) => selectedCategories.includes(elm2))
+            elm.filterCategories.some((elm2) => selectedCategories.includes(elm2))
           ),
         ]
       ]
@@ -517,7 +517,7 @@ export default function SidebarFilter({ setProducts }) {
             aria-expanded="true"
             aria-controls="categories"
           >
-            <span>Categories</span>
+            <span>Danh mục sản phẩm</span>
             <span className="icon icon-arrow-up" />
           </div>
           <div id="categories" className="collapse show">
@@ -553,7 +553,7 @@ export default function SidebarFilter({ setProducts }) {
             aria-expanded="true"
             aria-controls="availability"
           >
-            <span>Availability</span>
+            <span>Tồn kho</span>
             <span className="icon icon-arrow-up" />
           </div>
           <div id="availability" className="collapse show">
@@ -598,7 +598,7 @@ export default function SidebarFilter({ setProducts }) {
             aria-expanded="true"
             aria-controls="price"
           >
-            <span>Price</span>
+            <span>Giá</span>
             <span className="icon icon-arrow-up" />
           </div>
           <div id="price" className="collapse show">
@@ -635,7 +635,7 @@ export default function SidebarFilter({ setProducts }) {
             aria-expanded="true"
             aria-controls="brand"
           >
-            <span>Brand</span>
+            <span>Nhãn hiệu</span>
             <span className="icon icon-arrow-up" />
           </div>
           <div id="brand" className="collapse show">
@@ -671,7 +671,7 @@ export default function SidebarFilter({ setProducts }) {
             aria-expanded="true"
             aria-controls="color"
           >
-            <span>Color</span>
+            <span>Màu</span>
             <span className="icon icon-arrow-up" />
           </div>
           <div id="color" className="collapse show">
@@ -751,7 +751,7 @@ export default function SidebarFilter({ setProducts }) {
         className="tf-btn style-2 btn-fill rounded animate-hover-btn"
         onClick={clearFilter}
       >
-        Clear Filter
+        Xóa lọc
       </a>
     </div>
   );

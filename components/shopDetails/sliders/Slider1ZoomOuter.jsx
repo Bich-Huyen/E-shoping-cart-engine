@@ -6,7 +6,67 @@ import { Gallery, Item } from "react-photoswipe-gallery";
 import { Navigation, Thumbs } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-const swiperSlidesThumbs = [
+const swiperSlidesThumbs10 = [
+  {
+    imgSrc: "https://d3t32hsnjxo7q6.cloudfront.net/i/0d31f41c37fd18dfc02daa1671719378_ra,w158,h184_pa,w158,h184.png",
+    alt: "",
+    width: 713,
+    height: 1070,
+  },
+  {
+    imgSrc: "https://i5.walmartimages.com/seo/Maybelline-Color-Sensational-Vivids-Lipcolor_ac512fca-8c81-48c1-b5ee-1d0b24fcc30c.cbeb168906803461e01456a39cff110b.jpeg",
+    alt: "img-compare",
+    width: 713,
+    height: 1070,
+  },
+  {
+    imgSrc: "https://i.ebayimg.com/images/g/Yl4AAOSwmfNgCbd0/s-l1200.jpg",
+    alt: "img-compare",
+    width: 713,
+    height: 1070,
+  },
+  {
+    imgSrc: "https://m.media-amazon.com/images/I/719PkD-ScBL._AC_UF1000,1000_QL80_.jpg",
+    alt: "img-compare",
+    width: 713,
+    height: 1070,
+  },
+]
+
+
+const swiperSlides10 = [
+  {
+    imgSrc: "https://d3t32hsnjxo7q6.cloudfront.net/i/0d31f41c37fd18dfc02daa1671719378_ra,w158,h184_pa,w158,h184.png",
+    href: "https://d3t32hsnjxo7q6.cloudfront.net/i/0d31f41c37fd18dfc02daa1671719378_ra,w158,h184_pa,w158,h184.png",
+    width: 385,
+    height: 535,
+    dataZoom: "https://d3t32hsnjxo7q6.cloudfront.net/i/0d31f41c37fd18dfc02daa1671719378_ra,w158,h184_pa,w158,h184.png",
+  },
+  {
+    imgSrc: "https://i5.walmartimages.com/seo/Maybelline-Color-Sensational-Vivids-Lipcolor_ac512fca-8c81-48c1-b5ee-1d0b24fcc30c.cbeb168906803461e01456a39cff110b.jpeg",
+    href: "https://i5.walmartimages.com/seo/Maybelline-Color-Sensational-Vivids-Lipcolor_ac512fca-8c81-48c1-b5ee-1d0b24fcc30c.cbeb168906803461e01456a39cff110b.jpeg",
+    width: 713,
+    height: 1070,
+    dataZoom: "https://i5.walmartimages.com/seo/Maybelline-Color-Sensational-Vivids-Lipcolor_ac512fca-8c81-48c1-b5ee-1d0b24fcc30c.cbeb168906803461e01456a39cff110b.jpeg",
+  },
+  {
+    imgSrc: "https://i.ebayimg.com/images/g/Yl4AAOSwmfNgCbd0/s-l1200.jpg",
+    href: "https://i.ebayimg.com/images/g/Yl4AAOSwmfNgCbd0/s-l1200.jpg",
+    width: 713,
+    height: 1070,
+    dataZoom: "https://i.ebayimg.com/images/g/Yl4AAOSwmfNgCbd0/s-l1200.jpg",
+  },
+  {
+    imgSrc: "https://m.media-amazon.com/images/I/719PkD-ScBL._AC_UF1000,1000_QL80_.jpg",
+    href: "https://m.media-amazon.com/images/I/719PkD-ScBL._AC_UF1000,1000_QL80_.jpg",
+    width: 713,
+    height: 1070,
+    dataZoom: "https://m.media-amazon.com/images/I/719PkD-ScBL._AC_UF1000,1000_QL80_.jpg",
+  },
+];
+
+
+const swiperSlidesThumb1 = [
   {
     imgSrc: "https://media.hcdn.vn/catalog/product/f/a/facebook-dynamic-serum-la-roche-posay-giam-tham-nam-duong-sang-da-30ml-1721198657_img_385x385_622873_fit_center.jpg",
     alt: "",
@@ -39,7 +99,7 @@ const swiperSlidesThumbs = [
   },
 ];
 
-const swiperSlides = [
+const swiperSlide1 = [
   {
     imgSrc: "https://media.hcdn.vn/catalog/product/f/a/facebook-dynamic-serum-la-roche-posay-giam-tham-nam-duong-sang-da-30ml-1721198657_img_385x385_622873_fit_center.jpg",
     href: "https://media.hcdn.vn/catalog/product/f/a/facebook-dynamic-serum-la-roche-posay-giam-tham-nam-duong-sang-da-30ml-1721198657_img_385x385_622873_fit_center.jpg",
@@ -79,6 +139,8 @@ const swiperSlides = [
 
 export default function Slider1ZoomOuter( { product }) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const swiperSlides = product.id == 10 ? swiperSlides10 : swiperSlide1; 
+  const swiperSlidesThumbs = product.id == 10 ? swiperSlidesThumbs10 : swiperSlidesThumb1;
 
   // const [swiperSlidesThumbs, setSwiperSlidesThumbs] = useState([]);
   // const [swiperSlides, setSwiperSlides] = useState([]);

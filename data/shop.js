@@ -27,10 +27,10 @@ export const layouts = [
 ];
 
 export const sortingOptions = [
-  { text: "Default" },
+  { text: "Mặc định" },
 
-  { text: "Alphabetically, A-Z" },
-  { text: "Alphabetically, Z-A" },
-  { text: "Price, low to high" },
-  { text: "Price, high to low" },
+  { text: "Tên, A-Z" },
+  { text: "Tên, Z-A" },
+  { text: "Giá, thấp - cao" },
+  { text: "Giá, cao - thấp" },
 ];

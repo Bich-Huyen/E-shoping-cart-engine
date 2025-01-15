@@ -17,7 +17,7 @@ export default function ProductGrid({
           marginBottom: "24px",
         }}
       >
-        {allproducts.length} product(s) found
+        {allproducts.length} sản phẩm được tìm thấy
       </div>
       <div className="grid-layout wrapper-shop" data-grid={`grid-${gridItems}`}>
         {/* card product 1 */}

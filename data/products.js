@@ -87,6 +87,45 @@ export const products1 = [
     "isAvailable": true
   },
   {
+    "id": 10,
+    "imgSrc": "https://d3t32hsnjxo7q6.cloudfront.net/i/0d31f41c37fd18dfc02daa1671719378_ra,w158,h184_pa,w158,h184.png",
+    "imgHoverSrc": "https://d3t32hsnjxo7q6.cloudfront.net/i/0d31f41c37fd18dfc02daa1671719378_ra,w158,h184_pa,w158,h184.png",
+    "title": "Maybelline Color Sensational Vivids Lipcolour",
+    "price": 253800,
+    "description": "With Maybelline Colour Sensational Vivids Lipcolour bright goes gorgeous, never garish!Get brighter color from Maybelline's exclusive vivid pigments.﻿ Plus get creamier feel from nourishing honey nectar.﻿ Features: Be bright and gorgeousExclusive Vivid colors are brighterHoney nectar formula nourishes lips﻿For Best Results: Apply lipcolor starting in the center of your upper lip. Work from the center to the outer edges of your lip, following the contours of your mouth. Then glide across the entire bottom lip.﻿Shade Range: ",
+    "colors": [
+      {
+          "hex_value": "#f9005b",
+          "name": "Vivid Rose (825) "
+      },
+      {
+          "hex_value": "#ff2e8c",
+          "name": "Fuchsia Flash (865) "
+      },
+      {
+          "hex_value": "#ff4a62",
+          "name": "Shocking Coral (870) "
+      },
+      {
+          "hex_value": "#ff3b00",
+          "name": "Electric Orange (880) "
+      },
+      {
+          "hex_value": "#ff6ab6",
+          "name": "Pink Pop (880) "
+      },
+      {
+          "hex_value": "#ba0000",
+          "name": "On Fire Red (895) "
+      }],
+    "sizes": [
+      "Default"
+    ],
+    "filterCategories": ["lipstick"],
+    "brand": "maybelline",
+    "isAvailable": true
+  },
+  {
     "id": 86,
     "imgSrc": "https://d3t32hsnjxo7q6.cloudfront.net/i/ec1e1f8ef1fcf76d2fd21d231bbfac7c_ra,w158,h184_pa,w158,h184.jpg",
     "imgHoverSrc": "https://d3t32hsnjxo7q6.cloudfront.net/i/ec1e1f8ef1fcf76d2fd21d231bbfac7c_ra,w158,h184_pa,w158,h184.jpg",

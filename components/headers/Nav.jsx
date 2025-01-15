@@ -68,7 +68,7 @@ export default function Nav({ isArrow = true, textColor = "", Linkfs = "" }) {
             isMenuActive(demoItems) ? "activeMenu" : ""
           } `}
         >
-          Home
+          Trang chủ
         </a>
       </li>
       <li className="menu-item">
@@ -78,7 +78,7 @@ export default function Nav({ isArrow = true, textColor = "", Linkfs = "" }) {
             isMenuActive(productsPages) ? "activeMenu" : ""
           } `}
         >
-          Shop
+          Sản phẩm
         </a>
       </li>
       <li className="menu-item">
@@ -88,34 +88,12 @@ export default function Nav({ isArrow = true, textColor = "", Linkfs = "" }) {
             isMenuActive(productDetailPages) ? "activeMenu" : ""
           }`}
         >
-          Products
+          Best seller
           {isArrow ? <i className="icon icon-arrow-down" /> : ""}
         </a>
         <div className="sub-menu mega-menu">
           <div className="container">
             <div className="row">
-              {productDetailPages.map((menuItem, index) => (
-                <div key={index} className="col-lg-2">
-                  <div className="mega-menu-item">
-                    <div className="menu-heading">{menuItem.heading}</div>
-                    <ul className="menu-list">
-                      {menuItem.links.map((linkItem, linkIndex) => (
-                        <li key={linkIndex}>
-                          <Link
-                            href={linkItem.href}
-                            className={`menu-link-text link position-relative  ${
-                              isMenuActive(linkItem) ? "activeMenu" : ""
-                            }`}
-                          >
-                            {linkItem.text}
-                            {linkItem.extra}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              ))}
               <div className="col-lg-4">
                 <div className="menu-heading">Best seller</div>
                 <div className="hover-sw-nav hover-sw-2">
