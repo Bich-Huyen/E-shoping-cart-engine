@@ -1,9 +1,9 @@
 {
   "pages": {
-    "/page": [
+    "/(otherPages)/checkout/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/page.js"
+      "static/chunks/app/(otherPages)/checkout/page.js"
     ],
     "/layout": [
       "static/chunks/webpack.js",
@@ -20,31 +20,6 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/(shop)/shop-filter-sidebar/page.js"
-    ],
-    "/(shop-details)/product-detail/[id]/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(shop-details)/product-detail/[id]/page.js"
-    ],
-    "/(otherPages)/view-cart/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(otherPages)/view-cart/page.js"
-    ],
-    "/(otherPages)/wishlist/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(otherPages)/wishlist/page.js"
-    ],
-    "/(otherPages)/compare/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(otherPages)/compare/page.js"
-    ],
-    "/(otherPages)/checkout/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(otherPages)/checkout/page.js"
     ]
   }
 }

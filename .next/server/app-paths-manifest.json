@@ -1,8 +1,5 @@
 {
-  "/(shop-details)/product-detail/[id]/page": "app/(shop-details)/product-detail/[id]/page.js",
-  "/(shop)/shop-filter-sidebar/page": "app/(shop)/shop-filter-sidebar/page.js",
-  "/(otherPages)/wishlist/page": "app/(otherPages)/wishlist/page.js",
-  "/(otherPages)/compare/page": "app/(otherPages)/compare/page.js",
-  "/(otherPages)/view-cart/page": "app/(otherPages)/view-cart/page.js",
-  "/(otherPages)/checkout/page": "app/(otherPages)/checkout/page.js"
+  "/(otherPages)/checkout/page": "app/(otherPages)/checkout/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/(shop)/shop-filter-sidebar/page": "app/(shop)/shop-filter-sidebar/page.js"
 }
