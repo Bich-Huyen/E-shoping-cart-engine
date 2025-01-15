@@ -279,22 +279,10 @@ export const productDetailPages = [
 
 export const allPagesLinks = [
   { href: "/about-us", text: "About us" },
-  {
-    href: "/brands",
-    text: "Brands",
-    extra: (
-      <div className="demo-label">
-        <span className="demo-new">New</span>
-      </div>
-    ),
-  },
   { href: "/brands-v2", text: "Brand V2" },
-  { href: "/contact-1", text: "Contact 1" },
   { href: "/contact-2", text: "Contact 2" },
-  { href: "/faq-1", text: "FAQ 01" },
   { href: "/faq-2", text: "FAQ 02" },
   { href: "/our-store", text: "Our store" },
-  { href: "/store-locations", text: "Store locator" },
   {
     href: "/timeline",
     text: "Timeline",
@@ -306,8 +294,8 @@ export const allPagesLinks = [
   },
   { href: "/view-cart", text: "View cart" },
   { href: "/checkout", text: "Check out" },
-  { href: "/payment-confirmation", text: "Payment Confirmation" },
-  { href: "/payment-failure", text: "Payment Failure" },
+  // { href: "/payment-confirmation", text: "Payment Confirmation" },
+  // { href: "/payment-failure", text: "Payment Failure" },
   { href: "/my-account", text: "My Account" },
 ];
 

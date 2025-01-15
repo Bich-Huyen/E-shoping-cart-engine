@@ -347,6 +347,10 @@ const categories = [
   { id: 5, name: "Dress", isActive: false, link: "/shop-default" },
 ];
 
+const filterCategories = Array.from(
+  new Set(products1.flatMap(product => product.filterCategories))
+);
+
 const filterColors = Array.from(
   products1.flatMap(product => product.colors || [])
           .reduce((acc, color) => acc.set(color.name, color), new Map())
@@ -400,6 +404,15 @@ export default function SidebarFilter({ setProducts }) {
     }
   };
 
+  const [selectedCategories, setSelectedCategories] = useState([]);
+  const handleSelectedCategories = (category) => {
+    if (selectedCategories.includes(category)) {
+      setSelectedCategories((pre) => [...pre.filter((el) => el != category)]);
+    } else {
+      setSelectedCategories((pre) => [...pre, category])
+    }
+  }
+
   useEffect(() => {
     let filteredArrays = [];
 
@@ -445,6 +458,17 @@ export default function SidebarFilter({ setProducts }) {
       ];
     }
 
+    if (selectedCategories.length) {
+      filteredArrays = [
+        ...filteredArrays,
+        [
+          ...products1.filter((elm) => 
+            elm.sizes.some((elm2) => selectedCategories.includes(elm2))
+          ),
+        ]
+      ]
+    }
+
     // console.log(filteredByselectedSizes);
     if (selectedAvailabilities.length) {
       filteredArrays = [
@@ -465,6 +489,7 @@ export default function SidebarFilter({ setProducts }) {
     setProducts(commonItems);
   }, [
     price,
+    selectedCategories,
     selectedColors,
     selectedBrands,
     selectedAvailabilities,
@@ -473,6 +498,7 @@ export default function SidebarFilter({ setProducts }) {
   const clearFilter = () => {
     setSelectedColors([]);
     setSelectedBrands([]);
+    setSelectedCategories([]);
     setSelectedAvailabilities([]);
     setSelectedSizes([]);
     setPrice([10, 20]);
@@ -481,35 +507,44 @@ export default function SidebarFilter({ setProducts }) {
   return (
     <div className="tf-shop-sidebar wrap-sidebar-mobile ">
       <div className="widget-facet wd-categories">
-        <div
-          className="facet-title"
-          data-bs-target="#categories"
-          data-bs-toggle="collapse"
-          aria-expanded="true"
-          aria-controls="categories"
-        >
-          <span>Product categories</span>
-          <span className="icon icon-arrow-up" />
-        </div>
-        <div id="categories" className="collapse show">
-          <ul className="list-categoris current-scrollbar mb_36">
-            {categories.map((category) => (
-              <li key={category.id} className={`cate-item`}>
-                {category.link ? (
-                  <Link href={category.link}>
-                    <span>{category.name}</span>
-                  </Link>
-                ) : (
-                  <a href="#">
-                    <span>{category.name}</span>
-                  </a>
-                )}
-              </li>
-            ))}
-          </ul>
-        </div>
       </div>
       <form action="#" id="facet-filter-form" className="facet-filter-form">
+      <div className="widget-facet">
+          <div
+            className="facet-title"
+            data-bs-target="#categories"
+            data-bs-toggle="collapse"
+            aria-expanded="true"
+            aria-controls="categories"
+          >
+            <span>Categories</span>
+            <span className="icon icon-arrow-up" />
+          </div>
+          <div id="categories" className="collapse show">
+            <ul className="tf-filter-group current-scrollbar mb_36">
+            {filterCategories.map((categories) => (
+                <li
+                  key={categories}
+                  className="list-item d-flex gap-12 align-items-center"
+                  onClick={() => handleSelectedCategories(categories)}
+                >
+                  <input
+                    type="radio"
+                    className="tf-check"
+                    readOnly
+                    checked={selectedCategories.includes(categories)}
+                  />
+                  <label className="label">
+                    <span>{categories}</span>&nbsp;
+                    <span>
+                      ({products1.filter((elm) => elm.filterCategories == categories).length})
+                    </span>
+                  </label>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
         <div className="widget-facet">
           <div
             className="facet-title"

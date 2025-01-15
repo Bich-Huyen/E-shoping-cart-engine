@@ -17,9 +17,10 @@ import { useContextElement } from "@/context/Context";
 export default function DetailsOuterZoom({ product = allProducts[product.id] }) {
 
   const colors = product.colors || null;
+  const sizes = product.sizes || null;
 
   const [currentColor, setCurrentColor] = useState(colors ? colors[0] : null);
-  const [currentSize, setCurrentSize] = useState(sizeOptions[1]);
+  const [currentSize, setCurrentSize] = useState(sizes[0]);
 
   const {
     addProductToCart,
@@ -57,7 +58,10 @@ export default function DetailsOuterZoom({ product = allProducts[product.id] }) 
                     </h5>
                   </div>
                   <div className="tf-product-info-badges">
-                    <div className="badges">Best seller</div>
+                    {/* <div className="badges">{product.filterCategories[1]}</div> */}
+                    {product.filterCategories.map((filter) => (
+                      <div className="badges" key={filter}>{filter}</div>
+                    ))}
                     <div className="product-status-content">
                       <i className="icon-lightning" />
                       {/* <p className="fw-6">
@@ -74,13 +78,9 @@ export default function DetailsOuterZoom({ product = allProducts[product.id] }) 
                         {product.market_price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
                       </div>
                     )}
-                    <div className="badges-on-sale">
+                    {/* <div className="badges-on-sale">
                       <span>37</span>% OFF
-                    </div>
-                  </div>
-                  <div className="tf-product-info-liveview">
-                    <div className="liveview-count">20</div>
-                    <p className="fw-6">People are viewing this right now</p>
+                    </div> */}
                   </div>
                   {/* <div className="tf-product-info-countdown">
                     <div className="countdown-wrap">
@@ -142,12 +142,6 @@ export default function DetailsOuterZoom({ product = allProducts[product.id] }) 
                     </div>
                     <div className="variant-picker-item">
                       <div className="d-flex justify-content-between align-items-center">
-                        <div className="variant-picker-label">
-                          Size:
-                          <span className="fw-6 variant-picker-label-value">
-                            {currentSize.value}
-                          </span>
-                        </div>
                         {/* <a
                           href="#find_size"
                           data-bs-toggle="modal"
@@ -156,8 +150,17 @@ export default function DetailsOuterZoom({ product = allProducts[product.id] }) 
                           Find your size
                         </a> */}
                       </div>
-                      <form className="variant-picker-values">
-                        {sizeOptions.map((size) => (
+                      {sizes != null ? 
+                      (
+                        <>
+                        <div className="variant-picker-label">
+                          Size:
+                          <span className="fw-6 variant-picker-label-value">
+                            {currentSize}
+                          </span>
+                        </div>
+                        <form className="variant-picker-values">
+                        {sizes.map((size) => (
                           <React.Fragment key={size.id}>
                             <input
                               type="radio"
@@ -170,18 +173,27 @@ export default function DetailsOuterZoom({ product = allProducts[product.id] }) 
                               onClick={() => setCurrentSize(size)}
                               className="style-text"
                               htmlFor={size.id}
-                              data-value={size.value}
+                              data-value={size}
                             >
-                              <p>{size.value}</p>
+                              <p>{size}</p>
                             </label>
                           </React.Fragment>
                         ))}
                       </form>
+                        </>
+                      ): (
+                        <></>
+                      )
+                      }
                     </div>
                   </div>
                   <div className="tf-product-info-quantity">
                     <div className="quantity-title fw-6">Số lượng</div>
                     <Quantity />
+                  </div>
+                  <div className="tf-product-info-quantity">
+                    <div className="quantity-title fw-6">Chi tiết sản phẩm: </div>
+                    <p>{product.description ? product.description : "Serum La Roche-Posay Mela B3 Serum Giảm Thâm Nám & Dưỡng Sáng Da 30ml là sản phẩm tinh chất đến từ thương hiệu La Roche-Posay - Pháp. Sản phẩm giúp giảm thâm nám & ngăn ngừa đốm nâu sâu từng nanomet tế bào da Mela B3 với 18 năm nghiên cứu và phát triển từ các chuyên gia da liễu hàng đầu trên thế giới. Với thành phần Melasyl TM độc quyền cùng 10% Niacinamide giúp hiệu quả rõ rệt sau 1 tuần sử dụng."}</p>
                   </div>
                   <div className="tf-product-info-buy-button">
                     <form onSubmit={(e) => e.preventDefault()} className="">
