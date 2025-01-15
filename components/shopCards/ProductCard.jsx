@@ -109,7 +109,20 @@ export const ProductCard = ({ product }) => {
         <Link href={`/product-detail/${product.id}`} className="title link">
           {product.title}
         </Link>
-        <span className="price">{product.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</span>
+        {product.isAvailable ? (
+    // Hiển thị giá bình thường nếu sản phẩm còn hàng
+    <span className="price">
+      {product.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
+    </span>
+  ) : (
+    // Hiển thị giá bị gạch ngang và thông báo hết hàng nếu sản phẩm không có sẵn
+    <div className="out-of-stock">
+      <span className="stock-status">Hết hàng</span> {" "}
+      <span className="price-out">
+        {product.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
+      </span>
+    </div>
+  )}
         
         {product.sizes && (
           <div className="size-list">
@@ -118,30 +131,24 @@ export const ProductCard = ({ product }) => {
             ))}
           </div>
         )}
-        {/* {product.colors && (
-          <ul className="list-color-product">
-            {product.colors.map((color) => (
-              <li
-                className={`list-color-item color-swatch ${
-                  currentImage == color.imgSrc ? "active" : ""
-                } `}
-                key={color.name}
-                onMouseOver={() => setCurrentImage(color.imgSrc)}
-              >
-                <span className="tooltip">{color.name}</span>
-                <span className={`swatch-value ${color.colorClass}`} />
-                <Image
-                  className="lazyload"
-                  data-src={color.imgSrc}
-                  src={color.imgSrc}
-                  alt="image-product"
-                  width={720}
-                  height={1005}
-                />
-              </li>
-            ))}
-          </ul>
-        )} */}
+        {product.colors && (
+  <ul className="list-color-product">
+    {product.colors.map((color) => (
+      <li
+        className={`list-color-item color-swatch ${
+          currentImage === color.imgSrc ? "active" : ""
+        }`}
+        key={color.name}
+      >
+        <span className="tooltip">{color.name}</span>
+        <span
+          className="swatch-value"
+          style={{ backgroundColor: color.hex_value }}
+        />
+      </li>
+    ))}
+  </ul>
+)}
       </div>
     </div>
   );

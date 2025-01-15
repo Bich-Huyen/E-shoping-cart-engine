@@ -37,36 +37,6 @@ const swiperSlidesThumbs = [
     width: 768,
     height: 1152,
   },
-  // {
-  //   imgSrc: "/images/shop/products/hmgoepprod5.jpg",
-  //   alt: "img-compare",
-  //   width: 713,
-  //   height: 1070,
-  // },
-  // {
-  //   imgSrc: "/images/shop/products/hmgoepprod6.jpg",
-  //   alt: "img-compare",
-  //   width: 768,
-  //   height: 1152,
-  // },
-  // {
-  //   imgSrc: "/images/shop/products/hmgoepprod7.jpg",
-  //   alt: "img-compare",
-  //   width: 713,
-  //   height: 1070,
-  // },
-  // {
-  //   imgSrc: "/images/shop/products/hmgoepprod8.jpg",
-  //   alt: "img-compare",
-  //   width: 713,
-  //   height: 1070,
-  // },
-  // {
-  //   imgSrc: "/images/shop/products/hmgoepprod9.jpg",
-  //   alt: "img-compare",
-  //   width: 768,
-  //   height: 1152,
-  // },
 ];
 
 const swiperSlides = [
@@ -105,46 +75,20 @@ const swiperSlides = [
     height: 1152,
     dataZoom: "https://media.hcdn.vn/catalog/product/s/e/serum-la-roche-posay-giam-tham-nam-duong-sang-da-30ml-5-1721198672_img_385x385_622873_fit_center.jpg",
   },
-  // {
-  //   imgSrc: "/images/shop/products/hmgoepprod5.jpg",
-  //   href: "/images/shop/products/hmgoepprod5.jpg",
-  //   width: 713,
-  //   height: 1070,
-  //   dataZoom: "/images/shop/products/hmgoepprod5.jpg",
-  // },
-  // {
-  //   imgSrc: "/images/shop/products/hmgoepprod6.jpg",
-  //   href: "/images/shop/products/hmgoepprod6.jpg",
-  //   width: 768,
-  //   height: 1152,
-  //   dataZoom: "/images/shop/products/hmgoepprod6.jpg",
-  // },
-  // {
-  //   imgSrc: "/images/shop/products/hmgoepprod7.jpg",
-  //   href: "/images/shop/products/hmgoepprod7.jpg",
-  //   width: 713,
-  //   height: 1070,
-  //   dataZoom: "/images/shop/products/hmgoepprod7.jpg",
-  // },
-  // {
-  //   imgSrc: "/images/shop/products/hmgoepprod8.jpg",
-  //   href: "/images/shop/products/hmgoepprod8.jpg",
-  //   width: 713,
-  //   height: 1070,
-  //   dataZoom: "/images/shop/products/hmgoepprod8.jpg",
-  // },
-  // {
-  //   imgSrc: "/images/shop/products/hmgoepprod9.jpg",
-  //   href: "/images/shop/products/hmgoepprod9.jpg",
-  //   width: 768,
-  //   height: 1152,
-  //   dataZoom: "/images/shop/products/hmgoepprod9.jpg",
-  // },
 ];
 
-export default function Slider1ZoomOuter() {
+export default function Slider1ZoomOuter( { product }) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
+
+  // const [swiperSlidesThumbs, setSwiperSlidesThumbs] = useState([]);
+  // const [swiperSlides, setSwiperSlides] = useState([]);
+
   useEffect(() => {
+    // if (product.imgSrc) {
+    //   console.log(product.imgSrc);
+    //   setSwiperSlidesThumbs(Array.isArray(product.imgSrc) ? product.imgSrc : [product.imgSrc]);
+    //   setSwiperSlides(Array.isArray(product.imgSrc) ? product.imgSrc : [product.imgSrc]);
+    // }
     // Function to initialize Drift
     const imageZoom = () => {
       const driftAll = document.querySelectorAll(".tf-image-zoom");
@@ -190,7 +134,7 @@ export default function Slider1ZoomOuter() {
         element.removeEventListener("mouseleave", handleMouseLeave);
       });
     };
-  }, []); // Empty dependency array to run only once on mount
+  }, [product.imgSrc]); // Empty dependency array to run only once on mount
 
   return (
     <>
@@ -210,16 +154,16 @@ export default function Slider1ZoomOuter() {
           },
         }}
       >
-        {swiperSlidesThumbs.map((slide, index) => (
+        {swiperSlidesThumbs.map((elm, index) => (
           <SwiperSlide key={index} className="stagger-item">
             <div className="item">
               <Image
                 className="lazyload"
-                data-src={slide.imgSrc}
-                alt={slide.alt}
-                src={slide.imgSrc} // Optional fallback for non-lazy loading
-                width={slide.width}
-                height={slide.height}
+                data-src={elm.imgSrc}
+                alt={""}
+                src={elm.imgSrc} 
+                width={713}
+                height={1070}
               />
             </div>
           </SwiperSlide>

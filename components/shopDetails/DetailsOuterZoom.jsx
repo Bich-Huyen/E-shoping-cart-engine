@@ -4,7 +4,6 @@ import Slider1 from "./sliders/Slider1";
 import Image from "next/image";
 import CountdownComponent from "../common/Countdown";
 import {
-  colors,
   paymentImages,
   sizeOptions,
 } from "@/data/singleProductOptions";
@@ -15,8 +14,11 @@ import Slider1ZoomOuter from "./sliders/Slider1ZoomOuter";
 import { allProducts } from "@/data/products";
 import { useContextElement } from "@/context/Context";
 
-export default function DetailsOuterZoom({ product = allProducts[0] }) {
-  const [currentColor, setCurrentColor] = useState(colors[1]);
+export default function DetailsOuterZoom({ product = allProducts[product.id] }) {
+
+  const colors = product.colors || null;
+
+  const [currentColor, setCurrentColor] = useState(colors ? colors[0] : null);
   const [currentSize, setCurrentSize] = useState(sizeOptions[1]);
 
   const {
@@ -41,7 +43,7 @@ export default function DetailsOuterZoom({ product = allProducts[0] }) {
             <div className="col-md-6">
               <div className="tf-product-media-wrap sticky-top">
                 <div className="thumbs-slider">
-                  <Slider1ZoomOuter />
+                  <Slider1ZoomOuter product={product} />
                 </div>
               </div>
             </div>
@@ -58,9 +60,9 @@ export default function DetailsOuterZoom({ product = allProducts[0] }) {
                     <div className="badges">Best seller</div>
                     <div className="product-status-content">
                       <i className="icon-lightning" />
-                      <p className="fw-6">
+                      {/* <p className="fw-6">
                         Selling fast! 56 people have this in their carts.
-                      </p>
+                      </p> */}
                     </div>
                   </div>
                   <div className="tf-product-info-price">
@@ -80,7 +82,7 @@ export default function DetailsOuterZoom({ product = allProducts[0] }) {
                     <div className="liveview-count">20</div>
                     <p className="fw-6">People are viewing this right now</p>
                   </div>
-                  <div className="tf-product-info-countdown">
+                  {/* <div className="tf-product-info-countdown">
                     <div className="countdown-wrap">
                       <div className="countdown-title">
                         <i className="icon-time tf-ani-tada" />
@@ -95,10 +97,13 @@ export default function DetailsOuterZoom({ product = allProducts[0] }) {
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                   <div className="tf-product-info-variant-picker">
-                    {/* <div className="variant-picker-item">
-                      <div className="variant-picker-label">
+                    <div className="variant-picker-item">
+                      {
+                        colors != null ? 
+                        (<>
+                        <div className="variant-picker-label">
                         Color:
                         <span className="fw-6 variant-picker-label-value">
                           {currentColor.value}
@@ -112,7 +117,7 @@ export default function DetailsOuterZoom({ product = allProducts[0] }) {
                               type="radio"
                               name="color1"
                               readOnly
-                              checked={currentColor == color}
+                              checked={currentColor === color}
                             />
                             <label
                               onClick={() => setCurrentColor(color)}
@@ -121,14 +126,20 @@ export default function DetailsOuterZoom({ product = allProducts[0] }) {
                               data-value={color.value}
                             >
                               <span
-                                className={`btn-checkbox ${color.className}`}
+                                className="btn-checkbox"
+                                style={{ backgroundColor: color.hex_value }}
                               />
                               <span className="tooltip">{color.value}</span>
                             </label>
                           </React.Fragment>
                         ))}
                       </form>
-                    </div> */}
+                        </>) :
+                        (
+                          <></>
+                        )
+                      }
+                    </div>
                     <div className="variant-picker-item">
                       <div className="d-flex justify-content-between align-items-center">
                         <div className="variant-picker-label">
@@ -185,7 +196,7 @@ export default function DetailsOuterZoom({ product = allProducts[0] }) {
                           -
                         </span>
                         <span className="tf-qty-price">
-                          ${product.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
+                          {product.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
                         </span>
                       </a>
                       <a

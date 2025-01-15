@@ -5,8 +5,8 @@ import FilterSidebar from "@/components/shop/FilterSidebar";
 import React from "react";
 
 export const metadata = {
-  title: "Shop Filter Sidebar || Ecomus - Ultimate Nextjs Ecommerce Template",
-  description: "Ecomus - Ultimate Nextjs Ecommerce Template",
+  title: "Beautique",
+  description: "Beautique-cosmestics shop",
 };
 export default function page() {
   return (
@@ -14,9 +14,9 @@ export default function page() {
       <Header2 />
       <div className="tf-page-title">
         <div className="container-full">
-          <div className="heading text-center">New Arrival</div>
+          <div className="heading text-center">Danh sách sản phẩm</div>
           <p className="text-center text-2 text_black-2 mt_5">
-            Shop through our latest selection of Fashion
+            
           </p>
         </div>
       </div>

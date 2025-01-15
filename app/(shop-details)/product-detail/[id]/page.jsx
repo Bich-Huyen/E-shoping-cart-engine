@@ -14,7 +14,7 @@ export const metadata = {
 };
 export default function page({ params }) {
   const product =
-    allProducts.filter((elm) => elm.id == params.id)[0] || allProducts[0];
+    allProducts.filter((elm) => elm.id == params.id)[0] || allProducts[params.id];
   return (
     <>
       <Header2 />

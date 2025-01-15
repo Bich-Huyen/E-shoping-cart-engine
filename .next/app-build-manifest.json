@@ -1,9 +1,9 @@
 {
   "pages": {
-    "/(shop)/shop-filter-sidebar/page": [
+    "/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/(shop)/shop-filter-sidebar/page.js"
+      "static/chunks/app/page.js"
     ],
     "/layout": [
       "static/chunks/webpack.js",
@@ -16,50 +16,35 @@
       "static/chunks/main-app.js",
       "static/chunks/app/not-found.js"
     ],
-    "/page": [
+    "/(shop)/shop-filter-sidebar/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/page.js"
-    ],
-    "/(shop)/shop-default/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(shop)/shop-default/page.js"
-    ],
-    "/(shop)/shop-link/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(shop)/shop-link/page.js"
+      "static/chunks/app/(shop)/shop-filter-sidebar/page.js"
     ],
     "/(shop-details)/product-detail/[id]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/(shop-details)/product-detail/[id]/page.js"
     ],
-    "/(shop-details)/product-quick-order-list/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(shop-details)/product-quick-order-list/page.js"
-    ],
     "/(otherPages)/view-cart/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/(otherPages)/view-cart/page.js"
     ],
-    "/(shop)/shop-collection-sub/page": [
+    "/(otherPages)/wishlist/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/(shop)/shop-collection-sub/page.js"
+      "static/chunks/app/(otherPages)/wishlist/page.js"
+    ],
+    "/(otherPages)/compare/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(otherPages)/compare/page.js"
     ],
     "/(otherPages)/checkout/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/(otherPages)/checkout/page.js"
-    ],
-    "/(shop)/shop-collection-list/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(shop)/shop-collection-list/page.js"
     ]
   }
 }

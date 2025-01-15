@@ -9011,6 +9011,13 @@ header.header-bg {
   font-weight: 400;
   color: rgba(0, 0, 0, 0.5);
 }
+.card-product .card-product-info .price-out {
+  text-decoration: line-through;
+  display: inline-block;
+  margin-right: 5px;
+  font-weight: 400;
+  color: #545454;
+}
 .card-product .card-product-info .new-price {
   color: var(--red_1);
 }

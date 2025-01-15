@@ -1,4 +1,3 @@
-import productsPromise from "./fetchProducts";
 
 export const products1 = [
   {
@@ -9,6 +8,7 @@ export const products1 = [
     price: 815000,
     market_price: 1300000,
     sizes: ["30ml", "50ml"],
+    // countdown: { time: 5, labels: "d :,h :,m :,s" },
     filterCategories: ["Best seller", "On Sale"],
     brand: "Ecomus",
     isAvailable: true,
@@ -21,7 +21,6 @@ export const products1 = [
     price: 367000,
     market_price: 525000,
     sizes: ["100ml", "250ml"],
-    countdown: { time: 500, labels: "d :,h :,m :,s" },
     filterCategories: ["Best seller", "New arrivals"],
     brand: "M&H",
     isAvailable: false,
@@ -51,213 +50,1256 @@ export const products1 = [
     isAvailable: true,
   },
   {
-    id: 5,
-    imgSrc: "/images/products/brown-2.jpg",
-    imgHoverSrc: "/images/products/brown-3.jpg",
-    title: "V-neck Linen T-shirt",
-    price: 14.95,
-    colors: [
+    "id": 519,
+    "imgSrc": "https://www.smashbox.com/media/images/products/388x396/sbx_sku_56417_388x396_0.jpg",
+    "imgHoverSrc": "https://www.smashbox.com/media/images/products/388x396/sbx_sku_56417_388x396_0.jpg",
+    "title": "Always Sharp Lip Liner",
+    "description": "Our makeup artists have no time to stop and sharpen their lip pencils—and obvi neither do you! That’s why we developed this brilliant liner, which self-sharpens automatically every time you twist off the cap. Choose liner that complements your lipstick, then get right to the point and create a camera-ready lip look!For the perfect ombre lip, line with a darker shade, then fill in with your favorite Be Legendary lipstick. One tiwst of the cap will do it. No need to over twist to sharpen! Water resistant and non-feathering Invisible liner preps lips for any color Automatically self-sharpensOne twist of the cap sharpens the liner.\n              \n                Formulated without Parabens, Sodium Lauryl Sulfate, Phthalates, Fragrance & Talc.INGREDIENTS: ISODODECANE , SYNTHETIC WAX , BIS-DIGLYCERYL POLYACYLADIPATE-2 , PENTAERYTHRITYL TETRAISOSTEARATE , POLYBUTENE , ETHYLENE/PROPYLENE COPOLYMER , POLYETHYLENE , PERFLUORONONYL DIMETHICONE , PENTAERYTHRITYL TETRA-DI-T-BUTYL HYDROXYHYDROCINNAMATE , [+/- MICA , TITANIUM DIOXIDE (CI 77891) , IRON OXIDES (CI 77491) , IRON OXIDES (CI 77492) , IRON OXIDES (CI 77499) , BISMUTH OXYCHLORIDE (CI 77163) , BLUE 1 LAKE (CI 42090) , CARMINE (CI 75470) , MANGANESE VIOLET (CI 77742) , RED 6 (CI 15850) , RED 7 LAKE (CI 15850) , RED 21 LAKE (CI 45380) , RED 22 LAKE (CI 45380) , RED 28 LAKE (CI 45410) , RED 30 (CI 73360) , RED 30 LAKE (CI 73360) , RED 33 LAKE (CI 17200) , RED 40 LAKE (CI 16035) , YELLOW 5 LAKE (CI 19140) , YELLOW 6 LAKE (CI 15985)]\n                <ILNILN40920>\n                  Please be aware that ingredient lists may change or vary from time to time. Please refer to the ingredient list on the product package you receive for the most up to date list of ingredients.\n              \n            Our makeup artists have no time to stop and sharpen their lip pencils—and obvi neither do you! That’s why we developed this brilliant liner, which self-sharpens automatically every time you twist off the cap. Choose liner that complements your lipstick, then get right to the point and create a camera-ready lip look!For the perfect ombre lip, line with a darker shade, then fill in with your favorite Be Legendary lipstick. One tiwst of the cap will do it. No need to over twist to sharpen! Water resistant and non-feathering Invisible liner preps lips for any color Automatically self-sharpensOne twist of the cap sharpens the liner.\n              \n                Formulated without Parabens, Sodium Lauryl Sulfate, Phthalates, Fragrance & Talc.INGREDIENTS: ISODODECANE , SYNTHETIC WAX , BIS-DIGLYCERYL POLYACYLADIPATE-2 , PENTAERYTHRITYL TETRAISOSTEARATE , POLYBUTENE , ETHYLENE/PROPYLENE COPOLYMER , POLYETHYLENE , PERFLUORONONYL DIMETHICONE , PENTAERYTHRITYL TETRA-DI-T-BUTYL HYDROXYHYDROCINNAMATE , [+/- MICA , TITANIUM DIOXIDE (CI 77891) , IRON OXIDES (CI 77491) , IRON OXIDES (CI 77492) , IRON OXIDES (CI 77499) , BISMUTH OXYCHLORIDE (CI 77163) , BLUE 1 LAKE (CI 42090) , CARMINE (CI 75470) , MANGANESE VIOLET (CI 77742) , RED 6 (CI 15850) , RED 7 LAKE (CI 15850) , RED 21 LAKE (CI 45380) , RED 22 LAKE (CI 45380) , RED 28 LAKE (CI 45410) , RED 30 (CI 73360) , RED 30 LAKE (CI 73360) , RED 33 LAKE (CI 17200) , RED 40 LAKE (CI 16035) , YELLOW 5 LAKE (CI 19140) , YELLOW 6 LAKE (CI 15985)]\n                <ILNILN40920>\n                  Please be aware that ingredient lists may change or vary from time to time. Please refer to the ingredient list on the product package you receive for the most up to date list of ingredients.\n              \n            ",
+    "colors": [
       {
-        name: "Brown",
-        colorClass: "bg_brown",
-        imgSrc: "/images/products/brown-2.jpg",
+        "name": "NUDE FAIR",
+        "hex_value": "#e49380"
       },
       {
-        name: "White",
-        colorClass: "bg_white",
-        imgSrc: "/images/products/white-5.jpg",
+        "name": "NUDE LIGHT",
+        "hex_value": "#b47352"
+      },
+      {
+        "name": "NUDE MEDIUM",
+        "hex_value": "#a05745"
+      },
+      {
+        "name": "NUDE DARK",
+        "hex_value": "#663f38"
+      },
+      {
+        "name": "SIENNA",
+        "hex_value": "#ad5240"
+      },
+      {
+        "name": "ROSEBUD",
+        "hex_value": "#d3716e"
+      },
+      {
+        "name": "PEONY",
+        "hex_value": "#de7e8d"
+      },
+      {
+        "name": "FRENCHIE",
+        "hex_value": "#ee8aa1"
+      },
+      {
+        "name": "MELON",
+        "hex_value": "#f48376"
+      },
+      {
+        "name": "RUBY",
+        "hex_value": "#d71938"
+      },
+      {
+        "name": "CRIMSON",
+        "hex_value": "#a31530"
+      },
+      {
+        "name": "FIGGY",
+        "hex_value": "#952a3e"
+      },
+      {
+        "name": "VIOLET",
+        "hex_value": "#92195d"
+      },
+      {
+        "name": "SHOCKING PINK",
+        "hex_value": "#e53368"
+      },
+      {
+        "name": "FUCHSIA",
+        "hex_value": "#d21380"
+      }
+    ],
+    "sizes": [
+      "Default"
+    ],
+    "filterCategories": [
+      "lipstick"
+    ],
+    "brand": "smashbox",
+    "isAvailable": true,
+    "price": 504000.0
+  },
+  {
+    "id": 518,
+    "imgSrc": "https://www.smashbox.com/media/images/products/388x396/sbx_sku_68224_388x396_0.jpg",
+    "imgHoverSrc": "https://www.smashbox.com/media/images/products/388x396/sbx_sku_68224_388x396_0.jpg",
+    "title": "Insta-Matte Lipstick Transformer",
+    "description": "Give your lipstick a matte makeover—instantly! Created by our L.A. photo studio pro artists to instantly double their lipstick collection on set, this gel transforms any cream lipstick into a velvety matte finish that’s never chalky. Now you can wear your favorite lip shades 2 ways, minus the mess of DIY mattifying methods. Loose powder on your lips? No thanks. Just pat for matte!Apply generously over cream lipstick using finger until a matte look is achieved. FYI: Not for use with glosses, lacquers or balms. Transforms any cream lipstick into a matte finish and doubles your lipstick wardrobe Improves wear of lipstick & prevents feathering Portable tube makes it perfect for on-the-go Apply generously over cream lipstick using finger until a matte look is achieved. FYI: Not for use with glosses, lacquers or balms.\n              \n                Formulated without Parabens, Sodium Lauryl Sulfate, Phthalates, Fragrance & Talc.INGREDIENTS: DIMETHICONE , DIMETHICONE CROSSPOLYMER , TOCOPHEROL , TOCOPHERYL ACETATE , CAPRYLYL GLYCOL , HEXYLENE GLYCOL , TETRAHEXYLDECYL ASCORBATE , PHENOXYETHANOL\n                <ILNILN42165>\n                  Please be aware that ingredient lists may change or vary from time to time. Please refer to the ingredient list on the product package you receive for the most up to date list of ingredients.\n              \n            Give your lipstick a matte makeover—instantly! Created by our L.A. photo studio pro artists to instantly double their lipstick collection on set, this gel transforms any cream lipstick into a velvety matte finish that’s never chalky. Now you can wear your favorite lip shades 2 ways, minus the mess of DIY mattifying methods. Loose powder on your lips? No thanks. Just pat for matte!Apply generously over cream lipstick using finger until a matte look is achieved. FYI: Not for use with glosses, lacquers or balms. Transforms any cream lipstick into a matte finish and doubles your lipstick wardrobe Improves wear of lipstick & prevents feathering Portable tube makes it perfect for on-the-go Apply generously over cream lipstick using finger until a matte look is achieved. FYI: Not for use with glosses, lacquers or balms.\n              \n                Formulated without Parabens, Sodium Lauryl Sulfate, Phthalates, Fragrance & Talc.INGREDIENTS: DIMETHICONE , DIMETHICONE CROSSPOLYMER , TOCOPHEROL , TOCOPHERYL ACETATE , CAPRYLYL GLYCOL , HEXYLENE GLYCOL , TETRAHEXYLDECYL ASCORBATE , PHENOXYETHANOL\n                <ILNILN42165>\n                  Please be aware that ingredient lists may change or vary from time to time. Please refer to the ingredient list on the product package you receive for the most up to date list of ingredients.\n              \n            ",
+    "colors": [],
+    "sizes": [
+      "Default"
+    ],
+    "filterCategories": [
+      "lipstick"
+    ],
+    "brand": "smashbox",
+    "isAvailable": true,
+    "price": 576000.0
+  },
+  {
+    "id": 517,
+    "imgSrc": "https://www.smashbox.com/media/images/products/388x396/sbx_sku_75476_388x396_0.jpg",
+    "imgHoverSrc": "https://www.smashbox.com/media/images/products/388x396/sbx_sku_75476_388x396_0.jpg",
+    "title": "BE LEGENDARY LIPSTICK × FOSTER SISTERS",
+    "description": "Smashbox Cosmetics has collaborated with the effortlessly cool and hilarious \"Barely Famous\" (VH1) sisters, Erin and Sara Foster, to celebrate the launch of the new Be Legendary Lipstick collection. The sisters personalized selections illustrates their unforgettable personalities and the enviable shades of the always photo ready lipstick. Sara chose a soft nude shade, Honey, while Erin chose Mandarin, a vibrant red orange. Both stay put and pop on camera, delivering rich, vibrant color in just 1 swipe.In a pinch, dot cream shades on cheeks for an instant flush.Available in nudes, neutrals, reds, corals, pinks, berries, browns, violets and bolds Pigment-loaded formula glides on and feels lush and light on the lips Moisturizing, satin-smooth creams soften and protect lips with shea butter + vitamins C and E Silky, vitamin-fortified mattes won't dry out or settle unevenly on lips\n              \n                Formulated without Parabens, Sodium Lauryl Sulfate, Phthalates, Fragrance & Talc.INGREDIENTS: PENTAERYTHRITYL TETRAISOSTEARATE , BIS-DIGLYCERYL POLYACYLADIPATE-2 , CAPRYLIC/CAPRIC TRIGLYCERIDE , OLEIC/LINOLEIC/LINOLENIC POLYGLYCERIDES , EUPHORBIA CERIFERA (CANDELILLA) WAX\\CANDELILLA CERA\\CIRE DE CANDELILLA , PVP/HEXADECENE COPOLYMER , DIPENTAERYTHRITYL HEXAHYDROXYSTEARATE/HEXASTEARATE/HEXAROSINATE , DIISOSTEARYL MALATE , POLYETHYLENE , HYDROGENATED POLYDECENE , POLYBUTENE , CETYL LACTATE , SYNTHETIC WAX , BUTYROSPERMUM PARKII (SHEA BUTTER) , TOCOPHEROL , TOCOPHERYL ACETATE , ASCORBYL PALMITATE , GLYCINE SOJA (SOYBEAN) SEED EXTRACT , OLEA EUROPAEA (OLIVE) FRUIT EXTRACT , CHAMOMILLA RECUTITA (MATRICARIA) FLOWER OIL , BEESWAX\\CERA ALBA\\CIRE D¿ABEILLE , COPERNICIA CERIFERA (CARNAUBA) WAX\\CERA CARNAUBA\\CIRE DE CARNAUBA , SYNTHETIC BEESWAX , CERAMIDE 3 , CHOLESTEROL , OCTYLDODECANOL , TRITICUM VULGARE (WHEAT) BRAN EXTRACT , POTASSIUM SULFATE , ALUMINA , CALCIUM ALUMINUM BOROSILICATE , CALCIUM SODIUM BOROSILICATE , TIN OXIDE , SILICA , OLEIC ACID , PALMITIC ACID , CETYL ALCOHOL , GLYCERYL STEARATE , ETHYLHEXYL HYDROXYSTEARATE , FLAVOR (AROMA) , VANILLIN , [+/- MICA , TITANIUM DIOXIDE (CI 77891) , IRON OXIDES (CI 77491) , IRON OXIDES (CI 77492) , IRON OXIDES (CI 77499) , BISMUTH OXYCHLORIDE (CI 77163) , BLUE 1 LAKE (CI 42090) , CARMINE (CI 75470) , RED 6 (CI 15850) , RED 21 (CI 45380) , RED 6 LAKE (CI 15850) , RED 7 LAKE (CI 15850) , RED 28 LAKE (CI 45410) , RED 30 LAKE (CI 73360) , RED 33 LAKE (CI 17200) , YELLOW 5 LAKE (CI 19140) , YELLOW 6 LAKE (CI 15985)]\n                <ILN>\n                  Please be aware that ingredient lists may change or vary from time to time. Please refer to the ingredient list on the product package you receive for the most up to date list of ingredients.\n              \n            Smashbox Cosmetics has collaborated with the effortlessly cool and hilarious \"Barely Famous\" (VH1) sisters, Erin and Sara Foster, to celebrate the launch of the new Be Legendary Lipstick collection. The sisters personalized selections illustrates their unforgettable personalities and the enviable shades of the always photo ready lipstick. Sara chose a soft nude shade, Honey, while Erin chose Mandarin, a vibrant red orange. Both stay put and pop on camera, delivering rich, vibrant color in just 1 swipe.In a pinch, dot cream shades on cheeks for an instant flush.Available in nudes, neutrals, reds, corals, pinks, berries, browns, violets and bolds Pigment-loaded formula glides on and feels lush and light on the lips Moisturizing, satin-smooth creams soften and protect lips with shea butter + vitamins C and E Silky, vitamin-fortified mattes won't dry out or settle unevenly on lips\n              \n                Formulated without Parabens, Sodium Lauryl Sulfate, Phthalates, Fragrance & Talc.INGREDIENTS: PENTAERYTHRITYL TETRAISOSTEARATE , BIS-DIGLYCERYL POLYACYLADIPATE-2 , CAPRYLIC/CAPRIC TRIGLYCERIDE , OLEIC/LINOLEIC/LINOLENIC POLYGLYCERIDES , EUPHORBIA CERIFERA (CANDELILLA) WAX\\CANDELILLA CERA\\CIRE DE CANDELILLA , PVP/HEXADECENE COPOLYMER , DIPENTAERYTHRITYL HEXAHYDROXYSTEARATE/HEXASTEARATE/HEXAROSINATE , DIISOSTEARYL MALATE , POLYETHYLENE , HYDROGENATED POLYDECENE , POLYBUTENE , CETYL LACTATE , SYNTHETIC WAX , BUTYROSPERMUM PARKII (SHEA BUTTER) , TOCOPHEROL , TOCOPHERYL ACETATE , ASCORBYL PALMITATE , GLYCINE SOJA (SOYBEAN) SEED EXTRACT , OLEA EUROPAEA (OLIVE) FRUIT EXTRACT , CHAMOMILLA RECUTITA (MATRICARIA) FLOWER OIL , BEESWAX\\CERA ALBA\\CIRE D¿ABEILLE , COPERNICIA CERIFERA (CARNAUBA) WAX\\CERA CARNAUBA\\CIRE DE CARNAUBA , SYNTHETIC BEESWAX , CERAMIDE 3 , CHOLESTEROL , OCTYLDODECANOL , TRITICUM VULGARE (WHEAT) BRAN EXTRACT , POTASSIUM SULFATE , ALUMINA , CALCIUM ALUMINUM BOROSILICATE , CALCIUM SODIUM BOROSILICATE , TIN OXIDE , SILICA , OLEIC ACID , PALMITIC ACID , CETYL ALCOHOL , GLYCERYL STEARATE , ETHYLHEXYL HYDROXYSTEARATE , FLAVOR (AROMA) , VANILLIN , [+/- MICA , TITANIUM DIOXIDE (CI 77891) , IRON OXIDES (CI 77491) , IRON OXIDES (CI 77492) , IRON OXIDES (CI 77499) , BISMUTH OXYCHLORIDE (CI 77163) , BLUE 1 LAKE (CI 42090) , CARMINE (CI 75470) , RED 6 (CI 15850) , RED 21 (CI 45380) , RED 6 LAKE (CI 15850) , RED 7 LAKE (CI 15850) , RED 28 LAKE (CI 45410) , RED 30 LAKE (CI 73360) , RED 33 LAKE (CI 17200) , YELLOW 5 LAKE (CI 19140) , YELLOW 6 LAKE (CI 15985)]\n                <ILN>\n                  Please be aware that ingredient lists may change or vary from time to time. Please refer to the ingredient list on the product package you receive for the most up to date list of ingredients.\n              \n            ",
+    "colors": [
+      {
+        "name": "MANDARIN (ERIN)",
+        "hex_value": "#ed262f"
+      },
+      {
+        "name": "HONEY (SARA)",
+        "hex_value": "#c16055"
+      }
+    ],
+    "sizes": [
+      "Default"
+    ],
+    "filterCategories": [
+      "lipstick"
+    ],
+    "brand": "smashbox",
+    "isAvailable": true,
+    "price": 504000.0
+  },
+  {
+    "id": 516,
+    "imgSrc": "https://www.smashbox.com/media/images/products/388x396/sbx_sku_40950_388x396_0.jpg",
+    "imgHoverSrc": "https://www.smashbox.com/media/images/products/388x396/sbx_sku_40950_388x396_0.jpg",
+    "title": "Be Legendary Lipstick",
+    "description": "Makeup artists in our L.A. studio were constantly blending colors to achieve lipstick nirvana. That’s why we expanded the line to include 120 jaw-dropping shades! Our creams and mattes stay put and pop on camera, delivering rich, vibrant color in just 1 swipe.In a pinch, dot cream shades on cheeks for an instant flush.Available in nudes, neutrals, reds, corals, pinks, berries, browns, violets and bolds Pigment-loaded formula glides on and feels lush and light on the lips Moisturizing, satin-smooth creams soften and protect lips with shea butter + vitamins C and E Silky, vitamin-fortified mattes won’t dry out or settle unevenly on lips\n              \n                Formulated without Parabens, Sodium Lauryl Sulfate, Phthalates, Fragrance & Talc.INGREDIENTS: PENTAERYTHRITYL TETRAISOSTEARATE , BIS-DIGLYCERYL POLYACYLADIPATE-2 , CAPRYLIC/CAPRIC TRIGLYCERIDE , OLEIC/LINOLEIC/LINOLENIC POLYGLYCERIDES , EUPHORBIA CERIFERA (CANDELILLA) WAX\\CANDELILLA CERA\\CIRE DE CANDELILLA , PVP/HEXADECENE COPOLYMER , DIPENTAERYTHRITYL HEXAHYDROXYSTEARATE/HEXASTEARATE/HEXAROSINATE , DIISOSTEARYL MALATE , POLYETHYLENE , HYDROGENATED POLYDECENE , POLYBUTENE , CETYL LACTATE , SYNTHETIC WAX , BUTYROSPERMUM PARKII (SHEA BUTTER) , TOCOPHEROL , TOCOPHERYL ACETATE , ASCORBYL PALMITATE , GLYCINE SOJA (SOYBEAN) SEED EXTRACT , OLEA EUROPAEA (OLIVE) FRUIT EXTRACT , CHAMOMILLA RECUTITA (MATRICARIA) FLOWER OIL , BEESWAX\\CERA ALBA\\CIRE D¿ABEILLE , COPERNICIA CERIFERA (CARNAUBA) WAX\\CERA CARNAUBA\\CIRE DE CARNAUBA , SYNTHETIC BEESWAX , CERAMIDE 3 , CHOLESTEROL , OCTYLDODECANOL , TRITICUM VULGARE (WHEAT) BRAN EXTRACT , POTASSIUM SULFATE , ALUMINA , CALCIUM ALUMINUM BOROSILICATE , CALCIUM SODIUM BOROSILICATE , TIN OXIDE , SILICA , OLEIC ACID , PALMITIC ACID , CETYL ALCOHOL , GLYCERYL STEARATE , ETHYLHEXYL HYDROXYSTEARATE , FLAVOR (AROMA) , VANILLIN , [+/- MICA , TITANIUM DIOXIDE (CI 77891) , IRON OXIDES (CI 77491) , IRON OXIDES (CI 77492) , IRON OXIDES (CI 77499) , BISMUTH OXYCHLORIDE (CI 77163) , BLUE 1 LAKE (CI 42090) , CARMINE (CI 75470) , RED 6 (CI 15850) , RED 21 (CI 45380) , RED 6 LAKE (CI 15850) , RED 7 LAKE (CI 15850) , RED 28 LAKE (CI 45410) , RED 30 LAKE (CI 73360) , RED 33 LAKE (CI 17200) , YELLOW 5 LAKE (CI 19140) , YELLOW 6 LAKE (CI 15985)]\n                <ILNILN40008>\n                  Please be aware that ingredient lists may change or vary from time to time. Please refer to the ingredient list on the product package you receive for the most up to date list of ingredients.\n              \n            Makeup artists in our L.A. studio were constantly blending colors to achieve lipstick nirvana. That’s why we expanded the line to include 120 jaw-dropping shades! Our creams and mattes stay put and pop on camera, delivering rich, vibrant color in just 1 swipe.In a pinch, dot cream shades on cheeks for an instant flush.Available in nudes, neutrals, reds, corals, pinks, berries, browns, violets and bolds Pigment-loaded formula glides on and feels lush and light on the lips Moisturizing, satin-smooth creams soften and protect lips with shea butter + vitamins C and E Silky, vitamin-fortified mattes won’t dry out or settle unevenly on lips\n              \n                Formulated without Parabens, Sodium Lauryl Sulfate, Phthalates, Fragrance & Talc.INGREDIENTS: PENTAERYTHRITYL TETRAISOSTEARATE , BIS-DIGLYCERYL POLYACYLADIPATE-2 , CAPRYLIC/CAPRIC TRIGLYCERIDE , OLEIC/LINOLEIC/LINOLENIC POLYGLYCERIDES , EUPHORBIA CERIFERA (CANDELILLA) WAX\\CANDELILLA CERA\\CIRE DE CANDELILLA , PVP/HEXADECENE COPOLYMER , DIPENTAERYTHRITYL HEXAHYDROXYSTEARATE/HEXASTEARATE/HEXAROSINATE , DIISOSTEARYL MALATE , POLYETHYLENE , HYDROGENATED POLYDECENE , POLYBUTENE , CETYL LACTATE , SYNTHETIC WAX , BUTYROSPERMUM PARKII (SHEA BUTTER) , TOCOPHEROL , TOCOPHERYL ACETATE , ASCORBYL PALMITATE , GLYCINE SOJA (SOYBEAN) SEED EXTRACT , OLEA EUROPAEA (OLIVE) FRUIT EXTRACT , CHAMOMILLA RECUTITA (MATRICARIA) FLOWER OIL , BEESWAX\\CERA ALBA\\CIRE D¿ABEILLE , COPERNICIA CERIFERA (CARNAUBA) WAX\\CERA CARNAUBA\\CIRE DE CARNAUBA , SYNTHETIC BEESWAX , CERAMIDE 3 , CHOLESTEROL , OCTYLDODECANOL , TRITICUM VULGARE (WHEAT) BRAN EXTRACT , POTASSIUM SULFATE , ALUMINA , CALCIUM ALUMINUM BOROSILICATE , CALCIUM SODIUM BOROSILICATE , TIN OXIDE , SILICA , OLEIC ACID , PALMITIC ACID , CETYL ALCOHOL , GLYCERYL STEARATE , ETHYLHEXYL HYDROXYSTEARATE , FLAVOR (AROMA) , VANILLIN , [+/- MICA , TITANIUM DIOXIDE (CI 77891) , IRON OXIDES (CI 77491) , IRON OXIDES (CI 77492) , IRON OXIDES (CI 77499) , BISMUTH OXYCHLORIDE (CI 77163) , BLUE 1 LAKE (CI 42090) , CARMINE (CI 75470) , RED 6 (CI 15850) , RED 21 (CI 45380) , RED 6 LAKE (CI 15850) , RED 7 LAKE (CI 15850) , RED 28 LAKE (CI 45410) , RED 30 LAKE (CI 73360) , RED 33 LAKE (CI 17200) , YELLOW 5 LAKE (CI 19140) , YELLOW 6 LAKE (CI 15985)]\n                <ILNILN40008>\n                  Please be aware that ingredient lists may change or vary from time to time. Please refer to the ingredient list on the product package you receive for the most up to date list of ingredients.\n              \n            ",
+    "colors": [
+      {
+        "name": "DO NO WRONG",
+        "hex_value": "#904f50"
+      },
+      {
+        "name": "SHAVASANA",
+        "hex_value": "#835947"
+      },
+      {
+        "name": "MANDARIN",
+        "hex_value": "#c03c3b"
       },
     ],
-    sizes: ["S", "M", "L", "XL"],
-    filterCategories: ["Best seller", "New arrivals"],
-    brand: "Ecomus",
-    isAvailable: true,
-  },
-  {
-    id: 6,
-    imgSrc: "/images/products/light-green-1.jpg",
-    imgHoverSrc: "/images/products/light-green-2.jpg",
-    title: "Loose Fit Sweatshirt",
-    price: 10.0,
-    colors: [
-      {
-        name: "Light Green",
-        colorClass: "bg_light-green",
-        imgSrc: "/images/products/light-green-1.jpg",
-      },
-      {
-        name: "Black",
-        colorClass: "bg_dark",
-        imgSrc: "/images/products/black-3.jpg",
-      },
-      {
-        name: "Blue",
-        colorClass: "bg_blue-2",
-        imgSrc: "/images/products/blue.jpg",
-      },
-      {
-        name: "Dark Blue",
-        colorClass: "bg_dark-blue",
-        imgSrc: "/images/products/dark-blue.jpg",
-      },
-      {
-        name: "White",
-        colorClass: "bg_white",
-        imgSrc: "/images/products/white-6.jpg",
-      },
-      {
-        name: "Light Grey",
-        colorClass: "bg_light-grey",
-        imgSrc: "/images/products/light-grey.jpg",
-      },
+    "sizes": [
+      "Default"
     ],
-    filterCategories: ["Best seller", "New arrivals"],
-    brand: "Ecomus",
-    isAvailable: true,
-  },
-  {
-    id: 7,
-    imgSrc: "/images/products/black-4.jpg",
-    imgHoverSrc: "/images/products/black-5.jpg",
-    title: "Regular Fit Oxford Shirt",
-    price: 10.0,
-    colors: [
-      {
-        name: "Black",
-        colorClass: "bg_dark",
-        imgSrc: "/images/products/black-4.jpg",
-      },
-      {
-        name: "Dark Blue",
-        colorClass: "bg_dark-blue",
-        imgSrc: "/images/products/dark-blue-2.jpg",
-      },
-      {
-        name: "Beige",
-        colorClass: "bg_beige",
-        imgSrc: "/images/products/beige.jpg",
-      },
-      {
-        name: "Light Blue",
-        colorClass: "bg_light-blue",
-        imgSrc: "/images/products/light-blue.jpg",
-      },
-      {
-        name: "White",
-        colorClass: "bg_white",
-        imgSrc: "/images/products/white-7.jpg",
-      },
+    "filterCategories": [
+      "lipstick"
     ],
-    sizes: ["S", "M", "L"],
-    filterCategories: ["Best seller", "New arrivals", "On Sale"],
-    brand: "Ecomus",
-    isAvailable: false,
+    "brand": "smashbox",
+    "isAvailable": true,
+    "price": 504000.0
   },
   {
-    id: 8,
-    imgSrc: "/images/products/white-8.jpg",
-    imgHoverSrc: "/images/products/black-6.jpg",
-    title: "Stylish T-shirt",
-    price: 12.0,
-
-    sizes: ["S", "M", "L", "XL"],
-    filterCategories: ["Best seller", "New arrivals", "On Sale"],
-    brand: "Ecomus",
-    isAvailable: false,
-  },
-  {
-    id: 9,
-    price: 14.95,
-    sizes: ["M", "L", "XL"],
-    colors: [
+    "id": 515,
+    "imgSrc": "https://www.smashbox.com/media/images/products/388x396/sbx_sku_72279_388x396_0.jpg",
+    "imgHoverSrc": "https://www.smashbox.com/media/images/products/388x396/sbx_sku_72279_388x396_0.jpg",
+    "title": "ALWAYS ON LIQUID LIPSTICK",
+    "description": "Perfected on-set in our L.A. photo studio, our long-wear, water-resistant liquid lipstick features Advanced Polymer Technology that makes it stay put and look as fresh and flawless as your first swipe—for up to 8 hours. Featherweight but fierce, this liquid matte formula is infused with lip-smoothing Primer Oil complex for suede-soft lip color in 20 super-rad shades. It’s smudge-proof, budge-proof and non-feathering. Because really, who has time for touch-ups? LILLY SINGH + SMASHBOXMegastar Lilly Singh is a comedian, artist and all-around entertainer who inspires her eight million YouTube subscribers to be a \"Bawse.\" The second we met her, we knew we had to collaborate. We bottled her smart, funny vibe and created Bawse, Lilly's own signature shade of our Always On Liquid Lipstick. This no-rules red is fierce, featherweight and looks as fresh as your first swipe for eight hours. Wear it whenever you want to make things happen.The only matte liquid lipstick infused with Smashbox Primer Oil complex to keep it comfortableAdvanced Polymer Technology makes it stay put and look as fresh and flawless as the first swipePrecision tip applicator lines and fills with one swipe of our no-drop reservoirBudge-proof, non-feathering and water-resistantTo use: Define lip with precise tip and fill in with color. Wipe off with oil-based remover.  \n              \n                Formulated without Parabens, Sodium Lauryl Sulfate, Phthalates, Fragrance & Talc.INGREDIENTS: Isododecane, Dimethicone, Trimethylsiloxysilicate, Polybutene, Petrolatum, Cyclohexasiloxane, Kaolin, Disteardimonium Hectorite, Beeswax\\Cera Alba\\Cire d'Abeille, Silica Dimethyl Silylate, Glyceryl Behenate/Eicosadioate, Tocopheryl Acetate, Propylene Carbonate, Helianthus Annuus (Sunflower) Seed Oil, Prunus Armeniaca (Apricot) Kernel Oil, Simmondsia Chinensis (Jojoba) Seed Oil, Cyclopentasiloxane, Flavor (Aroma), Caprylyl Glycol, Hexylene Glycol, Phenoxyethanol, [+/- Blue 1 Lake (CI 42090), Carmine (CI 75470), Iron Oxides (CI 77491), Iron Oxides (CI 77492), Iron Oxides (CI 77499), Mica, Red 6 (CI 15850), Red 7 Lake (CI 15850), Red 22 Lake (CI 45380), Red 28 (CI 45410), Red 28 Lake (CI 45410), Red 30 (CI 73360), Red 30 Lake (CI 73360), Red 33 Lake (CI 17200), Titanium Dioxide (CI 77891), Yellow 5 Lake (CI 19140), Yellow 6 Lake (CI 15985)] \n                <ILNILN42556>\n                  Please be aware that ingredient lists may change or vary from time to time. Please refer to the ingredient list on the product package you receive for the most up to date list of ingredients.\n              \n            Perfected on-set in our L.A. photo studio, our long-wear, water-resistant liquid lipstick features Advanced Polymer Technology that makes it stay put and look as fresh and flawless as your first swipe—for up to 8 hours. Featherweight but fierce, this liquid matte formula is infused with lip-smoothing Primer Oil complex for suede-soft lip color in 20 super-rad shades. It’s smudge-proof, budge-proof and non-feathering. Because really, who has time for touch-ups? LILLY SINGH + SMASHBOXMegastar Lilly Singh is a comedian, artist and all-around entertainer who inspires her eight million YouTube subscribers to be a \"Bawse.\" The second we met her, we knew we had to collaborate. We bottled her smart, funny vibe and created Bawse, Lilly's own signature shade of our Always On Liquid Lipstick. This no-rules red is fierce, featherweight and looks as fresh as your first swipe for eight hours. Wear it whenever you want to make things happen.The only matte liquid lipstick infused with Smashbox Primer Oil complex to keep it comfortableAdvanced Polymer Technology makes it stay put and look as fresh and flawless as the first swipePrecision tip applicator lines and fills with one swipe of our no-drop reservoirBudge-proof, non-feathering and water-resistantTo use: Define lip with precise tip and fill in with color. Wipe off with oil-based remover.  \n              \n                Formulated without Parabens, Sodium Lauryl Sulfate, Phthalates, Fragrance & Talc.INGREDIENTS: Isododecane, Dimethicone, Trimethylsiloxysilicate, Polybutene, Petrolatum, Cyclohexasiloxane, Kaolin, Disteardimonium Hectorite, Beeswax\\Cera Alba\\Cire d'Abeille, Silica Dimethyl Silylate, Glyceryl Behenate/Eicosadioate, Tocopheryl Acetate, Propylene Carbonate, Helianthus Annuus (Sunflower) Seed Oil, Prunus Armeniaca (Apricot) Kernel Oil, Simmondsia Chinensis (Jojoba) Seed Oil, Cyclopentasiloxane, Flavor (Aroma), Caprylyl Glycol, Hexylene Glycol, Phenoxyethanol, [+/- Blue 1 Lake (CI 42090), Carmine (CI 75470), Iron Oxides (CI 77491), Iron Oxides (CI 77492), Iron Oxides (CI 77499), Mica, Red 6 (CI 15850), Red 7 Lake (CI 15850), Red 22 Lake (CI 45380), Red 28 (CI 45410), Red 28 Lake (CI 45410), Red 30 (CI 73360), Red 30 Lake (CI 73360), Red 33 Lake (CI 17200), Titanium Dioxide (CI 77891), Yellow 5 Lake (CI 19140), Yellow 6 Lake (CI 15985)] \n                <ILNILN42556>\n                  Please be aware that ingredient lists may change or vary from time to time. Please refer to the ingredient list on the product package you receive for the most up to date list of ingredients.\n              \n            ",
+    "colors": [
       {
-        name: "Brown",
-        colorClass: "bg_brown",
-        imgSrc: "/images/products/brown-4.jpg",
+        "name": "Dream Huge",
+        "hex_value": "#af5561"
       },
       {
-        name: "Black",
-        colorClass: "bg_dark",
-        imgSrc: "/images/products/black-8.jpg",
+        "name": "Stepping Out",
+        "hex_value": "#9e5c4c"
       },
+      {
+        "name": "In Demand",
+        "hex_value": "#b76f60"
+      },
+      {
+        "name": "Babe Alert",
+        "hex_value": "#ad5851"
+      },
+      {
+        "name": "Out Loud",
+        "hex_value": "#a04322"
+      },
+      {
+        "name": "Driver's Seat",
+        "hex_value": "#9c4035"
+      },
+      {
+        "name": "Baja Bound",
+        "hex_value": "#c84b47"
+      },
+      {
+        "name": "Bawse",
+        "hex_value": "#a82024"
+      },
+      {
+        "name": "Thrill Seeker",
+        "hex_value": "#e74425"
+      },
+      {
+        "name": "Bang-Bang",
+        "hex_value": "#cc2127"
+      },
+      {
+        "name": "Blast Off",
+        "hex_value": "#cb2648"
+      },
+      {
+        "name": "Shockaholic",
+        "hex_value": "#bd2467"
+      },
+      {
+        "name": "Some Nerve",
+        "hex_value": "#a856a2"
+      },
+      {
+        "name": "Let's Dance",
+        "hex_value": "#923459"
+      },
+      {
+        "name": "Big Spender",
+        "hex_value": "#933c44"
+      },
+      {
+        "name": "Disorderly",
+        "hex_value": "#7f1917"
+      },
+      {
+        "name": "Girl Gang",
+        "hex_value": "#6e1243"
+      },
+      {
+        "name": "Miss Conduct",
+        "hex_value": "#640719"
+      },
+      {
+        "name": "True Grit",
+        "hex_value": "#53250d"
+      },
+      {
+        "name": "Chill Zone",
+        "hex_value": "#635961"
+      }
     ],
-
-    imgSrc: "/images/products/brown-4.jpg",
-    imgHoverSrc: "/images/products/black-8.jpg",
-
-    title: "Patterned scarf",
-    filterCategories: ["Best seller", "New arrivals", "On Sale"],
-    brand: "Ecomus",
-    isAvailable: true,
-  },
-  {
-    id: 10,
-    price: 18.95,
-    sizes: ["S", "M", "L"],
-    colors: [
-      {
-        name: "Black",
-        colorClass: "bg_dark",
-        imgSrc: "/images/products/black-9.jpg",
-      },
-      {
-        name: "White",
-        colorClass: "bg_white",
-        imgSrc: "/images/products/white-9.jpg",
-      },
+    "sizes": [
+      "Default"
     ],
-
-    imgSrc: "/images/products/black-9.jpg",
-    imgHoverSrc: "/images/products/black-10.jpg",
-
-    title: "Slim Fit Fine-knit Turtleneck Sweater",
-    filterCategories: ["Best seller", "New arrivals", "On Sale"],
-    brand: "Ecomus",
-    isAvailable: true,
-  },
-  {
-    id: 11,
-    price: 18.95,
-    sizes: ["S", "M", "L"],
-    colors: [
-      {
-        name: "Grey",
-        colorClass: "bg_grey",
-        imgSrc: "/images/products/grey-2.jpg",
-      },
-      {
-        name: "Pink",
-        colorClass: "bg_pink",
-        imgSrc: "/images/products/pink-2.jpg",
-      },
-      {
-        name: "Light Pink",
-        colorClass: "bg_light-pink",
-        imgSrc: "/images/products/light-pink.jpg",
-      },
+    "filterCategories": [
+      "lipstick"
     ],
-
-    imgSrc: "/images/products/grey-2.jpg",
-    imgHoverSrc: "/images/products/grey.jpg",
-
-    title: "Slim Fit Fine-knit Turtleneck Sweater",
-    filterCategories: ["Best seller", "New arrivals"],
-    brand: "Ecomus",
-    isAvailable: true,
+    "brand": "smashbox",
+    "isAvailable": true,
+    "price": 576000.0
   },
   {
-    id: 12,
-    price: 18.95,
-    sizes: ["S", "M", "L"],
-
-    imgSrc: "/images/products/black-11.jpg",
-    imgHoverSrc: "/images/products/black-12.jpg",
-
-    title: "Slim Fit Fine-knit Turtleneck Sweater",
-    filterCategories: ["Best seller", "On Sale"],
-    brand: "Ecomus",
-    isAvailable: true,
+    "id": 413,
+    "imgSrc": "https://d3t32hsnjxo7q6.cloudfront.net/i/1c87435efe0a260a66b3df7cd58aaed0_ra,w158,h184_pa,w158,h184.jpg",
+    "imgHoverSrc": "https://d3t32hsnjxo7q6.cloudfront.net/i/1c87435efe0a260a66b3df7cd58aaed0_ra,w158,h184_pa,w158,h184.jpg",
+    "title": "Anna Sui Lip Colour Stain",
+    "description": "This Anna Sui Lip Colour Stain includes a tinting ingredient that achieves long-lasting colour and helps diminish vertical lines on the lips.  Directions: Apply directly to your lips for a natural stain.",
+    "colors": [
+      {
+        "name": "(300)",
+        "hex_value": "#A85988"
+      },
+      {
+        "name": "(301)",
+        "hex_value": "#DA5067"
+      },
+      {
+        "name": "(302)",
+        "hex_value": "#D94C52"
+      },
+      {
+        "name": "(400)",
+        "hex_value": "#DA3055"
+      },
+      {
+        "name": "(401)",
+        "hex_value": "#6B203E"
+      },
+      {
+        "name": "(600)",
+        "hex_value": "#E8544A"
+      }
+    ],
+    "sizes": [
+      "Default"
+    ],
+    "filterCategories": [
+      "lip_stain"
+    ],
+    "brand": "anna sui",
+    "isAvailable": true,
+    "price": 624000.0
   },
+  {
+    "id": 412,
+    "imgSrc": "https://d3t32hsnjxo7q6.cloudfront.net/i/df00e1e6268dc7d208b993d5692c9772_ra,w158,h184_pa,w158,h184.jpg",
+    "imgHoverSrc": "https://d3t32hsnjxo7q6.cloudfront.net/i/df00e1e6268dc7d208b993d5692c9772_ra,w158,h184_pa,w158,h184.jpg",
+    "title": "Revlon Colorstay Moisture Stain",
+    "description": "Revlon Colorstay Moisture Stain offers a new level of glossy wet color!It gives you saturated lips with brilliant shine and vivid colorFeatures:Drenches lips in glossy wet colorUltra-light creamy lipstain with Vitamin E and Aloe\n88% of women felt lips were instantly moisturized without stickiness\n\n                            ",
+    "colors": [],
+    "sizes": [
+      "Default"
+    ],
+    "filterCategories": [
+      "lip_stain"
+    ],
+    "brand": "revlon",
+    "isAvailable": true,
+    "price": 311760.0
+  },
+  {
+    "id": 411,
+    "imgSrc": "https://d3t32hsnjxo7q6.cloudfront.net/i/cf54199ffb803951bf6342b59e3c58a5_ra,w158,h184_pa,w158,h184.jpg",
+    "imgHoverSrc": "https://d3t32hsnjxo7q6.cloudfront.net/i/cf54199ffb803951bf6342b59e3c58a5_ra,w158,h184_pa,w158,h184.jpg",
+    "title": "Revlon ColorBurst Balm Stain",
+    "description": "Revlon ColorBurst Balm Stain is a pampering balm fused with a \nlightweight lipstain in an adorable chubby crayon. Revlon ColorBurst Balm Stain gives softer, smoother lips with a perfect flush of color \nthat lasts hour after hour.\nThe gel formula  comes in 12 vibrant shades that match any look or mood and the crayon is retractable so no sharpener is needed!\n\n    Expert Tips: Step 1 - Apply Revlon ColorBurst Balm Stain evenly to clean, bare lips. Build color and coverage as desired. Step 2 - Reapply as desired for moisturizing shine throughout the day.Revlon Just Bitten Kissable Balm Stain is one of our 10 Makeup Must Haves.  See the full list on The Well.  ",
+    "colors": [
+      {
+        "name": "Cherish",
+        "hex_value": "#e898bc"
+      },
+      {
+        "name": "Romantic",
+        "hex_value": "#d74844"
+      },
+      {
+        "name": "Honey",
+        "hex_value": "#cd8083"
+      },
+      {
+        "name": "Rendezvous",
+        "hex_value": "#c16576"
+      },
+      {
+        "name": "Adore",
+        "hex_value": "#b45858"
+      },
+      {
+        "name": "Crush",
+        "hex_value": "#a65875"
+      },
+      {
+        "name": "Smitten",
+        "hex_value": "#a64877"
+      }
+    ],
+    "sizes": [
+      "Default"
+    ],
+    "filterCategories": [
+      "lip_stain"
+    ],
+    "brand": "revlon",
+    "isAvailable": true,
+    "price": 275760.0
+  },
+  {
+    "id": 410,
+    "imgSrc": "https://d3t32hsnjxo7q6.cloudfront.net/i/be634f08e36f3a6f18feed1c68065596_ra,w158,h184_pa,w158,h184.jpeg",
+    "imgHoverSrc": "https://d3t32hsnjxo7q6.cloudfront.net/i/be634f08e36f3a6f18feed1c68065596_ra,w158,h184_pa,w158,h184.jpeg",
+    "title": "Wet n Wild Mega Slicks Lip Balm Stain",
+    "description": "Now you can amp up your lips with one stick for a kissable pout in no \ntime.To keep you pucker-perfect, these all lip balm stains glide on\n smoothly while conditioning the lips. Enriched with Acai Palm Oil, this\n amazing formula forms a protective shield on the lips to prevent \nfeathering. Complete with six great shades and continuous moisture, the \nformula leaves the lips with a unique minty, cooling sensation. No \nmatter how long the kiss, this balm will last and last. ",
+    "colors": [
+      {
+        "name": "124 Lady and the Vamp",
+        "hex_value": "#8E304A"
+      },
+      {
+        "name": "125 Red-dy or Not",
+        "hex_value": "#DF1536"
+      },
+      {
+        "name": "127 A Stiff Pink",
+        "hex_value": "#FD86BC"
+      },
+      {
+        "name": "128 Pinky Promise",
+        "hex_value": "#CE5858"
+      },
+      {
+        "name": "129 Nudist Colony",
+        "hex_value": "#DE9777"
+      }
+    ],
+    "sizes": [
+      "Default"
+    ],
+    "filterCategories": [
+      "lip_stain"
+    ],
+    "brand": "wet n wild",
+    "isAvailable": true,
+    "price": 95760.0
+  },
+  {
+    "id": 114,
+    "imgSrc": "https://d3t32hsnjxo7q6.cloudfront.net/i/2d46e82f21b11f658a4378abcbd1c31b_ra,w158,h184_pa,w158,h184.png",
+    "imgHoverSrc": "https://d3t32hsnjxo7q6.cloudfront.net/i/2d46e82f21b11f658a4378abcbd1c31b_ra,w158,h184_pa,w158,h184.png",
+    "title": "CoverGirl Outlast Longwear Lipstick",
+    "description": "With CoverGirl Outlast Longwear Lipstick you get both moisture and colour! No need to choose!This long lasting lipstick doesn’t flake or \ncrumble because it’s super-powered with moisture. It'll stays super fresh and \nsuper flexible all day, leaving you with a light weight but very pigmented lip look.",
+    "colors": [
+      {
+        "name": "Plum Fury",
+        "hex_value": "#51122B"
+      },
+      {
+        "name": "Red Siren",
+        "hex_value": "#A1211C"
+      },
+      {
+        "name": "Phantom Pink",
+        "hex_value": "#C5777E"
+      }
+    ],
+    "sizes": [
+      "Default"
+    ],
+    "filterCategories": [
+      "lipstick"
+    ],
+    "brand": "covergirl",
+    "isAvailable": true,
+    "price": 263760.0
+  },
+  {
+    "id": 113,
+    "imgSrc": "https://d3t32hsnjxo7q6.cloudfront.net/i/00bee78599bf386be435237a1515fdb7_ra,w158,h184_pa,w158,h184.jpg",
+    "imgHoverSrc": "https://d3t32hsnjxo7q6.cloudfront.net/i/00bee78599bf386be435237a1515fdb7_ra,w158,h184_pa,w158,h184.jpg",
+    "title": "CoverGirl Outlast Lipcolor Moisturizing Clear Topcoat (500)",
+    "description": "CoverGirl Outlast Lipcolor Moisturizing Clear Topcoat is a moisturizing lip gloss that keeps lips feeling moist, soft & smooth.Features: Moisturizing formulaSafe for sensitive skinFragrance freeIngredients: Sucrose Polycottonseedate, Ozokerite, Beeswax/ Cire D'Abeille, Tocopheryl Acetate, Tocopherol, Propyl Gallate, Propylparaben, Acetyl Glucosamine, Cocos Nucifera (Coconut Oil), Aloe Barbadensis Leaf Extract, Theobroma Cacao (Cocoa) Seed Butter, Butyrospermum Parkii (Shea Butter), Sodium Saccharin, Flavor/Aroma, Eu Inci, Sucrose Polycottonseedate, Ozokerite, Cera Alba, Tocopheryl Acetate, Tocopherol, Propylparaben, Propyl Gallate, Acetyl Glucosamine, Cocos Nucifera (Coconut Oil), Aloe Barbadensis Leaf Extract, Theobroma Cacao (Cocoa) Seed Butter, Butyrospermum Parkii (Shea Butter), Sodium Saccharin, Aroma",
+    "colors": [],
+    "sizes": [
+      "Default"
+    ],
+    "filterCategories": [
+      "lipstick"
+    ],
+    "brand": "covergirl",
+    "isAvailable": true,
+    "price": 311760.0
+  },
+  {
+    "id": 107,
+    "imgSrc": "https://d3t32hsnjxo7q6.cloudfront.net/i/53776859a9fc7bea891c66135f40d645_ra,w158,h184_pa,w158,h184.jpg",
+    "imgHoverSrc": "https://d3t32hsnjxo7q6.cloudfront.net/i/53776859a9fc7bea891c66135f40d645_ra,w158,h184_pa,w158,h184.jpg",
+    "title": "butter LONDON Moisture Matte Lipstick",
+    "description": "butter LONDON Moisture Matte Lipstick offers full coverage, ultimate colour payoff in a velvety matte finish.\nWith specialized pigments that extend colour wear, this long-lasting, non-drying \nformula does not feather or bleed. Revolutionary gel-capsule technology \ndelivers colour and moisture for smooth, silky application and maximum \ncomfort. Triple Butter Complex for rich, creamy, lasting moisture – \nMango Seed Butter, Murumuru Seed Butter, and Cupuacu Seed Butter. \nVitamin E and minerals smooth the lip surface for a flawless \napplication. Subtly scented with creamy vanilla. Sleek, slim line metal \ncomponent for easy application, control and portability.Ingredients: Pentaerythrityl Tetraisostearate, Caprylic/Capric Triglyceride, Ethylhexyl Palmitate, Silica, Aluminum Starch Octenylsuccinate, Polyethylene, Bis-Diglyceryl Polyacyladipate-2, C20-40 Alcohols, Caprylyl Glycol, Mangifera Indica (Mango) Seed Butter, Theobroma Grandiflorum Seed Butter, Astrocaryum Murumuru Seed Butter, Parfum (Fragrance), Benzyl Benzoate, Tocopheryl Acetate, Tocopherol, Calcium Sodium Borosilicate, Tin Oxide. May Contain: Titanium Dioxide (CI 77891), Iron Oxides (CI 77491, 77492, 77499), Mica (CI 77019), Red 6 (CI 15850), Red 7 Lake (CI 15850), Red 27 (CI 45410), Red 28 Lake (CI 45410), Red 30 Lake (CI 73360), Red 33 Lake (CI 17200), Yellow 5 Lake (CI 19140), Blue 1 Lake (CI 42090), Carmine (CI 75470).Paraben Free",
+    "colors": [
+      {
+        "name": "Loved Up - sassy berry-red cream",
+        "hex_value": "#CF2D4F"
+      },
+      {
+        "name": "Old Blighty - brilliant brick red cream",
+        "hex_value": "#B53034"
+      },
+      {
+        "name": "Ruby Murray - delicious deep berry cream",
+        "hex_value": "#AE2343"
+      }
+    ],
+    "sizes": [
+      "Default"
+    ],
+    "filterCategories": [
+      "lipstick"
+    ],
+    "brand": "butter london",
+    "isAvailable": true,
+    "price": 695040.0
+  },
+  {
+    "id": 106,
+    "imgSrc": "https://d3t32hsnjxo7q6.cloudfront.net/i/a368eac7a50f7aa3fcc773b06915eb39_ra,w158,h184_pa,w158,h184.png",
+    "imgHoverSrc": "https://d3t32hsnjxo7q6.cloudfront.net/i/a368eac7a50f7aa3fcc773b06915eb39_ra,w158,h184_pa,w158,h184.png",
+    "title": "L'Oreal Paris Colour Riche Le Matte & La Lacque Lip Colour",
+    "description": "Introducing Colour Riche Le Matte & La Lacque, the newest format in lip colour. velvety matte or irresistibly glossy pigment-rich colour, perfectly precise. Use it anywhere, anytime – it’s the newest makeup designer must-have!Features:The sleek, sophisticated pen offers highly pigmented colour Glides on effortlessly in one precise stroke Available in 2 iconic finishes, creamy matte & smooth lacquerEnriched with argan oil for deep hydration and soft feel & vitamin antioxidant for protection",
+    "colors": [
+      {
+        "name": "Game, Set & Matte",
+        "hex_value": "#FC6E7F"
+      },
+      {
+        "name": "Lacque-y Charm",
+        "hex_value": "#C14E5C"
+      },
+      {
+        "name": "Lacque-y You",
+        "hex_value": "#B0233E"
+      },
+      {
+        "name": "Lacquerized",
+        "hex_value": "#B41428"
+      },
+      {
+        "name": "Mad for Matte",
+        "hex_value": "#C81E2F"
+      },
+      {
+        "name": "Matte for Me",
+        "hex_value": "#FC5B9D"
+      },
+      {
+        "name": "Matte-r of Fact",
+        "hex_value": "#D03370"
+      },
+      {
+        "name": "She's So Matte",
+        "hex_value": "#C15555"
+      }
+    ],
+    "sizes": [
+      "Default"
+    ],
+    "filterCategories": [
+      "lipstick"
+    ],
+    "brand": "l'oreal",
+    "isAvailable": true,
+    "price": 275760.0
+  },
+  {
+    "id": 105,
+    "imgSrc": "https://d3t32hsnjxo7q6.cloudfront.net/i/c88809fbffe05fb9594103e635387152_ra,w158,h184_pa,w158,h184.jpg",
+    "imgHoverSrc": "https://d3t32hsnjxo7q6.cloudfront.net/i/c88809fbffe05fb9594103e635387152_ra,w158,h184_pa,w158,h184.jpg",
+    "title": "CoverGirl Colorlicious Lipstick",
+    "description": "CoverGirl Colorlicious Lipstick gives you rich, satisfying color in shades you can't help but crave!Features: Deliciously rich color infused with shea butterFull coverage color, high shine intensityNatural butters help keep lips suppleLasting colourIngredients:\n Ricinus Communis (Castor) Seed Oil, Isopropyl Isostearate, Mica, \nEthylhexyl Hydroxystearate, Acetylated Lanolin, Ozokerite, Euphorbia \nCerifera (Candelilla) Wax/Cire De Candelilla, Paraffin, Squalane, \nCopernicia Cerifera (Carnauba) Wax/Cire De Carnauba, Cetyl Lactate, \nCetyl Alcohol, Fragrance/Parfum, Ascorbyl Palmitate, Tocopheryl Acetate,\n Maltodextrin, Camellia Sinensis Leaf Extract, Butyrospermum Parkii \n(Shea) Butter, Silk Powder/Poudre De Soie, Persea Gratissima (Avocado) \nOil, Cocos Nucifera (Coconut) Oil, Aloe Barbadensis Leaf Extract, \nPropylparaben, Hydrogenated Vegetable Oil, Retinyl Palmitate, Some \nShades Also Contain/Certaines Teintes Contiennent Aussi: Lauroyl Lysine,\n Synthetic Fluorphlogopite, May Contain/Peut Contenir: Titanium Dioxide,\n Red 7 Lake, Yellow 5 Lake, Red 6 Lake, Iron Oxides, Blue 1 Lake, \nCarmine, Red 27 Lake, Yellow 6 Lake, Orange 5, Red 27",
+    "colors": [
+      {
+        "name": "Verve Violet",
+        "hex_value": "#ECA4BE"
+      },
+      {
+        "name": "Sultry Sienna",
+        "hex_value": "#BF837C"
+      }
+    ],
+    "sizes": [
+      "Default"
+    ],
+    "filterCategories": [
+      "lipstick"
+    ],
+    "brand": "covergirl",
+    "isAvailable": true,
+    "price": 251760.0
+  },
+  {
+    "id": 102,
+    "imgSrc": "https://d3t32hsnjxo7q6.cloudfront.net/i/be04329866e96a0077545d230489d7a9_ra,w158,h184_pa,w158,h184.jpeg",
+    "imgHoverSrc": "https://d3t32hsnjxo7q6.cloudfront.net/i/be04329866e96a0077545d230489d7a9_ra,w158,h184_pa,w158,h184.jpeg",
+    "title": "CoverGirl Outlast Lipcolor",
+    "description": "CoverGirls very popular longwear lip color just got better! The advanced formula with resilient, brilliant color and new applicator gives you up to 24 hours of color in just 2 easy, breezy steps.Features:Lasts up to 24 hoursBeautiful shades that are food proof and transfer resistant all day!Moisturizing topcoat keeps lips feeling moist, soft and smoothApplication Tips: Apply color to clean lips. Let dry 60 seconds. Apply moisturizing topcoat. Reapply topcoat like a balm throughout the day to refresh your look and feel.",
+    "colors": [
+      {
+        "name": "Plum Berry",
+        "hex_value": "#864058"
+      },
+      {
+        "name": "Nude",
+        "hex_value": "#996066"
+      },
+      {
+        "name": "Wine to Five",
+        "hex_value": "#9C5961"
+      },
+      {
+        "name": "Wild Berry",
+        "hex_value": "#8B3158"
+      },
+      {
+        "name": "Cinnamon Stick",
+        "hex_value": "#744144"
+      },
+      {
+        "name": "Brazen Raisin",
+        "hex_value": "#783E49"
+      }
+    ],
+    "sizes": [
+      "Default"
+    ],
+    "filterCategories": [
+      "lipstick"
+    ],
+    "brand": "covergirl",
+    "isAvailable": true,
+    "price": 311760.0
+  },
+  {
+    "id": 101,
+    "imgSrc": "https://d3t32hsnjxo7q6.cloudfront.net/i/8980a2195fbd6f4a47e5b57ac2148e9b_ra,w158,h184_pa,w158,h184.jpg",
+    "imgHoverSrc": "https://d3t32hsnjxo7q6.cloudfront.net/i/8980a2195fbd6f4a47e5b57ac2148e9b_ra,w158,h184_pa,w158,h184.jpg",
+    "title": "Mineral Fusion Sheer Moisture Lip Tint",
+    "description": "Mineral Fusion Sheer Moisture Lip Tint is a sheer, buildable mineral colour that provides long-lasting hydration and applies effortlessly on-the-go with no mirror required.  The 100% pure mineral shades are ultra-hydrating, infused with Cocoa Butter, a lip-firming peptide, and a refreshing Vanilla-Mint flavor.  Features:Hydrating & FirmingPerfect for On-The-Go UseFree of artificial colour and fragranceCruelty FreeParaben FreeTalc FreeHypo-allergenicPhthalate FreeIngredients: Ricinus Communis (Castor) Seed Oil, Ethylhexyl Hydroxystearate, Jojoba (Simmondsia  Chinensis) Seed Oil, Cera Alba (Beeswax), Euphorbia Cerifera (Candelilla) Wax,  Copernicia Cerifera (Carnauba) Wax, Isopropyl Palmitate, Cetyl Alcohol, Ascorbic Acid  (Vitamin C), Theobroma Cacao (Cocoa) Seed Butter, Aloe Barbadensis, Tocopheryl  Acetate (Vitamin E), Palmitoyl Tripeptide-5, Olea Europaea (Olive) Leaf Extract,  Eupatorium Rebaudianum Bertoni Leaf Extract, Origanum Vulgare (Oregano) Leaf  Extract, Thymus Vulgarus (Thyme) Extract, Cocos Nucifera (Coconut) Oil, and Natural  Vanilla Mint.    May Contain: Red Iron Oxide, Yellow Iron Oxide, Black Iron Oxide, Titanium Dioxide, Mica. Gluten Free, Vegan",
+    "colors": [
+      {
+        "name": "Adorn - Rich Plum",
+        "hex_value": "#54281F"
+      },
+      {
+        "name": "Blush - Earthy Purple",
+        "hex_value": "#793041"
+      },
+      {
+        "name": "Flicker - Berry",
+        "hex_value": "#892E33"
+      },
+      {
+        "name": "Glisten - Caramel Shimmer",
+        "hex_value": "#B1585C"
+      },
+      {
+        "name": "Smolder - Cherry Red",
+        "hex_value": "#981E29"
+      }
+    ],
+    "sizes": [
+      "Default"
+    ],
+    "filterCategories": [
+      "lipstick"
+    ],
+    "brand": "mineral fusion",
+    "isAvailable": true,
+    "price": 288000.0
+  },
+  {
+    "id": 99,
+    "imgSrc": "https://d3t32hsnjxo7q6.cloudfront.net/i/5876ec738df72b74a0aac649415a452f_ra,w158,h184_pa,w158,h184.jpg",
+    "imgHoverSrc": "https://d3t32hsnjxo7q6.cloudfront.net/i/5876ec738df72b74a0aac649415a452f_ra,w158,h184_pa,w158,h184.jpg",
+    "title": "Dr. Hauschka Limited Edition Lipstick Novum",
+    "description": "This Dr. Hauschka Lipstick leaves the lips feeling soft and silky thanks\n to its composition of premium argan oil and beeswax, as well as mineral\n pigments and medicinal plant extracts.  The colour of the slim-liner \ncombines with the natural red of the lips to create completely uniquenuances of colour.Ingredients: Ricinus\n Communis (Castor) Seed Oil, Simmondsia Chinensis (Jojoba) Seed Oil, \nRosa Canina Fruit Extract, Lanolin, Beeswax (Cera Alba), Mica, Daucus \nCarota Sativa (Carrot) Root Extract, Argania Spinosa Kernel Oil, \nEuphorbia Cerifera (Candelilla) Wax, Copernicia Cerifera (Carnauba) Wax,\n Rosa Damascena Flower Extract, Anthyllis Vulneraria Extract, Prunus \nAmygdalus Dulcis (Sweet Almond) Oil, Prunus Armeniaca (Apricot) Kernel \nOil, Hydrogenated Jojoba Oil, Rosa Damascena Flower Wax, Fragrance \n(Parfum), Linalool*, Benzyl Benzoate*, Farnesol*, Limonene*, Geraniol*, \nBenzyl Salicylate*, Eugenol*, Citronellol*, Benzyl Alcohol*, \nMaltodextrin, Lecithin, Silica, Carmine (CI 75470), Iron Oxides (CI \n77491, CI 77492, CI 77499), Titanium Dioxide (CI 77891).  *component of \nnatural essential oils",
+    "colors": [],
+    "sizes": [
+      "Default"
+    ],
+    "filterCategories": [
+      "lipstick"
+    ],
+    "brand": "dr. hauschka",
+    "isAvailable": true,
+    "price": 648000.0
+  },
+  {
+    "id": 98,
+    "imgSrc": "https://d3t32hsnjxo7q6.cloudfront.net/i/0fbba5395dcc750a7b43b3e3fefb6015_ra,w158,h184_pa,w158,h184.jpg",
+    "imgHoverSrc": "https://d3t32hsnjxo7q6.cloudfront.net/i/0fbba5395dcc750a7b43b3e3fefb6015_ra,w158,h184_pa,w158,h184.jpg",
+    "title": "Marcelle Rouge Xpression Lipstick",
+    "description": "Luscious lips made easy! Express your true self with Marcelle Rouge Xpression lipstick! Rouge Xpression\n has a dual personality that will delight your lips; it has a \nmoisturizing Maxi-Lip complex that hydrates your lips' delicate skin and\n adds sexy volume.\nReplete with avocado and Omega-6 oils, its formula prevents dry, \ncracked lips and restores moisture. Its creamy, velvety and non-sticky \ntexture ensures total comfort. And with so many vibrant colours, biting \ninto life will never have looked so sexy!\nHypoallergenic and perfume-free.",
+    "colors": [
+      {
+        "name": "Amour",
+        "hex_value": "#b22a4a"
+      },
+      {
+        "name": "Cleopatra",
+        "hex_value": "#903459"
+      },
+      {
+        "name": "Couture",
+        "hex_value": "#a3656a"
+      },
+      {
+        "name": "Delight",
+        "hex_value": "#cb5a6e"
+      },
+      {
+        "name": "Enchantment",
+        "hex_value": "#bd7775"
+      },
+      {
+        "name": "Euphoria",
+        "hex_value": "#a84c61"
+      },
+      {
+        "name": "Exuberance",
+        "hex_value": "#a1534f"
+      },
+      {
+        "name": "Feline",
+        "hex_value": "#824e73"
+      },
+      {
+        "name": "French Rose",
+        "hex_value": "#C97DA4"
+      },
+      {
+        "name": "Fuchsia Flare",
+        "hex_value": "#7F355D"
+      },
+      {
+        "name": "Jezebel",
+        "hex_value": "#974f5a"
+      },
+      {
+        "name": "Mauve Avant-Garde",
+        "hex_value": "#9f596b"
+      },
+      {
+        "name": "Nude Pink",
+        "hex_value": "#C18181"
+      },
+      {
+        "name": "Paris Rose",
+        "hex_value": "#a8444e"
+      },
+      {
+        "name": "Passion",
+        "hex_value": "#a83b52"
+      },
+      {
+        "name": "Pink Mademoiselle",
+        "hex_value": "#FC6A86"
+      },
+      {
+        "name": "Revolution",
+        "hex_value": "#a65463"
+      },
+      {
+        "name": "Romanesque",
+        "hex_value": "#b06c69"
+      },
+      {
+        "name": "Rouge En Folie",
+        "hex_value": "#C91A19"
+      },
+      {
+        "name": "Sentimental",
+        "hex_value": "#da8f83"
+      },
+      {
+        "name": "Vivid Coral",
+        "hex_value": "#C75878"
+      }
+    ],
+    "sizes": [
+      "Default"
+    ],
+    "filterCategories": [
+      "lipstick"
+    ],
+    "brand": "marcelle",
+    "isAvailable": true,
+    "price": 287760.0
+  },
+  {
+    "id": 97,
+    "imgSrc": "https://d3t32hsnjxo7q6.cloudfront.net/i/d0b6855d9b603a00f776de498c971b88_ra,w158,h184_pa,w158,h184.png",
+    "imgHoverSrc": "https://d3t32hsnjxo7q6.cloudfront.net/i/d0b6855d9b603a00f776de498c971b88_ra,w158,h184_pa,w158,h184.png",
+    "title": "Maybelline Color Sensational Vivid Matte Liquid Lip Colour",
+    "description": "Bold, vivid color glides easily onto lips for a velvety matte finish with Maybelline Color Sensational Vivid Matte Liquid Lip Colour. \nFormula is comfortable and creamy with a smooth feel upon application. \nWith full color coverage, the result is a rich, intense lip look in a \nrange of colors from Nude Flush to Electric Pink to Vivid Violet.Features: Lip color glides on smooth to a matte finishInfused with pure pigments for high-impact colorCreamy liquid base for a soft, cushiony feel",
+    "colors": [
+      {
+        "name": "Nude Thrill",
+        "hex_value": "#AC7773"
+      },
+      {
+        "name": "Nude Flush",
+        "hex_value": "#BD7A80"
+      },
+      {
+        "name": "Pink Charge",
+        "hex_value": "#D65F84"
+      },
+      {
+        "name": "Electric Pink",
+        "hex_value": "#D73D8C"
+      },
+      {
+        "name": "Fuchsia Ecstasy",
+        "hex_value": "#B12156"
+      },
+      {
+        "name": "Orange Shot",
+        "hex_value": "#BC2830"
+      },
+      {
+        "name": "Rebel Red",
+        "hex_value": "#B7233B"
+      },
+      {
+        "name": "Berry Boost",
+        "hex_value": "#8C1F48"
+      },
+      {
+        "name": "Vivid Violet",
+        "hex_value": "#542A71"
+      },
+      {
+        "name": "Possessed Plum",
+        "hex_value": "#300B28"
+      }
+    ],
+    "sizes": [
+      "Default"
+    ],
+    "filterCategories": [
+      "lipstick"
+    ],
+    "brand": "maybelline",
+    "isAvailable": true,
+    "price": 311760.0
+  },
+  {
+    "id": 96,
+    "imgSrc": "https://d3t32hsnjxo7q6.cloudfront.net/i/97f6225468596320404785ab71cb1e02_ra,w158,h184_pa,w158,h184.png",
+    "imgHoverSrc": "https://d3t32hsnjxo7q6.cloudfront.net/i/97f6225468596320404785ab71cb1e02_ra,w158,h184_pa,w158,h184.png",
+    "title": "Revlon Ultra HD Lip Lacquer",
+    "description": "Lip lacquer goes HD with Revlon's innovative wax-free gel technology. Get true color clarity, vivid high-impact shine and a bouncy, lightweight feel. ",
+    "colors": [
+      {
+        "name": "HD Carenelian",
+        "hex_value": "#a41c42"
+      },
+      {
+        "name": "HD Fire Opal",
+        "hex_value": "#d8242f"
+      },
+      {
+        "name": "HD Garnet",
+        "hex_value": "#cc3b75"
+      },
+      {
+        "name": "HD Petalite",
+        "hex_value": "#f18085"
+      },
+      {
+        "name": "HD Pink Diamond",
+        "hex_value": "#c8a0bc"
+      },
+      {
+        "name": "HD Pink Ruby",
+        "hex_value": "#d9198b"
+      },
+      {
+        "name": "HD Pink Sapphire",
+        "hex_value": "#f07b98"
+      },
+      {
+        "name": "HD Rose Quartz",
+        "hex_value": "#b55d6d"
+      },
+      {
+        "name": "HD Smoky Quartz",
+        "hex_value": "#894643"
+      },
+      {
+        "name": "HD Smoky Topaz",
+        "hex_value": "#ce8886"
+      },
+      {
+        "name": "HD Strawberry Topaz",
+        "hex_value": "#e02246"
+      },
+      {
+        "name": "HD Sunstone",
+        "hex_value": "#ef5e5f"
+      },
+      {
+        "name": "HD Tourmaline",
+        "hex_value": "#eb4296"
+      }
+    ],
+    "sizes": [
+      "Default"
+    ],
+    "filterCategories": [
+      "lipstick"
+    ],
+    "brand": "revlon",
+    "isAvailable": true,
+    "price": 263760.0
+  },
+  {
+    "id": 95,
+    "imgSrc": "https://d3t32hsnjxo7q6.cloudfront.net/i/6b7a0f4f93839573bf046e149d4927df_ra,w158,h184_pa,w158,h184.png",
+    "imgHoverSrc": "https://d3t32hsnjxo7q6.cloudfront.net/i/6b7a0f4f93839573bf046e149d4927df_ra,w158,h184_pa,w158,h184.png",
+    "title": "NYX Jumbo Lip Pencil",
+    "description": "NYX Jumbo Lip Pencil is a radiant lip liner that also doubles as a lipstick. NYX Jumbo Lip Pencils infuse lips with alluring, nourishing color, and help you create a perfect pout. Features:Line, define and color with one jumbo pencilFormulated with mineral oil which does not dry out your lipsGoes on smoothly for easy applicationComes in a variety of seductive shades",
+    "colors": [
+      {
+        "name": "Chaos (JLP724) Strawberry Pink (Cream)",
+        "hex_value": "#C1486C"
+      },
+      {
+        "name": "Fuschia",
+        "hex_value": "#C27273"
+      },
+      {
+        "name": "Hera (JLP722) Iridescent Soft Fuchsia (Pearl)",
+        "hex_value": "#C9528C"
+      },
+      {
+        "name": "Honey Nectar (JLP720) Soft Brown",
+        "hex_value": "#BB5F60"
+      },
+      {
+        "name": "Hot Red (JLP704) Bright Blue-Red (Cream)",
+        "hex_value": "#AA202E"
+      },
+      {
+        "name": "Iced Coffee (JLP711) Deep Beige (Cream)",
+        "hex_value": "#975D4F"
+      },
+      {
+        "name": "Pecan",
+        "hex_value": "#A1605E"
+      }
+    ],
+    "sizes": [
+      "Default"
+    ],
+    "filterCategories": [
+      "lipstick"
+    ],
+    "brand": "nyx",
+    "isAvailable": true,
+    "price": 143760.0
+  },
+  {
+    "id": 94,
+    "imgSrc": "https://d3t32hsnjxo7q6.cloudfront.net/i/1855452da6a7fb08fe4154311ccb3369_ra,w158,h184_pa,w158,h184.jpeg",
+    "imgHoverSrc": "https://d3t32hsnjxo7q6.cloudfront.net/i/1855452da6a7fb08fe4154311ccb3369_ra,w158,h184_pa,w158,h184.jpeg",
+    "title": "Cargo Cosmetics ColorStick",
+    "description": "Cargo Cosmetics ColorSticks are an oil-free, cream colour stick that blends effortlessly to eyes, \ncheeks and lips, for a natural, monochromatic look.  The velvety, \nultra-light texture blends flawlessly onto the skin for an “airbrushed” \nfinish.  Cheeks appear smooth and flawless.  The cream-to-powder formula\n sets for an exceptionally longwearing finish and never settles into \nfine lines.  The dial-up stick makes application a breeze.\nAvailable in 5 shades:  Santorini, Key West and Maui give a natural and \npretty colour to the cheeks, eyes and lips.  St. Tropez offers sheer \nbronze glow perfect for giving a soft tan glow or sculpting the \ncheekbones.  Champagne is a warm highlighter that is ideal for \nhighlighting key areas of the face.   \n\nFeatures and Benefits\nThe make-up you’re wearing when you’re not wearing make-upA three-in-one cream-to-powder colour stick for the eyes, lips and cheeks The simplicity of multi-use colour in a convenient dial-up stickA velvety, ultra-light texture that blends flawlessly onto the skin for an “airbrushed” finishThe cream-to-powder formula sets for an exceptionally longwearing finish and never settles into fine linesResults in the ultimate nude glow that seems to come from withinDelivers a glowing finish that is never greasy and exceptionally long lastingOIL-FREEHow to Use: Application is versatile. Apply it directly from the stick, blending \nwith your fingers or a foundation brush. Or use a brush directly on the \nproduct and then blend with the brush onto your cheeks.Ingredients: Isopropyl Myristate,Mica, Ethylhexyl Palmitate, Isopropyl Stearate, \nHDI/Trimethylol Hexyllactone Crosspolymer, Polymethylsilsesquioxane, \nSynthetic Wax, CI 77891 (Titanium Dioxide), Ozokerite,  CI 77491 (Iron \nOxides), CI 75470 (Carmine).",
+    "colors": [
+      {
+        "name": "Champagne",
+        "hex_value": "#F7E4C6"
+      },
+      {
+        "name": "Key West",
+        "hex_value": "#F8C9BF"
+      },
+      {
+        "name": "Maui",
+        "hex_value": "#EF8087"
+      },
+      {
+        "name": "Santorini",
+        "hex_value": "#FBBBD3"
+      },
+      {
+        "name": "St. Tropez",
+        "hex_value": "#FEC7CC"
+      }
+    ],
+    "sizes": [
+      "Default"
+    ],
+    "filterCategories": [
+      "lipstick"
+    ],
+    "brand": "cargo cosmetics",
+    "isAvailable": true,
+    "price": 768000.0
+  },
+  {
+    "id": 93,
+    "imgSrc": "https://d3t32hsnjxo7q6.cloudfront.net/i/4992a5ad01b474ae1de4a955d6224aca_ra,w158,h184_pa,w158,h184.jpeg",
+    "imgHoverSrc": "https://d3t32hsnjxo7q6.cloudfront.net/i/4992a5ad01b474ae1de4a955d6224aca_ra,w158,h184_pa,w158,h184.jpeg",
+    "title": "Revlon ColorBurst Lacquer Balm",
+    "description": "Revlon ColorBurst Lacquer Balm offers high shine with balm-like \nmoisture!  Packaged in an adorable chubby crayon, this Lacquer balm is infused with a Triple Butter Complex of Shea, Mango and \nCoconut Butter.",
+    "colors": [
+      {
+        "name": "Coy",
+        "hex_value": "#BF7061"
+      },
+      {
+        "name": "Demure",
+        "hex_value": "#E58674"
+      },
+      {
+        "name": "Enticing",
+        "hex_value": "#8E4852"
+      },
+      {
+        "name": "Provocative",
+        "hex_value": "#A30017"
+      }
+    ],
+    "sizes": [
+      "Default"
+    ],
+    "filterCategories": [
+      "lipstick"
+    ],
+    "brand": "revlon",
+    "isAvailable": true,
+    "price": 275760.0
+  },
+  {
+    "id": 92,
+    "imgSrc": "https://d3t32hsnjxo7q6.cloudfront.net/i/5e51a2c8ce9316c8342ac47fdc0ebd1d_ra,w158,h184_pa,w158,h184.jpeg",
+    "imgHoverSrc": "https://d3t32hsnjxo7q6.cloudfront.net/i/5e51a2c8ce9316c8342ac47fdc0ebd1d_ra,w158,h184_pa,w158,h184.jpeg",
+    "title": "Cargo Cosmetics Essential Lip Color",
+    "description": "Cargo Cosmetics Essential Lip Color has a smooth, creamy and lightweight formula that offers high pigment \npayoff while leaving lips plump and perfectly hydrated throughout the \nday. Olive oil, Shea Butter and Jojoba oil provide essential moisture \nwhile plumping peptides offer instant fullness.\n \nFeatures:\nRich Emollients of olive oil, jojoba and shea butter flood lips with\n essential moisture, enhancing the feel and wear of the lipstick.Maxi Lip greatly increases lip moisture as it reinforces the \nconnective tissue of the lips. Instantly lips appear fuller and more \nvoluminous.Gluten FreeShade Range: Ingredients: Hydrogenated Polyisobutene, Phytosteryl/Isostearyl/Cetyl/Stearyl/Behenyl\n Dimer Dilinoleate, Polyethylene, Bis-Diglyceryl Polyacyladipate-2, \nOctyldodecanol, Triisostearin, Phenyl Trimethicone, Hydrated Silica, \nSqualane, Microcrystalline Wax (Cera Microcristallina), Pentaerythrityl \nTetraisostearate, Ethylhexyl Palmitate, Tribehenin, Sorbitan \nIsostearate, Palmitoyl Oligopeptide, Hydrogenated Olive Oil, Olea \nEuropaea (Olive) Fruit Oil, Olea Europaea (Olive) Oil Unsaponifiables, \nTheobroma Cacao (Cocoa) Seed Butter, Simmondsia Chinensis (Jojoba) Seed \nOil, Persea Butyrospermum Parkii (Shea Butter), Gratissima (Avocado) \nOil, Pentaerythrityl Tetra-Di-T-Butyl Hydroxyhydrocinnamate, Tocopheryl \nAcetate, Tocopherol, Tetrahexyldecyl Ascorbate, Vp/Eicosene Copolymer, \nVp/Hexadecene Copolymer, Acrylates Copolymer, Polyethylene \nTerephthalate, Synthetic Fluorphlogopite, Calcium Sodium Borosilicate, \nCalcium Aluminum Borosilicate, Tin Oxide, Silica. May Contain (+/-): \nMica, Titanium Dioxide (Ci 77891), Iron Oxides (Ci 77491, Ci 77492, Ci \n77499), Carmine (Ci 75470), Manganese Violet (Ci 77742), Red 6 (Ci \n15850), Red 7 Lake (Ci 15850), Red 21 (Ci 45380), Red 27 (Ci 45410), Red\n 28 Lake (Ci 45410), Red 30 Lake (Ci 77360), Red 33 Lake (Ci 17200), \nOrange 5 (Ci 45370), Yellow 5 Lake (Ci 45370), Yellow 6 Lake (Ci 15985),\n Blue 1 Lake (Ci 42090).\n",
+    "colors": [
+      {
+        "name": "Bermuda (Nude Pink)",
+        "hex_value": "#EBACA3"
+      },
+      {
+        "name": "Bombay (Shimmery Rose)",
+        "hex_value": "#E07875"
+      },
+      {
+        "name": "Bordeaux (Deep Wine)",
+        "hex_value": "#6F1E2C"
+      },
+      {
+        "name": "Dubai (Burnt Nude)",
+        "hex_value": "#CB705D"
+      },
+      {
+        "name": "Kyoto (Baby Pink)",
+        "hex_value": "#E379A1"
+      },
+      {
+        "name": "Las Vegas (Pale Beige)",
+        "hex_value": "#E7A680"
+      },
+      {
+        "name": "Napa (Rich Berry)",
+        "hex_value": "#A32950"
+      },
+      {
+        "name": "Palm Beach (Pink Coral)",
+        "hex_value": "#DA506A"
+      },
+      {
+        "name": "Paris (Deep Red)",
+        "hex_value": "#BC2A2D"
+      },
+      {
+        "name": "Punta Cana (Bright Fuscia)",
+        "hex_value": "#DF5A99"
+      },
+      {
+        "name": "Santa Fe (Deep Apricot)",
+        "hex_value": "#E1A2A3"
+      },
+      {
+        "name": "Sedona (Bright Coral)",
+        "hex_value": "#DB3B3D"
+      }
+    ],
+    "sizes": [
+      "Default"
+    ],
+    "filterCategories": [
+      "lipstick"
+    ],
+    "brand": "cargo cosmetics",
+    "isAvailable": true,
+    "price": 576000.0
+  },
+  {
+    "id": 91,
+    "imgSrc": "https://d3t32hsnjxo7q6.cloudfront.net/i/5d0df885cb5721b74b32f64884736ce4_ra,w158,h184_pa,w158,h184.jpg",
+    "imgHoverSrc": "https://d3t32hsnjxo7q6.cloudfront.net/i/5d0df885cb5721b74b32f64884736ce4_ra,w158,h184_pa,w158,h184.jpg",
+    "title": "L'Oreal Paris Colour Riche Collection Exclusive Pure Reds",
+    "description": "Inspired by L’Oréal Paris muses, Colour Riche introduces six custom-made, enriching matte red shades tailored to enhance a variety of complexions. Play on a coordinated look by pairing with red nails for an absolute statement.Features:A matte that reveals red's colour intensitySoft intense velvet formulationFormulated with velvet spheres, pure pigments, jojoba oil",
+    "colors": [
+      {
+        "name": "Blake's Red",
+        "hex_value": "#AB0C19"
+      },
+      {
+        "name": "Eva's Red",
+        "hex_value": "#8E1305"
+      },
+      {
+        "name": "Freida's Red",
+        "hex_value": "#C5004B"
+      },
+      {
+        "name": "Julianne's Red",
+        "hex_value": "#D82A37"
+      },
+      {
+        "name": "Liya's Red",
+        "hex_value": "#C90E32"
+      },
+      {
+        "name": "Zoe's Red",
+        "hex_value": "#782B2F"
+      }
+    ],
+    "sizes": [
+      "Default"
+    ],
+    "filterCategories": [
+      "lipstick"
+    ],
+    "brand": "l'oreal",
+    "isAvailable": true,
+    "price": 263760.0
+  },
+  {
+    "id": 90,
+    "imgSrc": "https://d3t32hsnjxo7q6.cloudfront.net/i/7e72bc983d7988c6e9b9f35d7703fbe4_ra,w158,h184_pa,w158,h184.png",
+    "imgHoverSrc": "https://d3t32hsnjxo7q6.cloudfront.net/i/7e72bc983d7988c6e9b9f35d7703fbe4_ra,w158,h184_pa,w158,h184.png",
+    "title": "NYX Extra Creamy Round Lipstick",
+    "description": "NYX Extra Creamy Round Lipstick is the classic, go-to lipstick for all occasions. From Pure Nude to Pink Lyric to Chic Red, Round Lipstick is available in a jaw-dropping variety of shades. Features:Formula offers a velvety textureMineral based to moisturize and condition lipsPigment packed saturated color Long-wearing and smudge resistant Available in a variety of coloursINGREDIENTS: Diisostearyl Malate, Bis-DiglycerylPolyacyladipate-2, Polyglyceryl-2 Triisostearate, Octyldodecanol, IsostearylIsostearate, Ethylhexyl Palmitate, Euphorbia Cerifera (Candelilla) Wax /Euphorbia Cerifera Cera / Cire de Candelilla, Ceresin, Beeswax / Cera Alba /Cire d’abeille, Polyisobutene, Polyethylene, Copernicia Cerifera (Carnauba) Wax/ Copernicia Cerifera Cera / Cire de Carnauba, Microcrystalline Wax / CeraMicrocristallina / Cire Microcristalline, Tocopheryl Acetate, BHA, Limonene,Fragrance / Parfum. MAY CONTAIN / PEUTCONTENIR (+/-): Mica, Titanium Dioxide (CI 77891), Iron Oxides (CI 77491,77492, 77499), Red 6 (CI 15850), Red 7 (CI 15850), Red 28 (CI 45410), Red 36(CI 12085), Blue 1 Lake (CI 42090), Yellow 5 Lake (CI 19140).",
+    "colors": [
+      {
+        "name": "Baby Pink",
+        "hex_value": "#DAA8C5"
+      },
+      {
+        "name": "Castle",
+        "hex_value": "#AB6BA0"
+      },
+      {
+        "name": "Chaos",
+        "hex_value": "#970015"
+      },
+      {
+        "name": "Chic (LSS563A) Blue-Toned Bubblegum Pink (Pearl)",
+        "hex_value": "#FF898F"
+      },
+      {
+        "name": "Chloe (LSS521) Iridescent Fuchsia (Pearl)",
+        "hex_value": "#CF337A"
+      },
+      {
+        "name": "Femme (LSS643) Bright Pink-Red (Cream)",
+        "hex_value": "#FA394C"
+      },
+      {
+        "name": "Fig (LSS640) Dark Neutral Pink (Cream)",
+        "hex_value": "#E46A79"
+      },
+      {
+        "name": "Fire (LSS599) Fire-Engine Blue-Toned Red (Cream)",
+        "hex_value": "#DC002C"
+      },
+      {
+        "name": "Flower (LSS619) Blue-Toned Medium Pink (Pearl)",
+        "hex_value": "#E96384"
+      },
+      {
+        "name": "Gala",
+        "hex_value": "#F08C8C"
+      },
+      {
+        "name": "Haute Melon",
+        "hex_value": "#FD6C65"
+      },
+      {
+        "name": "Indian Pink (LSS550) Peachy Pink with Gold Shimmer (Pearl)",
+        "hex_value": "#DE6463"
+      },
+      {
+        "name": "Margarita (LSS597) Shimmery Coral (Pearl)",
+        "hex_value": "#F96173"
+      },
+      {
+        "name": "Narcissus",
+        "hex_value": "#FC86AF"
+      },
+      {
+        "name": "Nyx (LSS507) Tangerine (Pearl)",
+        "hex_value": "#FE7C61"
+      },
+      {
+        "name": "Orange Soda (LSS588) Light Salmon Pink (Cream)",
+        "hex_value": "#E69F73"
+      },
+      {
+        "name": "Peach Bellini (LSS593A) Glittery Coral (Pearl)",
+        "hex_value": "#F76E64"
+      },
+      {
+        "name": "Power (LSS629) Blue-Toned Mauve (Cream)",
+        "hex_value": "#CD859D"
+      },
+      {
+        "name": "Pure Nude (LSS518A) Neutral Baby Pink (Cream)",
+        "hex_value": "#E6A28E"
+      },
+      {
+        "name": "Stella (LSS564A) Bright Yellow-Toned Pink (Cream)",
+        "hex_value": "#F58E7C"
+      },
+      {
+        "name": "Summer Love (LSS617) Beige with Soft Pink Undertones (Cream)",
+        "hex_value": "#DDA1A1"
+      },
+      {
+        "name": "Violet Ray (LSS561) Violet (Cream)",
+        "hex_value": "#7A3760"
+      },
+      {
+        "name": "Vitamin (LSS626) Shimmering Peach (Pearl)",
+        "hex_value": "#FA8F85"
+      }
+    ],
+    "sizes": [
+      "Default"
+    ],
+    "filterCategories": [
+      "lipstick"
+    ],
+    "brand": "nyx",
+    "isAvailable": true,
+    "price": 167760.0
+  },
+  {
+    "id": 89,
+    "imgSrc": "https://d3t32hsnjxo7q6.cloudfront.net/i/fb9e6485500135d94163577da4c3579b_ra,w158,h184_pa,w158,h184.png",
+    "imgHoverSrc": "https://d3t32hsnjxo7q6.cloudfront.net/i/fb9e6485500135d94163577da4c3579b_ra,w158,h184_pa,w158,h184.png",
+    "title": "Maybelline Color Sensational Rebel Bloom Lipcolour",
+    "description": "\n                       \n\tMaybelline Color Sensational® Rebel Bloom lipstick offers vivacious pastels in a super-saturated lipcolour. Enjoy the kicky bouquet of lip colors in \npinks, reds and mauves.  Features:Super-saturated pigments take fresh picked pastels to a new bright\nNever dull, washed out or shy\nHoney nectar adds a sumptuous feel\n\n\t\tApplication: Apply lipcolor starting in the center of your upper lip. Work\n from the center to the outer edges of your lip, following the contours \nof your mouth. Then glide across the entire bottom lip.\n\n\t\t\n\t\n\n                    ",
+    "colors": [
+      {
+        "name": "Barely Bloomed",
+        "hex_value": "#db967f"
+      },
+      {
+        "name": "Blushing Bud",
+        "hex_value": "#d37d79"
+      },
+      {
+        "name": "Coral Burst",
+        "hex_value": "#f05b4a"
+      },
+      {
+        "name": "Lilac Flush",
+        "hex_value": "#cd86b0"
+      },
+      {
+        "name": "Petal Pink",
+        "hex_value": "#ff8f9d"
+      },
+      {
+        "name": "Rose Rush",
+        "hex_value": "#bd2629"
+      }
+    ],
+    "sizes": [
+      "Default"
+    ],
+    "filterCategories": [
+      "lipstick"
+    ],
+    "brand": "maybelline",
+    "isAvailable": true,
+    "price": 239760.0
+  }
+
 ];
 export const products2 = [
   {
