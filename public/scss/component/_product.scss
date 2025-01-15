@@ -1407,6 +1407,13 @@
       font-weight: 400;
       color: rgba(0, 0, 0, 0.5);
     }
+    .price-out {
+      text-decoration: line-through;
+      display: inline-block;
+      margin-right: 5px;
+      font-weight: 400;
+      color: #545454;
+    }
     .new-price {
       color: var(--red_1);
     }

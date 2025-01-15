@@ -68,102 +68,18 @@ export default function Nav({ isArrow = true, textColor = "", Linkfs = "" }) {
             isMenuActive(demoItems) ? "activeMenu" : ""
           } `}
         >
-          Home
+          Trang chủ
         </a>
       </li>
       <li className="menu-item">
         <a
-          href="#"
+          href="/shop-filter-sidebar"
           className={`item-link ${Linkfs} ${textColor} ${
             isMenuActive(productsPages) ? "activeMenu" : ""
           } `}
         >
-          Shop
-          {isArrow ? <i className="icon icon-arrow-down" /> : ""}
+          Sản phẩm
         </a>
-        <div className="sub-menu mega-menu">
-          <div className="container">
-            <div className="row">
-              {productsPages.map((menu, index) => (
-                <div className="col-lg-2" key={index}>
-                  <div className="mega-menu-item">
-                    <div className="menu-heading">{menu.heading}</div>
-                    <ul className="menu-list">
-                      {menu.links.map((link, linkIndex) => (
-                        <li key={linkIndex}>
-                          <Link
-                            href={link.href}
-                            className={`menu-link-text link ${
-                              isMenuActive(link) ? "activeMenu" : ""
-                            }`}
-                          >
-                            {link.text}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              ))}
-              <div className="col-lg-3">
-                <div className="collection-item hover-img">
-                  <div className="collection-inner">
-                    <Link
-                      href={`/home-men`}
-                      className="collection-image img-style"
-                    >
-                      <Image
-                        className="lazyload"
-                        data-src="/images/collections/collection-1.jpg"
-                        alt="collection-demo-1"
-                        src="/images/collections/collection-1.jpg"
-                        width="1000"
-                        height="1215"
-                      />
-                    </Link>
-                    <div className="collection-content">
-                      <Link
-                        href={`/home-men`}
-                        className="tf-btn hover-icon btn-xl collection-title fs-16"
-                      >
-                        <span>Men</span>
-                        <i className="icon icon-arrow1-top-left" />
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-3">
-                <div className="collection-item hover-img">
-                  <div className="collection-inner">
-                    <Link
-                      href={`/shop-women`}
-                      className="collection-image img-style"
-                    >
-                      <Image
-                        className="lazyload"
-                        data-src="/images/collections/collection-2.jpg"
-                        alt="collection-demo-1"
-                        src="/images/collections/collection-2.jpg"
-                        width="500"
-                        height="607"
-                      />
-                    </Link>
-                    <div className="collection-content">
-                      <Link
-                        href={`/shop-women`}
-                        className="tf-btn btn-xl collection-title fs-16 hover-icon"
-                      >
-                        <span>Women</span>
-                        <i className="icon icon-arrow1-top-left" />
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </li>
       <li className="menu-item">
         <a
@@ -172,34 +88,12 @@ export default function Nav({ isArrow = true, textColor = "", Linkfs = "" }) {
             isMenuActive(productDetailPages) ? "activeMenu" : ""
           }`}
         >
-          Products
+          Best seller
           {isArrow ? <i className="icon icon-arrow-down" /> : ""}
         </a>
         <div className="sub-menu mega-menu">
           <div className="container">
             <div className="row">
-              {productDetailPages.map((menuItem, index) => (
-                <div key={index} className="col-lg-2">
-                  <div className="mega-menu-item">
-                    <div className="menu-heading">{menuItem.heading}</div>
-                    <ul className="menu-list">
-                      {menuItem.links.map((linkItem, linkIndex) => (
-                        <li key={linkIndex}>
-                          <Link
-                            href={linkItem.href}
-                            className={`menu-link-text link position-relative  ${
-                              isMenuActive(linkItem) ? "activeMenu" : ""
-                            }`}
-                          >
-                            {linkItem.text}
-                            {linkItem.extra}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              ))}
               <div className="col-lg-4">
                 <div className="menu-heading">Best seller</div>
                 <div className="hover-sw-nav hover-sw-2">
@@ -256,33 +150,6 @@ export default function Nav({ isArrow = true, textColor = "", Linkfs = "" }) {
                 >
                   {linkItem.text}
                   {linkItem.extra}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </li>
-      <li className="menu-item position-relative">
-        <a
-          href="#"
-          className={`item-link ${Linkfs} ${textColor}  ${
-            isMenuActive(blogLinks) ? "activeMenu" : ""
-          }`}
-        >
-          Blog
-          {isArrow ? <i className="icon icon-arrow-down" /> : ""}
-        </a>
-        <div className="sub-menu links-default">
-          <ul className="menu-list">
-            {blogLinks.map((linkItem, index) => (
-              <li key={index}>
-                <Link
-                  href={linkItem.href}
-                  className={`menu-link-text link text_black-2  ${
-                    isMenuActive(linkItem) ? "activeMenu" : ""
-                  }`}
-                >
-                  {linkItem.text}
                 </Link>
               </li>
             ))}

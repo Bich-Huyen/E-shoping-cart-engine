@@ -2,21 +2,10 @@ import { products1 } from "@/data/products";
 import React, { useState, useEffect } from "react";
 import { ProductCard } from "../shopCards/ProductCard";
 
-import productsPromise from "@/data/fetchProducts";
-
 export default function ProductGrid({
   gridItems = 4,
-  allproducts,
+  allproducts = products1,
 }) {
-
-  const [products, setProducts] = useState([]);
-  const [error, setError] = useState('');
-
-  useEffect(() => {
-    productsPromise
-      .then(data => { setProducts(data)})
-      .catch(err => setError('Failed to fetch products'));
-  })
 
   return (
     <>
@@ -28,7 +17,7 @@ export default function ProductGrid({
           marginBottom: "24px",
         }}
       >
-        {allproducts.length} product(s) found
+        {allproducts.length} sản phẩm được tìm thấy
       </div>
       <div className="grid-layout wrapper-shop" data-grid={`grid-${gridItems}`}>
         {/* card product 1 */}

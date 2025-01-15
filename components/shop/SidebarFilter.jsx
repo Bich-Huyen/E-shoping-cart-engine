@@ -1,44 +1,371 @@
+// "use client";
+
+// import { useEffect, useState } from "react";
+// import categoriesPromise from "@/data/fetchCategories";
+// import productsPromise from "@/data/fetchProducts";
+
+
+// const filterColors = [
+//   { name: "Orange", colorClass: "bg_orange-3" },
+//   { name: "Black", colorClass: "bg_dark" },
+//   { name: "White", colorClass: "bg_white" },
+//   { name: "Brown", colorClass: "bg_brown" },
+//   { name: "Light Purple", colorClass: "bg_purple" },
+//   { name: "Light Green", colorClass: "bg_light-green" },
+//   { name: "Pink", colorClass: "bg_purple" },
+//   { name: "Blue", colorClass: "bg_blue-2" },
+//   { name: "Dark Blue", colorClass: "bg_dark-blue" },
+//   { name: "Light Grey", colorClass: "bg_light-grey" },
+//   { name: "Beige", colorClass: "bg_beige" },
+//   { name: "Light Blue", colorClass: "bg_light-blue" },
+//   { name: "Grey", colorClass: "bg_grey" },
+//   { name: "Light Pink", colorClass: "bg_light-pink" },
+// ];
+// const brands = ["Ecomus", "M&H"];
+// const availabilities = [
+//   { id: 1, isAvailable: true, text: "Available", count: 14 },
+//   { id: 2, isAvailable: false, text: "Out of Stock", count: 2 },
+// ];
+// const sizes = ["S", "M", "L", "XL"];
+// import Slider from "rc-slider";
+// import Link from "next/link";
+
+// export default function SidebarFilter({ setProducts }) {
+//   const [price, setPrice] = useState([0, 999999999]);
+
+//   const [categories, setCategories] = useState([]);
+//   const [productList, setProductList] = useState([]);
+
+
+//   const [error, setError] = useState(null);
+
+//   const handlePrice = (value) => {
+//     setPrice(value);
+//   };
+//   const [selectedColors, setSelectedColors] = useState([]);
+//   const handleSelectColor = (color) => {
+//     if (selectedColors.includes(color)) {
+//       setSelectedColors((pre) => [...pre.filter((el) => el != color)]);
+//     } else {
+//       setSelectedColors((pre) => [...pre, color]);
+//     }
+//   };
+//   const [selectedBrands, setSelectedBrands] = useState([]);
+//   const handleSelectBrand = (brand) => {
+//     if (selectedBrands.includes(brand)) {
+//       setSelectedBrands((pre) => [...pre.filter((el) => el != brand)]);
+//     } else {
+//       setSelectedBrands((pre) => [...pre, brand]);
+//     }
+//   };
+//   const [selectedAvailabilities, setSelectedAvailabilities] = useState([]);
+//   const handleSelectAvailabilities = (availability) => {
+//     if (selectedAvailabilities.includes(availability)) {
+//       setSelectedAvailabilities((pre) => [
+//         ...pre.filter((el) => el != availability),
+//       ]);
+//     } else {
+//       setSelectedAvailabilities((pre) => [...pre, availability]);
+//     }
+//   };
+//   const [selectedSizes, setSelectedSizes] = useState([]);
+//   const handleSelectSizes = (size) => {
+//     if (selectedSizes.includes(size)) {
+//       setSelectedSizes((pre) => [...pre.filter((el) => el != size)]);
+//     } else {
+//       setSelectedSizes((pre) => [...pre, size]);
+//     }
+//   };
+
+//   useEffect(() => {
+//     let filteredArrays = [];
+
+
+//     categoriesPromise
+//       .then(data => setCategories(data))
+//       .catch(err => setError('Failed to fetch categories'));
+
+//       productsPromise
+//       .then((data) => {
+//         setProductList(data);
+//         setProducts(data); // Lưu danh sách sản phẩm ban đầu
+//       })
+//       .catch((error) => {
+//         setError("Unable to fetch products");
+//       });
+
+//     filteredArrays = [
+//       ...filteredArrays,
+//       [
+//         ...productList.filter(
+//           (elm) => elm.price >= price[0] && elm.price <= price[1]
+//         ),
+//       ],
+//     ];
+//     // console.log(filteredByPrice, "filteredByPrice");
+//     if (selectedColors.length) {
+//       filteredArrays = [
+//         ...filteredArrays,
+//         [
+//           ...productList.filter((elm) =>
+//             elm.colors
+//               ?.map((el2) => el2.name)
+//               .some((el3) => selectedColors.includes(el3))
+//           ),
+//         ],
+//       ];
+//     }
+
+//     // console.log(filteredByselectedColors, "filteredByselectedColors");
+//     if (selectedBrands.length) {
+//       filteredArrays = [
+//         ...filteredArrays,
+//         [...productList.filter((elm) => selectedBrands.includes(elm.brand))],
+//       ];
+//     }
+
+//     // console.log(filteredByselectedBrands, "filteredByselectedBrands");
+//     if (selectedSizes.length) {
+//       filteredArrays = [
+//         ...filteredArrays,
+//         [
+//           ...productList.filter((elm) =>
+//             elm.sizes?.some((elm2) => selectedSizes.includes(elm2))
+//           ),
+//         ],
+//       ];
+//     }
+
+//     // console.log(filteredByselectedSizes);
+//     if (selectedAvailabilities.length) {
+//       filteredArrays = [
+//         ...filteredArrays,
+//         [
+//           ...productList.filter((elm) =>
+//             selectedAvailabilities
+//               .map((elm3) => elm3.isAvailable)
+//               .some((elm4) => elm4 == elm.isAvailable)
+//           ),
+//         ],
+//       ];
+//     }
+
+//     const commonItems = productList.filter((item) =>
+//       filteredArrays.every((array) => array.includes(item))
+//     );
+//     setProducts(commonItems);
+//   }, [
+//     price,
+//     selectedColors,
+//     selectedBrands,
+//     selectedAvailabilities,
+//     selectedSizes,
+//   ]);
+//   const clearFilter = () => {
+//     setSelectedColors([]);
+//     setSelectedBrands([]);
+//     setSelectedAvailabilities([]);
+//     setSelectedSizes([]);
+//     setPrice([10, 20]);
+//   };
+
+//   return (
+//     <div className="tf-shop-sidebar wrap-sidebar-mobile ">
+//       <div className="widget-facet wd-categories">
+//         <div
+//           className="facet-title"
+//           data-bs-target="#categories"
+//           data-bs-toggle="collapse"
+//           aria-expanded="true"
+//           aria-controls="categories"
+//         >
+//           <span>Product categories</span>
+//           <span className="icon icon-arrow-up" />
+//         </div>
+//         <div id="categories" className="collapse show">
+//           <ul className="list-categoris current-scrollbar mb_36">
+//             {categories.map((category) => (
+//               <li key={category.id} className={`cate-item`}>
+//                 {category.link ? (
+//                   <Link href={category.link}>
+//                     <span>{category.name}</span>
+//                   </Link>
+//                 ) : (
+//                   <a href="#">
+//                     <span>{category.name}</span>
+//                   </a>
+//                 )}
+//               </li>
+//             ))}
+//           </ul>
+//         </div>
+//       </div>
+//       <form action="#" id="facet-filter-form" className="facet-filter-form">
+//         <div className="widget-facet">
+//           <div
+//             className="facet-title"
+//             data-bs-target="#availability"
+//             data-bs-toggle="collapse"
+//             aria-expanded="true"
+//             aria-controls="availability"
+//           >
+//             <span>Availability</span>
+//             <span className="icon icon-arrow-up" />
+//           </div>
+//           <div id="availability" className="collapse show">
+//             <ul className="tf-filter-group current-scrollbar mb_36">
+//               {availabilities.map((availability) => (
+//                 <li
+//                   key={availability.id}
+//                   className="list-item d-flex gap-12 align-items-center"
+//                   onClick={() => {
+//                     console.log("first");
+//                     handleSelectAvailabilities(availability);
+//                   }}
+//                 >
+//                   <input
+//                     type="radio"
+//                     className="tf-check"
+//                     readOnly
+//                     checked={selectedAvailabilities.includes(availability)}
+//                   />
+//                   <label className="label">
+//                     <span>{availability.text}</span>&nbsp;
+//                     <span>
+//                       (
+//                       {
+//                         productList.filter(
+//                           (elm) => elm.isAvailable == availability.isAvailable
+//                         ).length
+//                       }
+//                       )
+//                     </span>
+//                   </label>
+//                 </li>
+//               ))}
+//             </ul>
+//           </div>
+//         </div>
+//         {/* <div className="widget-facet wrap-price">
+//           <div
+//             className="facet-title"
+//             data-bs-target="#price"
+//             data-bs-toggle="collapse"
+//             aria-expanded="true"
+//             aria-controls="price"
+//           >
+//             <span>Price</span>
+//             <span className="icon icon-arrow-up" />
+//           </div>
+//           <div id="price" className="collapse show">
+//             <div className="widget-price filter-price">
+//               <Slider
+//                 formatLabel={() => ``}
+//                 range
+//                 max={22}
+//                 min={5}
+//                 defaultValue={price}
+//                 onChange={(value) => handlePrice(value)}
+//                 id="slider"
+//               />
+//               <div className="box-title-price">
+//                 <span className="title-price">Price :</span>
+//                 <div className="caption-price">
+//                   <div>
+//                     <span>$</span>
+//                     <span className="min-price">{price[0]}</span>
+//                   </div>
+//                   <span>-</span>
+//                   <div>
+//                     <span>$</span>
+//                     <span className="max-price">{price[1]}</span>
+//                   </div>
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+//         </div> */}
+//         <div className="widget-facet">
+//           <div
+//             className="facet-title"
+//             data-bs-target="#brand"
+//             data-bs-toggle="collapse"
+//             aria-expanded="true"
+//             aria-controls="brand"
+//           >
+//             <span>Brand</span>
+//             <span className="icon icon-arrow-up" />
+//           </div>
+//           <div id="brand" className="collapse show">
+//             <ul className="tf-filter-group current-scrollbar mb_36">
+//               {brands.map((brand) => (
+//                 <li
+//                   key={brand}
+//                   className="list-item d-flex gap-12 align-items-center"
+//                   onClick={() => handleSelectBrand(brand)}
+//                 >
+//                   <input
+//                     type="radio"
+//                     className="tf-check"
+//                     readOnly
+//                     checked={selectedBrands.includes(brand)}
+//                   />
+//                   <label className="label">
+//                     <span>{brand}</span>&nbsp;
+//                     <span>
+//                       ({productList.filter((elm) => elm.brand == brand).length})
+//                     </span>
+//                   </label>
+//                 </li>
+//               ))}
+//             </ul>
+//           </div>
+//         </div>
+//       </form>
+//       <div className="mt-5"></div>
+//       <a
+//         className="tf-btn style-2 btn-fill rounded animate-hover-btn"
+//         onClick={clearFilter}
+//       >
+//         Clear Filter
+//       </a>
+//     </div>
+//   );
+// }
+
 "use client";
 
 import { useEffect, useState } from "react";
-import categoriesPromise from "@/data/fetchCategories";
-import productsPromise from "@/data/fetchProducts";
-
-
-const filterColors = [
-  { name: "Orange", colorClass: "bg_orange-3" },
-  { name: "Black", colorClass: "bg_dark" },
-  { name: "White", colorClass: "bg_white" },
-  { name: "Brown", colorClass: "bg_brown" },
-  { name: "Light Purple", colorClass: "bg_purple" },
-  { name: "Light Green", colorClass: "bg_light-green" },
-  { name: "Pink", colorClass: "bg_purple" },
-  { name: "Blue", colorClass: "bg_blue-2" },
-  { name: "Dark Blue", colorClass: "bg_dark-blue" },
-  { name: "Light Grey", colorClass: "bg_light-grey" },
-  { name: "Beige", colorClass: "bg_beige" },
-  { name: "Light Blue", colorClass: "bg_light-blue" },
-  { name: "Grey", colorClass: "bg_grey" },
-  { name: "Light Pink", colorClass: "bg_light-pink" },
+import Slider from "rc-slider";
+import { products1 } from "@/data/products";
+import Link from "next/link";
+const categories = [
+  { id: 1, name: "Fashion", isActive: true, link: "/shop-default" },
+  { id: 2, name: "Men", isActive: false, link: "/shop-men" },
+  { id: 3, name: "Women", isActive: false, link: "/shop-women" },
+  { id: 4, name: "Denim", isActive: false, link: "/shop-default" },
+  { id: 5, name: "Dress", isActive: false, link: "/shop-default" },
 ];
-const brands = ["Ecomus", "M&H"];
+
+const filterCategories = Array.from(
+  new Set(products1.flatMap(product => product.filterCategories))
+);
+
+const filterColors = Array.from(
+  products1.flatMap(product => product.colors || [])
+          .reduce((acc, color) => acc.set(color.name, color), new Map())
+          .values()
+);
+
+const brands = Array.from(new Set(products1.map(product => product.brand)));
+
 const availabilities = [
   { id: 1, isAvailable: true, text: "Available", count: 14 },
   { id: 2, isAvailable: false, text: "Out of Stock", count: 2 },
 ];
-const sizes = ["S", "M", "L", "XL"];
-import Slider from "rc-slider";
-import Link from "next/link";
 
 export default function SidebarFilter({ setProducts }) {
-  const [price, setPrice] = useState([10, 20]);
-
-  const [categories, setCategories] = useState([]);
-  const [productList, setProductList] = useState([]);
-
-
-  const [error, setError] = useState(null);
-
+  const [price, setPrice] = useState([0, 99999999]);
   const handlePrice = (value) => {
     setPrice(value);
   };
@@ -77,27 +404,22 @@ export default function SidebarFilter({ setProducts }) {
     }
   };
 
+  const [selectedCategories, setSelectedCategories] = useState([]);
+  const handleSelectedCategories = (category) => {
+    if (selectedCategories.includes(category)) {
+      setSelectedCategories((pre) => [...pre.filter((el) => el != category)]);
+    } else {
+      setSelectedCategories((pre) => [...pre, category])
+    }
+  }
+
   useEffect(() => {
     let filteredArrays = [];
-
-
-    categoriesPromise
-      .then(data => setCategories(data))
-      .catch(err => setError('Failed to fetch categories'));
-
-      productsPromise
-      .then((data) => {
-        setProductList(data);
-        setProducts(data); // Lưu danh sách sản phẩm ban đầu
-      })
-      .catch((error) => {
-        setError("Unable to fetch products");
-      });
 
     filteredArrays = [
       ...filteredArrays,
       [
-        ...productList.filter(
+        ...products1.filter(
           (elm) => elm.price >= price[0] && elm.price <= price[1]
         ),
       ],
@@ -107,7 +429,7 @@ export default function SidebarFilter({ setProducts }) {
       filteredArrays = [
         ...filteredArrays,
         [
-          ...productList.filter((elm) =>
+          ...products1.filter((elm) =>
             elm.colors
               ?.map((el2) => el2.name)
               .some((el3) => selectedColors.includes(el3))
@@ -120,7 +442,7 @@ export default function SidebarFilter({ setProducts }) {
     if (selectedBrands.length) {
       filteredArrays = [
         ...filteredArrays,
-        [...productList.filter((elm) => selectedBrands.includes(elm.brand))],
+        [...products1.filter((elm) => selectedBrands.includes(elm.brand))],
       ];
     }
 
@@ -129,11 +451,22 @@ export default function SidebarFilter({ setProducts }) {
       filteredArrays = [
         ...filteredArrays,
         [
-          ...productList.filter((elm) =>
+          ...products1.filter((elm) =>
             elm.sizes?.some((elm2) => selectedSizes.includes(elm2))
           ),
         ],
       ];
+    }
+
+    if (selectedCategories.length) {
+      filteredArrays = [
+        ...filteredArrays,
+        [
+          ...products1.filter((elm) => 
+            elm.filterCategories.some((elm2) => selectedCategories.includes(elm2))
+          ),
+        ]
+      ]
     }
 
     // console.log(filteredByselectedSizes);
@@ -141,7 +474,7 @@ export default function SidebarFilter({ setProducts }) {
       filteredArrays = [
         ...filteredArrays,
         [
-          ...productList.filter((elm) =>
+          ...products1.filter((elm) =>
             selectedAvailabilities
               .map((elm3) => elm3.isAvailable)
               .some((elm4) => elm4 == elm.isAvailable)
@@ -150,12 +483,13 @@ export default function SidebarFilter({ setProducts }) {
       ];
     }
 
-    const commonItems = productList.filter((item) =>
+    const commonItems = products1.filter((item) =>
       filteredArrays.every((array) => array.includes(item))
     );
     setProducts(commonItems);
   }, [
     price,
+    selectedCategories,
     selectedColors,
     selectedBrands,
     selectedAvailabilities,
@@ -164,6 +498,7 @@ export default function SidebarFilter({ setProducts }) {
   const clearFilter = () => {
     setSelectedColors([]);
     setSelectedBrands([]);
+    setSelectedCategories([]);
     setSelectedAvailabilities([]);
     setSelectedSizes([]);
     setPrice([10, 20]);
@@ -172,35 +507,44 @@ export default function SidebarFilter({ setProducts }) {
   return (
     <div className="tf-shop-sidebar wrap-sidebar-mobile ">
       <div className="widget-facet wd-categories">
-        <div
-          className="facet-title"
-          data-bs-target="#categories"
-          data-bs-toggle="collapse"
-          aria-expanded="true"
-          aria-controls="categories"
-        >
-          <span>Product categories</span>
-          <span className="icon icon-arrow-up" />
-        </div>
-        <div id="categories" className="collapse show">
-          <ul className="list-categoris current-scrollbar mb_36">
-            {categories.map((category) => (
-              <li key={category.id} className={`cate-item`}>
-                {category.link ? (
-                  <Link href={category.link}>
-                    <span>{category.name}</span>
-                  </Link>
-                ) : (
-                  <a href="#">
-                    <span>{category.name}</span>
-                  </a>
-                )}
-              </li>
-            ))}
-          </ul>
-        </div>
       </div>
       <form action="#" id="facet-filter-form" className="facet-filter-form">
+      <div className="widget-facet">
+          <div
+            className="facet-title"
+            data-bs-target="#categories"
+            data-bs-toggle="collapse"
+            aria-expanded="true"
+            aria-controls="categories"
+          >
+            <span>Danh mục sản phẩm</span>
+            <span className="icon icon-arrow-up" />
+          </div>
+          <div id="categories" className="collapse show">
+            <ul className="tf-filter-group current-scrollbar mb_36">
+            {filterCategories.map((categories) => (
+                <li
+                  key={categories}
+                  className="list-item d-flex gap-12 align-items-center"
+                  onClick={() => handleSelectedCategories(categories)}
+                >
+                  <input
+                    type="radio"
+                    className="tf-check"
+                    readOnly
+                    checked={selectedCategories.includes(categories)}
+                  />
+                  <label className="label">
+                    <span>{categories}</span>&nbsp;
+                    <span>
+                      ({products1.filter((elm) => elm.filterCategories == categories).length})
+                    </span>
+                  </label>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
         <div className="widget-facet">
           <div
             className="facet-title"
@@ -209,7 +553,7 @@ export default function SidebarFilter({ setProducts }) {
             aria-expanded="true"
             aria-controls="availability"
           >
-            <span>Availability</span>
+            <span>Tồn kho</span>
             <span className="icon icon-arrow-up" />
           </div>
           <div id="availability" className="collapse show">
@@ -234,7 +578,7 @@ export default function SidebarFilter({ setProducts }) {
                     <span>
                       (
                       {
-                        productList.filter(
+                        products1.filter(
                           (elm) => elm.isAvailable == availability.isAvailable
                         ).length
                       }
@@ -254,7 +598,7 @@ export default function SidebarFilter({ setProducts }) {
             aria-expanded="true"
             aria-controls="price"
           >
-            <span>Price</span>
+            <span>Giá</span>
             <span className="icon icon-arrow-up" />
           </div>
           <div id="price" className="collapse show">
@@ -272,13 +616,11 @@ export default function SidebarFilter({ setProducts }) {
                 <span className="title-price">Price :</span>
                 <div className="caption-price">
                   <div>
-                    <span>$</span>
-                    <span className="min-price">{price[0]}</span>
+                    <span className="min-price">{price[0].toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</span>
                   </div>
                   <span>-</span>
                   <div>
-                    <span>$</span>
-                    <span className="max-price">{price[1]}</span>
+                    <span className="max-price">{price[1].toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</span>
                   </div>
                 </div>
               </div>
@@ -293,7 +635,7 @@ export default function SidebarFilter({ setProducts }) {
             aria-expanded="true"
             aria-controls="brand"
           >
-            <span>Brand</span>
+            <span>Nhãn hiệu</span>
             <span className="icon icon-arrow-up" />
           </div>
           <div id="brand" className="collapse show">
@@ -313,7 +655,7 @@ export default function SidebarFilter({ setProducts }) {
                   <label className="label">
                     <span>{brand}</span>&nbsp;
                     <span>
-                      ({productList.filter((elm) => elm.brand == brand).length})
+                      ({products1.filter((elm) => elm.brand == brand).length})
                     </span>
                   </label>
                 </li>
@@ -329,7 +671,7 @@ export default function SidebarFilter({ setProducts }) {
             aria-expanded="true"
             aria-controls="color"
           >
-            <span>Color</span>
+            <span>Màu</span>
             <span className="icon icon-arrow-up" />
           </div>
           <div id="color" className="collapse show">
@@ -343,7 +685,8 @@ export default function SidebarFilter({ setProducts }) {
                   <input
                     type="checkbox"
                     name="color"
-                    className={`tf-check-color ${elm.colorClass}`}
+                    className="tf-check-color"
+                    style={{ backgroundColor: elm.hex_value }}
                     readOnly
                     checked={selectedColors.includes(elm.name)}
                   />
@@ -352,7 +695,7 @@ export default function SidebarFilter({ setProducts }) {
                     <span>
                       (
                       {
-                        productList.filter((el) =>
+                        products1.filter((el) =>
                           el.colors?.map((col) => col?.name)?.includes(elm.name)
                         ).length
                       }
@@ -375,7 +718,7 @@ export default function SidebarFilter({ setProducts }) {
             <span>Size</span>
             <span className="icon icon-arrow-up" />
           </div>
-          <div id="size" className="collapse show">
+          {/* <div id="size" className="collapse show">
             <ul className="tf-filter-group current-scrollbar">
               {sizes.map((elm, i) => (
                 <li
@@ -393,14 +736,14 @@ export default function SidebarFilter({ setProducts }) {
                     <span>{elm}</span>&nbsp;
                     <span>
                       (
-                      {productList.filter((el) => el.sizes?.includes(elm)).length}
+                      {products1.filter((el) => el.sizes?.includes(elm)).length}
                       )
                     </span>
                   </label>
                 </li>
               ))}
             </ul>
-          </div>
+          </div> */}
         </div>
       </form>
       <div className="mt-5"></div>
@@ -408,7 +751,7 @@ export default function SidebarFilter({ setProducts }) {
         className="tf-btn style-2 btn-fill rounded animate-hover-btn"
         onClick={clearFilter}
       >
-        Clear Filter
+        Xóa lọc
       </a>
     </div>
   );

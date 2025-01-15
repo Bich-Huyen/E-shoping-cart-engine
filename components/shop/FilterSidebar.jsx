@@ -47,7 +47,7 @@ export default function FilterSidebar() {
               {/* pagination */}{" "}
               {finalSorted.length ? (
                 <ul className="tf-pagination-wrap tf-pagination-list tf-pagination-btn">
-                  <Pagination />
+                  {/* <Pagination /> */}
                 </ul>
               ) : (
                 ""

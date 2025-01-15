@@ -263,83 +263,7 @@ export const productDetailPages = [
   {
     heading: "Product layouts",
     links: [
-      { href: "/product-detail/1", text: "Product default" },
-      { href: "/product-grid-1", text: "Product grid 1" },
-      { href: "/product-grid-2", text: "Product grid 2" },
-      { href: "/product-stacked", text: "Product stacked" },
-      { href: "/product-right-thumbnails", text: "Product right thumbnails" },
-      { href: "/product-bottom-thumbnails", text: "Product bottom thumbnails" },
-      { href: "/product-drawer-sidebar", text: "Product drawer sidebar" },
-      {
-        href: "/product-description-accordion",
-        text: "Product description accordion",
-      },
-      { href: "/product-description-list", text: "Product description list" },
-      {
-        href: "/product-description-vertical",
-        text: "Product description vertical",
-      },
-    ],
-  },
-  {
-    heading: "Product details",
-    links: [
-      { href: "/product-inner-zoom", text: "Product inner zoom" },
-      { href: "/product-zoom-magnifier", text: "Product zoom magnifier" },
-      { href: "/product-no-zoom", text: "Product no zoom" },
-      { href: "/product-photoswipe-popup", text: "Product photoswipe popup" },
-      {
-        href: "/product-zoom-popup",
-        text: "Product external zoom and photoswipe popup",
-      },
-      { href: "/product-video", text: "Product video" },
-      { href: "/product-3d", text: "Product 3D, AR models" },
-      {
-        href: "/product-options-customizer",
-        text: "Product options & customizer",
-      },
-      { href: "/product-advanced-types", text: "Advanced product types" },
-      {
-        href: "/product-giftcard",
-        text: "Recipient information form for gift card products",
-      },
-    ],
-  },
-  {
-    heading: "Product swatches",
-    links: [
-      { href: "/product-color-swatch", text: "Product color swatch" },
-      { href: "/product-rectangle", text: "Product rectangle" },
-      { href: "/product-rectangle-color", text: "Product rectangle color" },
-      { href: "/product-swatch-image", text: "Product swatch image" },
-      {
-        href: "/product-swatch-image-rounded",
-        text: "Product swatch image rounded",
-      },
-      { href: "/product-swatch-dropdown", text: "Product swatch dropdown" },
-      {
-        href: "/product-swatch-dropdown-color",
-        text: "Product swatch dropdown color",
-      },
-    ],
-  },
-  {
-    heading: "Product features",
-    links: [
-      {
-        href: "/product-frequently-bought-together",
-        text: "Frequently bought together",
-      },
-      {
-        href: "/product-frequently-bought-together-2",
-        text: "Frequently bought together 2",
-      },
-      { href: "/product-upsell-features", text: "Product upsell features" },
-      { href: "/product-pre-orders", text: "Product pre-orders" },
-      { href: "/product-notification", text: "Back in stock notification" },
-      { href: "/product-pickup", text: "Product pickup" },
-      { href: "/product-images-grouped", text: "Variant images grouped" },
-      { href: "/product-complimentary", text: "Complimentary products" },
+      { href: "/product-detail/1", text: "Product" },
       {
         href: "/product-quick-order-list",
         text: "Quick order list",
@@ -355,22 +279,10 @@ export const productDetailPages = [
 
 export const allPagesLinks = [
   { href: "/about-us", text: "About us" },
-  {
-    href: "/brands",
-    text: "Brands",
-    extra: (
-      <div className="demo-label">
-        <span className="demo-new">New</span>
-      </div>
-    ),
-  },
   { href: "/brands-v2", text: "Brand V2" },
-  { href: "/contact-1", text: "Contact 1" },
   { href: "/contact-2", text: "Contact 2" },
-  { href: "/faq-1", text: "FAQ 01" },
   { href: "/faq-2", text: "FAQ 02" },
   { href: "/our-store", text: "Our store" },
-  { href: "/store-locations", text: "Store locator" },
   {
     href: "/timeline",
     text: "Timeline",
@@ -382,8 +294,8 @@ export const allPagesLinks = [
   },
   { href: "/view-cart", text: "View cart" },
   { href: "/checkout", text: "Check out" },
-  { href: "/payment-confirmation", text: "Payment Confirmation" },
-  { href: "/payment-failure", text: "Payment Failure" },
+  // { href: "/payment-confirmation", text: "Payment Confirmation" },
+  // { href: "/payment-failure", text: "Payment Failure" },
   { href: "/my-account", text: "My Account" },
 ];
 

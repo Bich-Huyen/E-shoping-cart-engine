@@ -20,6 +20,8 @@ const color = [
 
 const filterCategories = ["Best seller", "On Sale"];
 
+// const API_URL = "https://makeup-api.herokuapp.com/api/v1/products.json";
+
 // Define the interface for a product
 interface Product {
   id: number;
@@ -27,11 +29,7 @@ interface Product {
   imgHoverSrc: string;
   title: string;
   price: number;
-  colors: {
-    name: string;
-    colorClass: string;
-    imgSrc: string;
-  }[];
+  market_price: number;
   sizes: string[];
   filterCategories: string[];
   brand: string;
@@ -43,21 +41,22 @@ const apiUrl = `${process.env.NEXT_PUBLIC_URL}/product/products`;
 // Tạo một Promise để trực tiếp trả về dữ liệu
 const productsPromise: Promise<Product[]> = axios.get(apiUrl)
   .then(response => {
-    const data = response.data;
-
-    // Transform dữ liệu thành định dạng mong muốn
-    return data.map((item: any) => ({
-      id: item.id,
-      imgSrc: item.imageUrl,
-      imgHoverSrc: item.imageUrl,
-      title: item.name,
-      price: item.price,
-      colors: color,
-      sizes: ["S", "M", "L", "XL"],
-      filterCategories: filterCategories,
-      brand: item.brand.name,
-      isAvailable: "true"
+    const data = response.data.reverse();
+    // console.log(data);
+    const products = data.map((item: any, index: number) => ({
+      id: index + 1,
+      imgSrc: item.image_link || "",
+      imgHoverSrc: item.image_link || "",
+      title: item.name || "Unknown Product",
+      price: parseFloat(item.price) || 0,
+      market_price: parseFloat(item.price) * 1.5 || 0, // Example markup
+      sizes: ["Default"],
+      filterCategories: [item.category || "Other"],
+      brand: item.brand || "Unknown Brand",
+      isAvailable: true,
     }));
+    // Transform dữ liệu thành định dạng mong muốn
+    return products;
   })
   .catch(error => {
     console.error('Error fetching products:', error);
