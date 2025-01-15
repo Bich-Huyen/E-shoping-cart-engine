@@ -31,6 +31,7 @@ export default function Checkout() {
     setSelectedPayment(event.target.id);
   };
 
+
   async function fetchData(endpoint, params = {}) {
     const url = new URL(`${addressUrl}/${endpoint}`);
     Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
@@ -80,6 +81,8 @@ export default function Checkout() {
   const handleCashOnDelivery = () => {
     console.log('Xử lý thanh toán khi nhận hàng');
     // Thêm logic xử lý thanh toán COD ở đây
+    alert("Đặt hàng thành công! Cảm ơn bạn đã mua sắm.");
+    router.push("/");
   };
 
   const processPayment = () => {

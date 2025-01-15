@@ -7,29 +7,31 @@ export default function AccountAddress() {
   
   const [selectedWard, setSelectedWard] = useState("");
 
+  const [isDefault, setDefault] = useState(true);
+
+  const handleEdit = () => {
+    setDefault(!isDefault);
+  };
+
   return (
     <div className="my-account-content account-address">
       <div className="">
         <div>
-          <h6 className="mb_20">Default</h6>
-          <p>themesflat</p>
-          <p>1234 Fashion Street, Suite 567</p>
-          <p>New York</p>
-          <p>info@fashionshop.com</p>
-          <p className="mb_10">(212) 555-1234</p>
-              <AddressSelector onWardSelect={setSelectedWard} onDistrictSelect={setDistrict} />
+        <AddressSelector onWardSelect={setSelectedWard} onDistrictSelect={setDistrict} />
           <div className="d-flex gap-10">
             <a
               href="#"
               className="tf-btn btn-fill animate-hover-btn rounded-0 justify-content-center"
+              onClick={handleEdit}
             >
               <span>Edit</span>
             </a>
             <a
               href="#"
               className="tf-btn btn-outline animate-hover-btn rounded-0 justify-content-center"
+              onClick={handleEdit}
             >
-              <span>Delete</span>
+              <span>Save</span>
             </a>
           </div>
         </div>
