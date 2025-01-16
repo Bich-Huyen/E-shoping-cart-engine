@@ -1,5 +1,6 @@
 import Features from "@/components/common/Features";
 import Footer1 from "@/components/footers/Footer1";
+import Header2 from "@/components/headers/Header2";
 import Header7 from "@/components/headers/Header7";
 import Announcment from "@/components/homes/multi-brand/Announcment";
 import BannerCollection from "@/components/homes/multi-brand/BannerCollection";
@@ -13,8 +14,8 @@ import Products from "@/components/homes/multi-brand/Products";
 import Testimonials from "@/components/homes/multi-brand/Testimonials";
 import React from "react";
 export const metadata = {
-  title: "Home 1 || Ecomus - Ultimate Nextjs Ecommerce Template",
-  description: "Ecomus - Ultimate Nextjs Ecommerce Template",
+  title: "Home 1 || Beatique",
+  description: "Beatique",
 };
 export default function Home() {
   return (
@@ -34,7 +35,7 @@ export default function Home() {
     // </>
     <>
       <Announcment />
-      <Header7 />
+      <Header2 />
       <Categories />
       <Hero />
       <Categories2 />

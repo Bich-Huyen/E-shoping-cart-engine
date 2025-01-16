@@ -132,23 +132,22 @@ export const ProductCard = ({ product }) => {
           </div>
         )}
         {product.colors && (
-  <ul className="list-color-product">
-    {product.colors.map((color) => (
-      <li
-        className={`list-color-item color-swatch ${
-          currentImage === color.imgSrc ? "active" : ""
-        }`}
-        key={color.name}
-      >
-        <span className="tooltip">{color.name}</span>
-        <span
-          className="swatch-value"
-          style={{ backgroundColor: color.hex_value }}
-        />
-      </li>
-    ))}
-  </ul>
-)}
+          <ul className="list-color-product">
+            {product.colors.map((color) => (
+              <li
+                className={`list-color-item color-swatch ${currentImage === color.imgSrc ? "active" : ""
+                  }`}
+                key={color.name}
+              >
+                <span className="tooltip">{color.name}</span>
+                <span
+                  className="swatch-value"
+                  style={{ backgroundColor: color.hex_value }}
+                />
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </div>
   );

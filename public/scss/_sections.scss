@@ -1777,6 +1777,11 @@
     align-items: center;
     justify-content: center;
 }
+.tf-compare-list {
+    display: flex;
+    gap: 10px; /* Khoảng cách giữa các kích thước */
+    justify-content: center; /* Căn giữa nếu cần */
+}
 .tf-compare-stock {
     display: flex;
     align-items: center;

@@ -117,10 +117,10 @@ export default function DetailsOuterZoom({ product = allProducts[product.id] }) 
                               type="radio"
                               name="color1"
                               readOnly
-                              checked={currentColor === color}
+                              checked={currentColor === color.name}
                             />
                             <label
-                              onClick={() => setCurrentColor(color)}
+                              onClick={() => setCurrentColor(color.name)}
                               className="hover-tooltip radius-60"
                               htmlFor={color.id}
                               data-value={color.value}
@@ -129,7 +129,7 @@ export default function DetailsOuterZoom({ product = allProducts[product.id] }) 
                                 className="btn-checkbox"
                                 style={{ backgroundColor: color.hex_value }}
                               />
-                              <span className="tooltip">{color.value}</span>
+                              <span className="tooltip">{color.name}</span>
                             </label>
                           </React.Fragment>
                         ))}
@@ -373,7 +373,7 @@ export default function DetailsOuterZoom({ product = allProducts[product.id] }) 
           </div>
         </div>
       </div>{" "}
-      <StickyItem />
+      {/* <StickyItem /> */}
     </section>
   );
 }

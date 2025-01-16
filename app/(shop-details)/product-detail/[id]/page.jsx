@@ -9,8 +9,8 @@ import Link from "next/link";
 import DetailsOuterZoom from "@/components/shopDetails/DetailsOuterZoom";
 import { allProducts } from "@/data/products";
 export const metadata = {
-  title: "Shop Details || Ecomus - Ultimate Nextjs Ecommerce Template",
-  description: "Ecomus - Ultimate Nextjs Ecommerce Template",
+  title: "Shop Details || Beatique",
+  description: "Beatique",
 };
 export default function page({ params }) {
   const product =
