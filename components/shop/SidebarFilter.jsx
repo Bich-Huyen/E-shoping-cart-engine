@@ -365,7 +365,7 @@ const availabilities = [
 ];
 
 export default function SidebarFilter({ setProducts }) {
-  const [price, setPrice] = useState([0, 99999999]);
+  const [price, setPrice] = useState([0, 5000000]);
   const handlePrice = (value) => {
     setPrice(value);
   };
@@ -606,8 +606,8 @@ export default function SidebarFilter({ setProducts }) {
               <Slider
                 formatLabel={() => ``}
                 range
-                max={22}
-                min={5}
+                max={5000000}
+                min={0}
                 defaultValue={price}
                 onChange={(value) => handlePrice(value)}
                 id="slider"
