@@ -1,16 +1,38 @@
+"use client"
 import React from "react";
 import Nav from "./Nav";
 import Image from "next/image";
 import Link from "next/link";
 import CartLength from "../common/CartLength";
 import WishlistLength from "../common/WishlistLength";
+import { useEffect } from "react";
+
 export default function Header2({
   textClass,
   bgColor = "",
   uppercase = false,
   isArrow = true,
   Linkfs = "",
-}) {
+}) {useEffect(() => {
+    const script = document.createElement("script");
+    script.src =
+      "https://sf-cdn.coze.com/obj/unpkg-va/flow-platform/chat-app-sdk/1.1.0-beta.0/libs/oversea/index.js";
+    script.onload = () => {
+      new CozeWebSDK.WebChatClient({
+        config: {
+          bot_id: "7459343149057097744", 
+        },
+        componentProps: {
+          title: "Beautique Advisor",
+          style: {
+            height: "50vh", 
+            titleColor: "#000000", 
+          },
+        },
+      });
+    };
+    document.body.appendChild(script);
+  }, []);
   return (
     <header
       id="header"
@@ -70,8 +92,7 @@ export default function Header2({
               </li>
               <li className="nav-account">
                 <a
-                  href="#login"
-                  data-bs-toggle="modal"
+                  href="/login"
                   className="nav-icon-item"
                 >
                   <i className="icon icon-account" />

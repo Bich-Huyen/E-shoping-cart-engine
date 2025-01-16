@@ -12,6 +12,12 @@ export default function Compare() {
   const { removeFromCompareItem, compareItem, setCompareItem } =
     useContextElement();
   const [items, setItems] = useState([]);
+
+  const removeItem = (id) => {
+    removeFromCompareItem(id);
+    setCompareItem((pre) => [...pre.filter((elm) => elm.id != id)]);
+  };
+
   useEffect(() => {
     setItems([...allProducts.filter((elm) => compareItem.includes(elm.id))]);
   }, [compareItem]);
@@ -29,7 +35,7 @@ export default function Compare() {
                   <div className="tf-compare-item">
                     <div
                       className="tf-compare-remove link"
-                      onClick={() => removeFromCompareItem(elm.id)}
+                      onClick={() => removeItem(elm.id)}
                     >
                       Xóa
                     </div>
@@ -83,7 +89,7 @@ export default function Compare() {
             </div>
             <div className="tf-compare-row tf-compare-grid">
               <div className="tf-compare-col tf-compare-field d-md-block d-none">
-                <h6>Availability</h6>
+                <h6>Tồn kho</h6>
               </div>
               {items.map((elm, i) => (
                 <div
@@ -93,33 +99,76 @@ export default function Compare() {
                   <div className="icon">
                     <i className="icon-check" />
                   </div>
-                  <span className="fw-5">In Stock</span>
+                  <span className="fw-5">{elm.isAvailable ? "Còn hàng" : "Hết hàng"}</span>
                 </div>
               ))}
             </div>
             <div className="tf-compare-row">
               <div className="tf-compare-col tf-compare-field d-md-block d-none">
-                <h6>Vendor</h6>
+                <h6>Nhãn hiệu</h6>
               </div>
               {items.map((elm, i) => (
                 <div
                   className="tf-compare-col tf-compare-value text-center"
                   style={{ flex: 1 }}
                 >
-                  Ecomus
+                  {elm.brand}
                 </div>
               ))}
             </div>
             <div className="tf-compare-row">
               <div className="tf-compare-col tf-compare-field d-md-block d-none">
-                <h6>Color</h6>
+                <h6>Màu</h6>
               </div>
               {items.map((elm, i) => (
                 <div
                   className="tf-compare-col tf-compare-value text-center"
                   style={{ flex: 1 }}
                 >
-                  Grey, Pink, Light Pink, White
+                  {
+                    elm.colors && elm.colors.length > 0 ? (
+                      <div className="tf-compare-col tf-compare-value text-center tf-compare-list">
+                          <ul className="list-color-product">
+                            {elm.colors.map((color) => (
+                              <li
+                                className={`list-color-item color-swatch }`}
+                                key={color.name}
+                              >
+                                <span className="tooltip">{color.name}</span>
+                                <span
+                                  className="swatch-value"
+                                  style={{ backgroundColor: color.hex_value }}
+                                />
+                              </li>
+                            ))}
+                          </ul>
+                      </div>
+                    ) : (
+                      <p>Không tồn tại</p>
+                    )
+                  }
+                </div>
+              ))}
+            </div>
+            <div className="tf-compare-row">
+              <div className="tf-compare-col tf-compare-field d-md-block d-none">
+                <h6>Size</h6>
+              </div>
+              {items.map((elm, i) => (
+                <div
+                  className="tf-compare-col tf-compare-value text-center"
+                  style={{ flex: 1 }}
+                >
+                  {elm.sizes && elm.sizes.length > 0 ? (
+                    <div className="tf-compare-col tf-compare-value text-center tf-compare-list">
+                      {elm.sizes.map((size, index) => (
+                        <span key={index} className="size-item">{size}</span>
+                      ))}
+                    </div>
+                  ) : (
+                    <p>No sizes available</p>
+                  )}
+
                 </div>
               ))}
             </div>

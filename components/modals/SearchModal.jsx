@@ -2,7 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { tfLoopItems } from "@/data/products";
+import { products1 } from "@/data/products";
 export default function SearchModal() {
   return (
     <div className="offcanvas offcanvas-end canvas-search" id="canvasSearch">
@@ -44,7 +44,7 @@ export default function SearchModal() {
         <div className="canvas-body p-0">
           <div className="tf-search-content">
             <div className="tf-cart-hide-has-results">
-              <div className="tf-col-quicklink">
+              {/* <div className="tf-col-quicklink">
                 <div className="tf-search-content-title fw-5">Quick link</div>
                 <ul className="tf-quicklink-list">
                   <li className="tf-quicklink-item">
@@ -68,21 +68,21 @@ export default function SearchModal() {
                     </Link>
                   </li>
                 </ul>
-              </div>
+              </div> */}
               <div className="tf-col-content">
                 <div className="tf-search-content-title fw-5">
                   Need some inspiration?
                 </div>
                 <div className="tf-search-hidden-inner">
-                  {tfLoopItems.map((product, index) => (
+                  {products1.map((product, index) => (
                     <div className="tf-loop-item" key={index}>
                       <div className="image">
                         <Link href={`/product-detail/${product.id}`}>
                           <Image
                             alt={product.imgAlt}
                             src={product.imgSrc}
-                            width={product.imgWidth}
-                            height={product.imgHeight}
+                            width={720}
+                            height={1005}
                           />
                         </Link>
                       </div>
@@ -94,15 +94,15 @@ export default function SearchModal() {
                           {product.isOnSale ? (
                             <>
                               <div className="compare-at-price">
-                                ${product.compareAtPrice.toFixed(2)}
+                                {product.compareAtPrice.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
                               </div>
                               <div className="price-on-sale fw-6">
-                                ${product.salePrice.toFixed(2)}
+                                {product.salePrice.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
                               </div>
                             </>
                           ) : (
                             <div className="price fw-6">
-                              ${product.price.toFixed(2)}
+                              {product.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
                             </div>
                           )}
                         </div>

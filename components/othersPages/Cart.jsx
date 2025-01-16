@@ -9,26 +9,26 @@ export default function Cart() {
   const { cartProducts, setCartProducts, totalPrice } = useContextElement();
 
   // Tải và khởi tạo bot Coze
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src =
-      "https://sf-cdn.coze.com/obj/unpkg-va/flow-platform/chat-app-sdk/1.1.0-beta.0/libs/oversea/index.js";
-    script.onload = () => {
-      new CozeWebSDK.WebChatClient({
-        config: {
-          bot_id: "7459343149057097744", 
-        },
-        componentProps: {
-          title: "Beautique Advisor",
-          style: {
-            height: "50vh", 
-            titleColor: "#000000", 
-          },
-        },
-      });
-    };
-    document.body.appendChild(script);
-  }, []);
+  // useEffect(() => {
+  //   const script = document.createElement("script");
+  //   script.src =
+  //     "https://sf-cdn.coze.com/obj/unpkg-va/flow-platform/chat-app-sdk/1.1.0-beta.0/libs/oversea/index.js";
+  //   script.onload = () => {
+  //     new CozeWebSDK.WebChatClient({
+  //       config: {
+  //         bot_id: "7459343149057097744", 
+  //       },
+  //       componentProps: {
+  //         title: "Beautique Advisor",
+  //         style: {
+  //           height: "50vh", 
+  //           titleColor: "#000000", 
+  //         },
+  //       },
+  //     });
+  //   };
+  //   document.body.appendChild(script);
+  // }, []);
 
   const setQuantity = (id, quantity) => {
     if (quantity >= 1) {

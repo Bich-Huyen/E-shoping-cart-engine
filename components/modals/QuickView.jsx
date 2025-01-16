@@ -100,7 +100,7 @@ export default function QuickView() {
                     </Link>
                   </h5>
                 </div>
-                <div className="tf-product-info-badges">
+                {/* <div className="tf-product-info-badges">
                   <div className="badges text-uppercase">Best seller</div>
                   <div className="product-status-content">
                     <i className="icon-lightning" />
@@ -108,81 +108,89 @@ export default function QuickView() {
                       Selling fast! 48 people have this in their carts.
                     </p>
                   </div>
-                </div>
+                </div> */}
                 <div className="tf-product-info-price">
                   <div className="price">{quickViewItem.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</div>
                 </div>
                 <div className="tf-product-description">
                   <p>
-                    Nunc arcu faucibus a et lorem eu a mauris adipiscing conubia
-                    ac aptent ligula facilisis a auctor habitant parturient a
-                    a.Interdum fermentum.
+                    {quickViewItem.description}
                   </p>
                 </div>
                 <div className="tf-product-info-variant-picker">
-                  <div className="variant-picker-item">
-                    <div className="variant-picker-label">
-                      Color:
-                      <span className="fw-6 variant-picker-label-value">
-                        Orange
-                      </span>
-                    </div>
-                    <form className="variant-picker-values">
-                      {colors.map((color) => (
-                        <React.Fragment key={color.id}>
-                          <input
-                            id={color.id}
-                            type="radio"
-                            name="color1"
-                            readOnly
-                            checked={currentColor == color}
-                          />
-                          <label
-                            onClick={() => setCurrentColor(color)}
-                            className="hover-tooltip radius-60"
-                            htmlFor={color.id}
-                            data-value={color.value}
-                          >
-                            <span
-                              className={`btn-checkbox ${color.className}`}
-                            />
-                            <span className="tooltip">{color.value}</span>
-                          </label>
-                        </React.Fragment>
-                      ))}
-                    </form>
-                  </div>
-                  <div className="variant-picker-item">
-                    <div className="d-flex justify-content-between align-items-center">
-                      <div className="variant-picker-label">
-                        Size:
-                        <span className="fw-6 variant-picker-label-value">
-                          {currentSize.value}
-                        </span>
+                  {
+                    quickViewItem.colors && quickViewItem.colors.length > 0 ? (
+                      <div className="variant-picker-item">
+                        <div className="variant-picker-label">
+                          Color:
+                          <span className="fw-6 variant-picker-label-value">
+                            
+                          </span>
+                        </div>
+                        <form className="variant-picker-values">
+                          {quickViewItem.colors.map((color) => (
+                            <React.Fragment key={color.id}>
+                              <input
+                                id={color.id}
+                                type="radio"
+                                name="color1"
+                                readOnly
+                                checked={currentColor === color.name}
+                              />
+                              <label
+                                onClick={() => setCurrentColor(color.name)}
+                                className="hover-tooltip radius-60"
+                                htmlFor={color.id}
+                                data-value={color.name}
+                              >
+                                <span
+                                  className="btn-checkbox"
+                                  style={{ backgroundColor: color.hex_value }}
+                                />
+                                <span className="tooltip">{color.name}</span>
+                              </label>
+                            </React.Fragment>
+                          ))}
+                        </form>
                       </div>
-                    </div>
-                    <form className="variant-picker-values">
-                      {sizeOptions.map((size) => (
-                        <React.Fragment key={size.id}>
-                          <input
-                            type="radio"
-                            name="size1"
-                            id={size.id}
-                            readOnly
-                            checked={currentSize == size}
-                          />
-                          <label
-                            onClick={() => setCurrentSize(size)}
-                            className="style-text"
-                            htmlFor={size.id}
-                            data-value={size.value}
-                          >
-                            <p>{size.value}</p>
-                          </label>
-                        </React.Fragment>
-                      ))}
-                    </form>
-                  </div>
+                    ) : (
+                      <></>
+                    )
+                  }
+                  {
+                    quickViewItem.sizes && quickViewItem.sizes.length > 0 ? (
+                      <div className="variant-picker-item">
+                        <div className="variant-picker-label">
+                          Size:{" "}
+                          <span className="fw-6 variant-picker-label-value">
+                            {" "}
+                            {quickViewItem.sizes[0]}
+                          </span>
+                        </div>
+                        <form className="variant-picker-values">
+                          {quickViewItem.sizes.map((size) => (
+                            <React.Fragment key={size.id}>
+                              <input
+                                type="radio"
+                                name="size1"
+                                readOnly
+                                checked={currentSize == size}
+                              />
+                              <label
+                                onClick={() => setCurrentSize(size)}
+                                className="style-text"
+                                data-value={size.value}
+                              >
+                                <p>{size}</p>
+                              </label>
+                            </React.Fragment>
+                          ))}
+                        </form>
+                      </div>
+                    ) : (
+                      <></>
+                    )
+                  }
                 </div>
                 <div className="tf-product-info-quantity">
                   <div className="quantity-title fw-6">Số lượng</div>
