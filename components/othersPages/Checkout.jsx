@@ -8,6 +8,7 @@ import AddressSelector from "./address/AddressSelector";
 import ShippingFee from "./address/ShippingFee";
 import { vnpay } from "@/data/payment/vnpay";
 import { momo } from "@/data/payment/momo";
+import VoucherList from "./VoucherList";
 
 const addressUrl = process.env.NEXT_PUBLIC_ADDRESS_URL;
 const token = process.env.NEXT_PUBLIC_API_TOKEN;
@@ -21,9 +22,13 @@ export default function Checkout() {
 
   const [selectedWard, setSelectedWard] = useState("");
 
-  const [shippingFee, setShippingFee] = useState("");
+  const [shippingFee, setShippingFee] = useState(0);
 
   const [paymentUrl, setPaymentUrl] = useState('');
+
+  const [discount, setDiscount] = useState(0);
+
+  const [shippingDiscount, setShippingDiscount] = useState(0);
 
   const router = useRouter();
 
@@ -31,6 +36,9 @@ export default function Checkout() {
     setSelectedPayment(event.target.id);
   };
 
+  const handleVoucherSelect = (voucher) => {
+    console.log("Voucher được chọn:", voucher);
+  };
 
   async function fetchData(endpoint, params = {}) {
     const url = new URL(`${addressUrl}/${endpoint}`);
@@ -52,7 +60,7 @@ export default function Checkout() {
 
   const handleVnpay = async () => {
     try {
-      const response = await vnpay(totalPrice + shippingFee, 'NCB');
+      const response = await vnpay(totalPrice + shippingFee - discount - shippingDiscount, 'NCB');
       setPaymentUrl(response.data.paymentUrl);
       if (paymentUrl) {
         router.push(paymentUrl); // Chuyển hướng đến trang thanh toán
@@ -66,7 +74,7 @@ export default function Checkout() {
 
   const handleMomo = async () => {
     try {
-      const response = await momo(totalPrice + shippingFee);
+      const response = await momo(totalPrice + shippingFee - discount - shippingDiscount);
       setPaymentUrl(response.payUrl);
       if (paymentUrl) {
         router.push(paymentUrl);
@@ -81,8 +89,7 @@ export default function Checkout() {
   const handleCashOnDelivery = () => {
     console.log('Xử lý thanh toán khi nhận hàng');
     // Thêm logic xử lý thanh toán COD ở đây
-    alert("Đặt hàng thành công! Cảm ơn bạn đã mua sắm.");
-    router.push("/");
+    router.push("/payment-confirmation");
   };
 
   const processPayment = () => {
@@ -199,13 +206,14 @@ export default function Checkout() {
                   </div>
                 )}
                 <div className="coupon-box">
-                  <input type="text" placeholder="Mã giảm giá" />
+                  {/* <input type="text" placeholder="Mã giảm giá" />
                   <a
                     href="#"
                     className="tf-btn btn-sm radius-3 btn-fill btn-icon animate-hover-btn"
                   >
                     Áp dụng
-                  </a>
+                  </a> */}
+                  <VoucherList orderValue={totalPrice + shippingFee} shippingValue={shippingFee} onSelect={handleVoucherSelect} onDiscount={setDiscount} onShippingDiscount={setShippingDiscount} />
                 </div>
                 {
                   shippingFee > 0 && (
@@ -216,9 +224,28 @@ export default function Checkout() {
                       </h7>
                     </div>
                   )}
+                  <>
+                {
+                  discount > 0 && (
+                    <div>
+                        <div className="d-flex justify-content-between line pb_20">
+                          <h7 className="fw-5">Giảm giá</h7>
+                          <h7 className="total fw-5">
+                            {discount.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
+                          </h7>
+                        </div>
+                        <div className="d-flex justify-content-between line pb_20">
+                          <h7 className="fw-5">Giảm giá phí giao hàng</h7>
+                          <h7 className="total fw-5">
+                            {shippingDiscount.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
+                          </h7>
+                        </div>
+                    </div>
+                  )}
+                  </>
                 <div className="d-flex justify-content-between line pb_20">
                   <h6 className="fw-5">Tổng tiền</h6>
-                  <h6 className="total fw-5">{(totalPrice + shippingFee).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</h6>
+                  <h6 className="total fw-5">{(totalPrice + shippingFee - discount - shippingDiscount).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</h6>
                 </div>
                 <div className="wd-check-payment">
                   <div className="fieldset-radio mb_20">

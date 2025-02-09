@@ -1,0 +1,30 @@
+.voucher-card {
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .voucher-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .order {
+    border: 2px solid #28a745; /* Bootstrap success green */
+    background-color: #e6f9ea;
+  }
+  
+  .shipping {
+    border: 2px solid #ffc107; /* Bootstrap warning yellow */
+    background-color: #fff3cd;
+  }
+  
+  .selected-shipping {
+    border: 2px solid #ffc107; /* Bootstrap primary blue */
+    background-color: #ffc107;
+    color: white;
+  }
+  .selected-order {
+    border: 2px solid #28a745; /* Bootstrap primary blue */
+    background-color: #28a745;
+    color: white;
+  }
+  

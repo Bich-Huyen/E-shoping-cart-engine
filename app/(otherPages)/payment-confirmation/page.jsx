@@ -13,7 +13,7 @@ export default function page() {
       <Header2 />
       <div className="tf-page-title">
         <div className="container-full">
-          <div className="heading text-center">Payment confirmation</div>
+          <div className="heading text-center">Đặt hàng thành công</div>
         </div>
       </div>
 

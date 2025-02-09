@@ -129,7 +129,7 @@ export default function QuickView() {
                         </div>
                         <form className="variant-picker-values">
                           {quickViewItem.colors.map((color) => (
-                            <React.Fragment key={color.id}>
+                            <React.Fragment key={color}>
                               <input
                                 id={color.id}
                                 type="radio"
@@ -169,7 +169,7 @@ export default function QuickView() {
                         </div>
                         <form className="variant-picker-values">
                           {quickViewItem.sizes.map((size) => (
-                            <React.Fragment key={size.id}>
+                            <React.Fragment key={size}>
                               <input
                                 type="radio"
                                 name="size1"

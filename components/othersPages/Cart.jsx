@@ -127,7 +127,7 @@ export default function Cart() {
                         cart-data-title="Price"
                       >
                         <div className="cart-price">
-                          ${elm.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
+                          {elm.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
                           {/**{product.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })} */}
                         </div>
                       </td>
@@ -189,7 +189,7 @@ export default function Cart() {
                           className="cart-total"
                           style={{ minWidth: "60px" }}
                         >
-                          ${(elm.price * elm.quantity).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
+                          {(elm.price * elm.quantity).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
                         </div>
                       </td>
                     </tr>
@@ -245,10 +245,10 @@ export default function Cart() {
                     </div>
                   </span>
                 </div>
-                <div className="tf-progress-msg">
+                {/* <div className="tf-progress-msg">
                   Đơn hàng tối thiểu <span className="price fw-6">200,000 VNĐ</span> để được {" "}
                   <span className="fw-6">Miễn phí giao hàng</span>
-                </div>
+                </div> */}
               </div>
               <div className="tf-page-cart-checkout">
                 <div className="shipping-calculator">
@@ -291,7 +291,7 @@ export default function Cart() {
                     </div> */}
                   </div>
                 </div>
-                <div className="cart-checkbox">
+                {/* <div className="cart-checkbox">
                   <input
                     type="checkbox"
                     className="tf-check"
@@ -301,7 +301,7 @@ export default function Cart() {
                     <span>Do you want a gift wrap?</span> Only
                     <span className="fw-5">$5.00</span>
                   </label>
-                </div>
+                </div> */}
                 <div className="tf-cart-totals-discounts">
                   <h3>Tổng tiền: </h3>
                   <span className="total-value">

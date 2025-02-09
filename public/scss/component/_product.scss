@@ -348,6 +348,11 @@
     }
   }
 }
+.tf-cart-modal-buy-button {
+  display: grid;
+  grid-template-columns: 1fr auto; /* Cột 1 chiếm hết không gian, cột 2 tự động co lại */
+  align-items: center; 
+}
 .btns-sold-out {
   opacity: 0.3;
   &::after {

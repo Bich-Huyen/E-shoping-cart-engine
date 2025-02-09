@@ -15,7 +15,7 @@ interface PaymentResponse {
 export const momo = async(amount: number): Promise<PaymentResponse> => {
     try {
         const response = await apiClient.post<PaymentResponse>(
-            `order/payment/momo`, 
+            `payment/momo`, 
             {
                 amount, // Đưa dữ liệu vào body
             }

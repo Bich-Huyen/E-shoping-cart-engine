@@ -6280,6 +6280,9 @@ header.header-bg {
   line-height: 14px;
   font-weight: 600;
 }
+.modal-shopping-cart .tf-minicart-recommendations-item .tf-minicart-recommendations-item-infos .name {
+  font-size: 16px;
+}
 .modal-shopping-cart .tf-minicart-recommendations-item .tf-minicart-recommendations-item-quickview .quickview {
   margin-left: 15px;
   width: 42px;
@@ -7989,6 +7992,12 @@ header.header-bg {
   text-decoration: underline;
   color: rgb(134, 134, 134);
   text-align: center;
+}
+
+.tf-cart-modal-buy-button {
+  display: grid;
+  grid-template-columns: 1fr auto; /* Cột 1 chiếm hết không gian, cột 2 tự động co lại */
+  align-items: center;
 }
 
 .btns-sold-out {
@@ -11209,6 +11218,38 @@ blockquote .text {
 }
 .tf-model-viewer.active .wrap-btn-viewer {
   display: none;
+}
+
+/*------------ zoom ---------------- */
+.voucher-card {
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.voucher-card:hover {
+  transform: scale(1.05);
+}
+
+.order {
+  border: 2px solid #28a745; /* Bootstrap success green */
+  background-color: #e6f9ea;
+}
+
+.shipping {
+  border: 2px solid #ffc107; /* Bootstrap warning yellow */
+  background-color: #fff3cd;
+}
+
+.selected-shipping {
+  border: 2px solid #ffc107; /* Bootstrap primary blue */
+  background-color: #ffc107;
+  color: white;
+}
+
+.selected-order {
+  border: 2px solid #28a745; /* Bootstrap primary blue */
+  background-color: #28a745;
+  color: white;
 }
 
 /*------------ sections ---------------- */

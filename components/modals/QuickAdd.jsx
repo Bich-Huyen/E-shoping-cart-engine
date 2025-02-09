@@ -65,7 +65,7 @@ export default function QuickAdd() {
                     </div>
                     <form className="variant-picker-values">
                       {item.colors.map((color) => (
-                        <React.Fragment key={color.id}>
+                        <React.Fragment key={color}>
                           <input
                             id={color.id}
                             type="radio"
@@ -105,7 +105,7 @@ export default function QuickAdd() {
                     </div>
                     <form className="variant-picker-values">
                       {item.sizes.map((size) => (
-                        <React.Fragment key={size.id}>
+                        <React.Fragment key={size}>
                           <input
                             type="radio"
                             name="size1"
