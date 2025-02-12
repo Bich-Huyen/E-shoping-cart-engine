@@ -167,7 +167,7 @@ export default function Checkout() {
       const orderData = {
         userId: "1", // Đổi thành userId thực tế từ context hoặc state
         addressId, // ID của địa chỉ vừa tạo
-        totalAmount: finalPrice,
+        totalAmount: finalPrice + shippingFee,
         status: "progress",
         orderDate: new Date().toISOString(),
       };
@@ -273,12 +273,12 @@ export default function Checkout() {
         return acc;
       }, {});
       setSelectedVouchers(autoSelected);
-      setFinalPrice(minFinalPrice + shippingFee);
+      setFinalPrice(minFinalPrice);
     });
   }, []);
 
   useEffect(() => {
-    let newTotalPrice = totalPrice + shippingFee;
+    let newTotalPrice = totalPrice;
     Object.values(selectedVouchers).forEach((voucher) => {
       if (voucher.type === "percentage") {
         newTotalPrice *= 1 - voucher.discount / 100;
@@ -389,8 +389,9 @@ export default function Checkout() {
                         <p className="fw-bold mb-1">{voucher.code}</p>
                         <p className="mb-1">{voucher.type === "percentage" ? `Giảm: ${voucher.discount}%` : `Giảm ${voucher.discount.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}`}</p>
                         <p className=" small">
-                          Điều kiện: {voucher.type === "fixed" || voucher.type === "percentage" ? `đơn hàng ≥ ${voucher.weight.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}` : `Đơn hàng phải có sản phẩm ${voucher.type}`}
+                          Điều kiện: {voucher.type === "fixed" || voucher.type === "percentage" ? `đơn hàng ≥ ${voucher.weight.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}` : `phí vận chuyển cho đơn hàng ≥ ${voucher.weight.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}`}
                         </p>
+                        
                       </div>
                     );
                   })
@@ -509,7 +510,7 @@ export default function Checkout() {
                   </>
                 <div className="d-flex justify-content-between line pb_20">
                   <h6 className="fw-5">Tổng tiền</h6>
-                  <h6 className="total fw-5">{(finalPrice).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</h6>
+                  <h6 className="total fw-5">{(finalPrice + shippingFee).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</h6>
                 </div>
                 <div className="wd-check-payment">
                   <div className="fieldset-radio mb_20">

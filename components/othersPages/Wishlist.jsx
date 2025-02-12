@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { ProductCardWishlist } from "../shopCards/ProductCardWishlist";
 import Link from "next/link";
 import axios from "axios";
+import httpClient from "@/utlis/httpClient";
 
 export default function Wishlist() {
   const { wishList } = useContextElement();
@@ -13,6 +14,7 @@ export default function Wishlist() {
 
   useEffect(() => {
     axios.get(`${process.env.NEXT_PUBLIC_API_URL}/products`)
+    // httpClient.get("/products?ngrok-skip-browser-warning=true")
       .then(response => {
         if (response.data && Array.isArray(response.data.productList)) {
           setItem(response.data.productList);

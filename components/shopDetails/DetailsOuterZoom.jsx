@@ -84,7 +84,7 @@ export default function DetailsOuterZoom({ productId }) {
                     )} */}
                   </div>
                   <div className="tf-product-info-quantity">
-                    <div className="quantity-title fw-6">Số lượng: <span>{item?.stock}</span></div>
+                    <div className="quantity-title fw-6">Số lượng: <span>{item?.stock == 0 ? "Tạm hết hàng" : item?.stock}</span></div>
                     {
                       item?.stock > 0 && (
                         <Quantity maxStock={item?.stock} />
@@ -95,6 +95,35 @@ export default function DetailsOuterZoom({ productId }) {
                     <div className="quantity-title fw-6">Chi tiết sản phẩm: </div>
                     <p>{item?.description ?? "Serum La Roche-Posay Mela B3 Serum Giảm Thâm Nám & Dưỡng Sáng Da 30ml là sản phẩm tinh chất đến từ thương hiệu La Roche-Posay - Pháp. Sản phẩm giúp giảm thâm nám & ngăn ngừa đốm nâu sâu từng nanomet tế bào da Mela B3 với 18 năm nghiên cứu và phát triển từ các chuyên gia da liễu hàng đầu trên thế giới. Với thành phần Melasyl TM độc quyền cùng 10% Niacinamide giúp hiệu quả rõ rệt sau 1 tuần sử dụng."}</p>
                   </div>
+                  {
+                    item?.productAttribute.map((attribute) => {
+                      // Kiểm tra nếu giá trị là mã màu hợp lệ (hex)
+                      const isColor = /^#([0-9A-Fa-f]{3}){1,2}$/.test(attribute.attributeValue);
+
+                      return isColor ? (
+                        <div key={attribute.attributeName} style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "8px" }}>
+                          <span style={{ fontSize: "14px", color: "#333" }}>{attribute.attributeName}</span>
+                          <span>{": "}</span>
+                          <span
+                            style={{
+                              width: "30px",
+                              height: "30px",
+                              borderRadius: "50%",
+                              display: "inline-block",
+                              backgroundColor: attribute.attributeValue,
+                              border: "2px solid #ccc"
+                            }}
+                          ></span>
+                        </div>
+                      ) : (
+                        <div key={attribute.attributeName}>
+                          <p>
+                            {attribute.attributeName} <span>{": "}</span> {attribute.attributeValue}
+                          </p>
+                        </div>
+                      );
+                    })
+                  }
                   <div className="tf-product-info-buy-button">
                     <form onSubmit={(e) => e.preventDefault()} className="">
                       {

@@ -20,10 +20,24 @@ export default function Slider1ZoomOuter({ productId }) {
       .then((response) => {
         setItem(response.data);
 
-        // Lưu trực tiếp imageUrl từ API
-        if (response.data.imageUrl) {
-          setImageUrl(response.data.imageUrl);
+        let productImage = response.data.imageUrl;
+
+        // Xử lý nếu imageUrl là một chuỗi JSON chứa mảng URL
+        if (typeof productImage === "string" && productImage.startsWith("[")) {
+          try {
+            const parsedImages = JSON.parse(productImage);
+            if (Array.isArray(parsedImages) && parsedImages.length > 0) {
+              productImage = parsedImages; // Lấy ảnh đầu tiên trong mảng
+            }
+          } catch (error) {
+            console.error("Lỗi khi parse imageUrl:", error);
+            productImage = [response.data.imageUrl]; 
+          }
+        } else {
+          productImage = [response.data.imageUrl]; // Nếu không phải mảng, dùng ảnh duy nhất
         }
+
+        setImageUrl(productImage);
       })
       .catch((error) => console.error("Error fetching product:", error));
   }, [productId]);
@@ -104,7 +118,7 @@ export default function Slider1ZoomOuter({ productId }) {
             />
           </div>
         </SwiperSlide>
-      </Swiper> */}
+      </Swiper>
 
       <Gallery>
         <Swiper
@@ -142,6 +156,84 @@ export default function Slider1ZoomOuter({ productId }) {
               )}
             </Item>
           </SwiperSlide>
+
+          <div className="swiper-button-next button-style-arrow thumbs-next"></div>
+          <div className="swiper-button-prev button-style-arrow thumbs-prev"></div>
+        </Swiper>
+      </Gallery> */}
+
+      {/* Swiper hiển thị thumbnail hình ảnh */}
+      <Swiper
+        direction="vertical"
+        spaceBetween={10}
+        slidesPerView={6}
+        className="tf-product-media-thumbs other-image-zoom"
+        onSwiper={setThumbsSwiper}
+        modules={[Thumbs]}
+        breakpoints={{
+          0: {
+            direction: "horizontal",
+          },
+          1150: {
+            direction: "vertical",
+          },
+        }}
+      >
+        {imageUrl.map((imgSrc, index) => (
+          <SwiperSlide key={index} className="stagger-item">
+            <div className="item">
+              <Image
+                className="lazyload"
+                data-src={imgSrc}
+                alt={item.name || "Product Image"}
+                src={imgSrc}
+                width={713}
+                height={1070}
+              />
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+
+      {/* Swiper hiển thị hình ảnh lớn + Zoom */}
+      <Gallery>
+        <Swiper
+          spaceBetween={10}
+          slidesPerView={1}
+          navigation={{
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          }}
+          className="tf-product-media-main"
+          id="gallery-swiper-started"
+          thumbs={{ swiper: thumbsSwiper }}
+          modules={[Thumbs, Navigation]}
+        >
+          {imageUrl.map((imgSrc, index) => (
+            <SwiperSlide key={index}>
+              <Item original={imgSrc} thumbnail={imgSrc} width={713} height={1070}>
+                {({ ref, open }) => (
+                  <a
+                    className="item"
+                    data-pswp-width={713}
+                    data-pswp-height={1070}
+                    onClick={open}
+                  >
+                    <Image
+                      className="tf-image-zoom lazyload"
+                      data-zoom={imgSrc}
+                      data-src={imgSrc}
+                      ref={ref}
+                      alt={item.name || "Product Image"}
+                      width={713}
+                      height={1070}
+                      src={imgSrc}
+                    />
+                  </a>
+                )}
+              </Item>
+            </SwiperSlide>
+          ))}
 
           {/* Navigation buttons */}
           <div className="swiper-button-next button-style-arrow thumbs-next"></div>

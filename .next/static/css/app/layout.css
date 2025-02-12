@@ -7999,6 +7999,23 @@ header.header-bg {
 .tf-product-info-quantity .quantity-title {
   margin-bottom: 5px;
 }
+.tf-product-info-quantity .color-display-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.tf-product-info-quantity .color-circle {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: inline-block;
+  border: 2px solid #ccc;
+}
+.tf-product-info-quantity .color-name {
+  font-size: 14px;
+  color: red;
+}
 
 .tf-product-info-buy-button form {
   display: flex;

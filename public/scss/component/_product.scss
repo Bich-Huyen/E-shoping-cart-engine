@@ -317,6 +317,26 @@
   .quantity-title {
     margin-bottom: 5px;
   }
+  .color-display-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  
+  .color-circle {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: inline-block;
+    border: 2px solid #ccc;
+  }
+  
+  .color-name {
+    font-size: 14px;
+    color: red;
+  }
+  
 }
 .tf-product-info-buy-button {
   form {

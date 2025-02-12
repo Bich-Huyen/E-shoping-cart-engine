@@ -46,9 +46,13 @@ export default function Compare() {
                       <a href="#quick_view" data-bs-toggle="modal" className="tf-btn btn-outline-dark radius-3" onClick={() => setQuickViewItem(elm)}>
                         <i className="icon icon-view" /><span>Xem nhanh</span>
                       </a>
-                      <a href="#quick_add" data-bs-toggle="modal" className="tf-btn btn-outline-dark radius-3" onClick={() => setQuickAddItem(elm.id)}>
-                        <i className="icon icon-bag" /><span>Thêm vào giỏ hàng</span>
-                      </a>
+                      {
+                        elm.stock > 0 && (
+                          <a href="#quick_add" data-bs-toggle="modal" className="tf-btn btn-outline-dark radius-3" onClick={() => setQuickAddItem(elm.id)}>
+                            <i className="icon icon-bag" /><span>Thêm vào giỏ hàng</span>
+                          </a>
+                        )
+                      }
                     </div>
                   </div>
                 </div>

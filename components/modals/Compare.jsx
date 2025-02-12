@@ -4,13 +4,26 @@ import Link from "next/link";
 import Image from "next/image";
 import { useContextElement } from "@/context/Context";
 import { allProducts } from "@/data/products";
+import axios from "axios";
+
 export default function Compare() {
   const { removeFromCompareItem, compareItem, setCompareItem } =
     useContextElement();
   const [items, setItems] = useState([]);
+
   useEffect(() => {
-    setItems([...allProducts.filter((elm) => compareItem.includes(elm.id))]);
+    axios.get(`${process.env.NEXT_PUBLIC_API_URL}/products`)
+      .then(response => {
+        if (response.data && Array.isArray(response.data.productList)) {
+          setItems(response.data.productList.filter(elm => compareItem.includes(elm.id)));
+        }
+      })
+      .catch(error => console.error("Error fetching products:", error));
   }, [compareItem]);
+
+  // useEffect(() => {
+  //   setItems([...allProducts.filter((elm) => compareItem.includes(elm.id))]);
+  // }, [compareItem]);
 
   return (
     <div className="offcanvas offcanvas-bottom canvas-compare" id="compare">
@@ -47,7 +60,7 @@ export default function Compare() {
                             <Image
                               className="radius-3"
                               alt=""
-                              src={elm.imgSrc}
+                              src={elm.imageUrl}
                               style={{ objectFit: "contain" }}
                               width={720}
                               height={1005}

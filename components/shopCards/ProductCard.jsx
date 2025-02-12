@@ -5,6 +5,20 @@ import Link from "next/link";
 import { useContextElement } from "@/context/Context";
 import CountdownComponent from "../common/Countdown";
 export const ProductCard = ({ product }) => {
+  let productImage = product.imageUrl;
+
+  // Xử lý trường hợp `imageUrl` là chuỗi chứa mảng JSON
+  if (typeof product.imageUrl === "string" && product.imageUrl.startsWith("[")) {
+    try {
+      const parsedImages = JSON.parse(product.imageUrl);
+      if (Array.isArray(parsedImages) && parsedImages.length > 0) {
+        productImage = parsedImages[0]; // Lấy ảnh đầu tiên trong mảng
+      }
+    } catch (error) {
+      console.error("Lỗi khi parse imageUrl:", error);
+    }
+  }
+
   const [currentImage, setCurrentImage] = useState(product.imageUrl);
   const { setQuickViewItem } = useContextElement();
   const {
@@ -15,7 +29,7 @@ export const ProductCard = ({ product }) => {
     isAddedtoCompareItem,
   } = useContextElement();
   useEffect(() => {
-    setCurrentImage(product.imageUrl);
+    setCurrentImage(productImage);
   }, [product]);
 
   return (
@@ -35,7 +49,7 @@ export const ProductCard = ({ product }) => {
             data-src={
               product.imageUrl ? product.imageUrl : product.imageUrl
             }
-            src={product.imageUrl ? product.imageUrl : product.imageUrl}
+            src={currentImage}
             alt="image-product"
             width={720}
             height={1005}

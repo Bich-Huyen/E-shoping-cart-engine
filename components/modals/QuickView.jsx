@@ -26,6 +26,30 @@ export default function QuickView() {
 
   if (!quickViewItem) return null;
 
+  let imageUrls = [];
+
+  if (Array.isArray(quickViewItem.imageUrl)) {
+    imageUrls = quickViewItem.imageUrl; // Nếu là mảng, giữ nguyên
+  } else if (typeof quickViewItem.imageUrl === "string") {
+    try {
+      if (quickViewItem.imageUrl.startsWith("[")) {
+        // Nếu là chuỗi JSON chứa một mảng, parse thành mảng
+        const parsedImages = JSON.parse(quickViewItem.imageUrl);
+        if (Array.isArray(parsedImages) && parsedImages.length > 0) {
+          imageUrls = parsedImages;
+        } else {
+          imageUrls = [quickViewItem.imageUrl]; // Nếu parse không ra mảng, giữ nguyên dưới dạng mảng
+        }
+      } else {
+        // Nếu chỉ là một chuỗi URL, đưa vào mảng
+        imageUrls = [quickViewItem.imageUrl];
+      }
+    } catch (error) {
+      console.error("Lỗi khi parse imageUrl:", error);
+      imageUrls = [quickViewItem.imageUrl]; // Nếu lỗi, giữ nguyên dưới dạng mảng
+    }
+  }
+
   return (
     <div className="modal fade modalDemo" id="quick_view">
       <div className="modal-dialog modal-dialog-centered">
@@ -40,13 +64,27 @@ export default function QuickView() {
                 navigation={{ prevEl: ".snbqvp", nextEl: ".snbqvn" }}
                 className="swiper tf-single-slide"
               >
-                {[quickViewItem.imageUrl, quickViewItem.imageUrl || quickViewItem.imageUrl].map((product, index) => (
-                  <SwiperSlide className="swiper-slide" key={index}>
-                    <div className="item">
-                      <Image alt="" src={product} width={720} height={1045} style={{ objectFit: "contain" }} />
-                    </div>
-                  </SwiperSlide>
-                ))}
+                {
+                  imageUrls.length > 0 ? (
+                    <Swiper
+                      modules={[Navigation]}
+                      navigation={{ prevEl: ".snbqvp", nextEl: ".snbqvn" }}
+                      className="swiper tf-single-slide"
+                    >
+                      {imageUrls.map((product, index) => (
+                        <SwiperSlide className="swiper-slide" key={index}>
+                          <div className="item">
+                            <Image alt="" src={product} width={720} height={1045} style={{ objectFit: "contain" }} />
+                          </div>
+                        </SwiperSlide>
+                      ))}
+                      <div className="swiper-button-next button-style-arrow single-slide-prev snbqvp" />
+                      <div className="swiper-button-prev button-style-arrow single-slide-next snbqvn" />
+                    </Swiper>
+                  ) : (
+                    <p>Không có ảnh sản phẩm</p>
+                  )
+                }
                 <div className="swiper-button-next button-style-arrow single-slide-prev snbqvp" />
                 <div className="swiper-button-prev button-style-arrow single-slide-next snbqvn" />
               </Swiper>
@@ -68,13 +106,20 @@ export default function QuickView() {
                   <p>{quickViewItem.description || "Không có mô tả"}</p>
                 </div>
                 <div className="tf-product-info-quantity">
-                  <div className="quantity-title fw-6">Số lượng : <span className="quantity">{" "}{quickViewItem.stock}</span></div>
+                  <div className="quantity-title fw-6">Số lượng : <span className="quantity">{" "}{quickViewItem.stock > 0 ? quickViewItem.stock : "Tạm hết hàng"}</span></div>
                   {
                     quickViewItem.stock > 0 && (
                       <Quantity maxStock={quickViewItem.stock} />
                     )
                   }
                 </div>
+                {/* {
+                      quickViewItem?.productAttribute.map((attribute) => (
+                        <div className="tf-product-description">
+                          <p>{attribute.attributeName} <span>{": "}</span> {attribute.attributeValue}</p>
+                        </div>
+                      ))
+                } */}
                 {
                   quickViewItem.stock > 0 && (
                     <div className="tf-product-info-buy-button">
