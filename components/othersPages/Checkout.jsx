@@ -72,6 +72,8 @@ export default function Checkout() {
   const [selectedVouchers, setSelectedVouchers] = useState([]);
   const [finalPrice, setFinalPrice] = useState(totalPrice);
 
+  const [bestDiscount, setBestDiscount] = useState(0);
+
   const router = useRouter();
 
   const handlePaymentChange = (event) => {
@@ -284,7 +286,7 @@ export default function Checkout() {
         newTotalPrice -= voucher.discount;
       }
     });
-    setFinalPrice(newTotalPrice);
+    setFinalPrice(newTotalPrice); 
   }, [selectedVouchers, totalPrice, shippingFee]);
 
   const handleVoucherSelect = (voucher) => {
@@ -385,8 +387,8 @@ export default function Checkout() {
                         onClick={() => handleVoucherSelect(voucher)}
                       >
                         <p className="fw-bold mb-1">{voucher.code}</p>
-                        <p className="mb-1">{voucher.type === "percentage" ? `Giảm: ${voucher.discount}%` : `Giảm ${voucher.discount}₫`}</p>
-                        <p className="text-muted small">
+                        <p className="mb-1">{voucher.type === "percentage" ? `Giảm: ${voucher.discount}%` : `Giảm ${voucher.discount.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}`}</p>
+                        <p className=" small">
                           Điều kiện: {voucher.type === "fixed" || voucher.type === "percentage" ? `đơn hàng ≥ ${voucher.weight.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}` : `Đơn hàng phải có sản phẩm ${voucher.type}`}
                         </p>
                       </div>
@@ -396,30 +398,9 @@ export default function Checkout() {
               </div>
             </div>
             <div>
-            {/* {discounts.length === 0 ? (
-                  <p className="text-muted">Không có mã giảm giá nào.</p>
-                ) : (
-                  discounts.map((voucher) => {
-                    const isSelected = selectedVouchers[voucher.type]?.code === voucher.code;
-                    return (
-                      <div
-                        key={voucher.code}
-                        className={`voucher-item p-2 rounded ${isSelected ? "highlight" : ""}`}
-                        style={{
-                          opacity: isVoucherDisabled(voucher) ? 0.5 : 1,
-                          pointerEvents: isVoucherDisabled(voucher) ? "none" : "auto",
-                        }}
-                        onClick={() => handleVoucherSelect(voucher)}
-                      >
-                        <p className="mb-1">{voucher.type === "percentage" ? `Giảm: ${voucher.discount}%` : `Giảm ${voucher.discount}₫`}</p>
-                      </div>
-                    );
-                  })
-                )} */}
-              <h6>a</h6>
             </div>
-            <h6 className="mt-3">Tổng thanh toán: <span className="fw-bold">{finalPrice.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</span></h6>
-
+            {/* <h7 className="mt-3 fw-5" style={{ color: 'red' }}>{finalPrice > (bestDiscount) ? `Mã giảm giá chưa tối ưu ${bestDiscount}` : ``}</h7>
+            <h6 className="mt-3">Tổng thanh toán: <span className="fw-bold">{finalPrice.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</span></h6> */}
           </div>
           </div>
           <div className="tf-page-cart-footer">
@@ -429,7 +410,7 @@ export default function Checkout() {
                 onSubmit={(e) => e.preventDefault()}
                 className="tf-page-cart-checkout widget-wrap-checkout"
               >
-                <ul className="wrap-checkout-product">
+                <ul className="tf-page-cart-checkout">
                   {cartProducts.map((elm, i) => (
                     <li key={i} className="checkout-product-item">
                       <figure className="img-product">
@@ -471,17 +452,23 @@ export default function Checkout() {
                     </div>
                   </div>
                 )}
+                <div className="d-flex justify-content-between line pb_20">
+                      <h7 className="fw-5">Thành tiền</h7>
+                      <h7 className="total fw-5">
+                        {totalPrice.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
+                      </h7>
+                    </div>
                 {
                   shippingFee > 0 && (
                     <div className="d-flex justify-content-between line pb_20">
-                      <h7 className="fw-5">Phí giao hàng</h7>
-                      <h7 className="total fw-5">
+                      <h7 className="fw-4">Phí giao hàng</h7>
+                      <h7 className="total fw-4">
                         {shippingFee.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
                       </h7>
                     </div>
                   )}
                   <>
-                {
+                {/* {
                   discount > 0 && (
                     <div>
                         <div className="d-flex justify-content-between line pb_20">
@@ -497,6 +484,27 @@ export default function Checkout() {
                           </h7>
                         </div>
                     </div>
+                  )} */}
+                  {discounts.length === 0 ? (
+                  <p className="text-muted">Không có mã giảm giá nào.</p>
+                  ) : (
+                    discounts.map((voucher) => {
+                      const isSelected = selectedVouchers[voucher.type]?.code === voucher.code;
+                      return (
+                        (isSelected ? (
+                          <div key={voucher.code}>
+                            <div className="d-flex justify-content-between line pb_20">
+                              <h7 className="fw-4" style={{ color: 'red' }}>Giảm giá</h7>
+                              <h7 className="total fw-4" style={{ color: 'red' }}>
+                                {voucher.type === "percentage" ? `- ${(voucher.discount * totalPrice / 100).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}` : `- ${voucher.discount.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}`}
+                              </h7>
+                            </div>
+                          </div>
+                        ) : (
+                          <></>
+                        ))
+                      );
+                    })
                   )}
                   </>
                 <div className="d-flex justify-content-between line pb_20">

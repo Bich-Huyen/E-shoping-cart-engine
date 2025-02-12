@@ -17,6 +17,8 @@ export default function Context({ children }) {
   const [quickAddItem, setQuickAddItem] = useState(1);
   const [totalPrice, setTotalPrice] = useState(0);
 
+  const [recentProducts, setRecentProducts] = useState([]);
+
   useEffect(() => {
     axios.get(`${process.env.NEXT_PUBLIC_API_URL}/products`)
       .then(response => {
@@ -53,6 +55,14 @@ export default function Context({ children }) {
     setWishList(prev => prev.includes(id) ? prev.filter(elm => elm !== id) : [...prev, id]);
   };
 
+  const addToRecent = (productId) => {
+    setRecentProducts((prev) => {
+      if (!prev.includes(productId)) {
+        return [...prev, productId];
+      }
+      return prev;
+    });
+  };
   const removeFromWishlist = id => {
     setWishList(prev => prev.filter(elm => elm !== id));
   };
@@ -89,6 +99,15 @@ export default function Context({ children }) {
     localStorage.setItem("wishlist", JSON.stringify(wishList));
   }, [wishList]);
 
+  useEffect(() => {
+    const items = JSON.parse(localStorage.getItem("recent"));
+    if (items?.length) setRecentProducts(items);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("recent",JSON.stringify(recentProducts));
+  }, [recentProducts]);
+
   const contextElement = {
     cartProducts,
     setCartProducts,
@@ -108,6 +127,9 @@ export default function Context({ children }) {
     removeFromCompareItem,
     compareItem,
     setCompareItem,
+    recentProducts,
+    setRecentProducts,
+    addToRecent,
   };
 
   return (

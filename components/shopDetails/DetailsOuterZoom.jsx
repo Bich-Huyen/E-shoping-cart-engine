@@ -1,41 +1,14 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Slider1 from "./sliders/Slider1";
 import Image from "next/image";
-import CountdownComponent from "../common/Countdown";
-import {
-  paymentImages,
-  sizeOptions,
-} from "@/data/singleProductOptions";
 import axios from "axios";
 import Quantity from "./Quantity";
 
 import Slider1ZoomOuter from "./sliders/Slider1ZoomOuter";
-import { allProducts } from "@/data/products";
 import { useContextElement } from "@/context/Context";
 
-export default function DetailsOuterZoom({ product = allProducts[product.id] }) {
-  const [item, setItem] = useState([]);
-  
-  useEffect(() => {
-    axios.get(`${process.env.NEXT_PUBLIC_API_URL}/products/${product.id}`)
-      .then(response => {
-        if (response.data) {
-          setItem(response.data);
-        } else {
-          console.error("Unexpected API response:", response.data);
-        }
-      })
-      .catch(error => console.error("Error fetching product:", error));
-  }, []);
-
-
-  const colors = product.colors || null;
-  const sizes = product.sizes || null;
-
-  const [currentColor, setCurrentColor] = useState(colors ? colors[0] : null);
-  const [currentSize, setCurrentSize] = useState(sizes[0]);
-
+export default function DetailsOuterZoom({ productId }) {
+  const [item, setItem] = useState(null);
   const {
     addProductToCart,
     isAddedToCartProducts,
@@ -43,7 +16,24 @@ export default function DetailsOuterZoom({ product = allProducts[product.id] }) 
     isAddedtoCompareItem,
     addToWishlist,
     isAddedtoWishlist,
+    addToRecent,
+    recentProducts
   } = useContextElement();
+
+  useEffect(() => {
+
+    axios.get(`${process.env.NEXT_PUBLIC_API_URL}/products/${productId}`)
+      .then(response => {
+        setItem(response.data);
+      })
+      .catch(error => console.error("Error fetching product:", error));
+  }, [productId, recentProducts]);
+
+
+  useEffect(() => {
+    addToRecent(productId);
+  }, [productId, recentProducts]);
+
   return (
     <section
       className="flat-spacing-4 pt_0"
@@ -58,7 +48,7 @@ export default function DetailsOuterZoom({ product = allProducts[product.id] }) 
             <div className="col-md-6">
               <div className="tf-product-media-wrap sticky-top">
                 <div className="thumbs-slider">
-                  <Slider1ZoomOuter product={item} />
+                  <Slider1ZoomOuter productId={item?.id} />
                 </div>
               </div>
             </div>
@@ -68,12 +58,12 @@ export default function DetailsOuterZoom({ product = allProducts[product.id] }) 
                 <div className="tf-product-info-list other-image-zoom">
                   <div className="tf-product-info-title">
                     <h5>
-                      {item.name ? item.name : "Cotton jersey top"}
+                      {item?.name ?? "Cotton jersey top"}
                     </h5>
                   </div>
-                  <div className="tf-product-info-badges">
+                  {/* <div className="tf-product-info-badges">
                     {
-                      item.marketPrice > item.price ? (
+                      item?.marketPrice > item?.price ? (
                         <div className="badges">Giảm giá: {(((item.marketPrice - item.price) / item.marketPrice) * 100).toFixed(0)}%</div>
                       ) : (
                         <></>
@@ -82,161 +72,60 @@ export default function DetailsOuterZoom({ product = allProducts[product.id] }) 
                     <div className="product-status-content">
                       <i className="icon-lightning" />
                     </div>
-                  </div>
+                  </div> */}
                   <div className="tf-product-info-price">
                     <div className="price-on-sale">
-                      {item.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
+                      {item?.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
                     </div>
-                    {item.marketPrice && (
+                    {/* {item?.marketPrice && (
                       <div className="compare-at-price">
-                        {item.marketPrice.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
+                        {item?.marketPrice.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
                       </div>
-                    )}
-                    {/* <div className="badges-on-sale">
-                      <span>37</span>% OFF
-                    </div> */}
+                    )} */}
                   </div>
-                  {/* <div className="tf-product-info-countdown">
-                    <div className="countdown-wrap">
-                      <div className="countdown-title">
-                        <i className="icon-time tf-ani-tada" />
-                        <p>FLASH DEAL! KẾT THÚC TRONG:</p>
-                      </div>
-                      <div className="tf-countdown style-1">
-                        <div className="js-countdown">
-                          <CountdownComponent
-                            targetDate="2024-12-31"
-                            labels="Days :,Hours :,Mins :,Secs"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div> */}
-                  {/* <div className="tf-product-info-variant-picker">
-                    <div className="variant-picker-item">
-                      {
-                        colors != null ? 
-                        (<>
-                        <div className="variant-picker-label">
-                        Color:
-                        <span className="fw-6 variant-picker-label-value">
-                          {currentColor.value}
-                        </span>
-                      </div>
-                      <form className="variant-picker-values">
-                        {colors.map((color) => (
-                          <React.Fragment key={color.id}>
-                            <input
-                              id={color.id}
-                              type="radio"
-                              name="color1"
-                              readOnly
-                              checked={currentColor === color.name}
-                            />
-                            <label
-                              onClick={() => setCurrentColor(color.name)}
-                              className="hover-tooltip radius-60"
-                              htmlFor={color.id}
-                              data-value={color.value}
-                            >
-                              <span
-                                className="btn-checkbox"
-                                style={{ backgroundColor: color.hex_value }}
-                              />
-                              <span className="tooltip">{color.name}</span>
-                            </label>
-                          </React.Fragment>
-                        ))}
-                      </form>
-                        </>) :
-                        (
-                          <></>
-                        )
-                      }
-                    </div>
-                    <div className="variant-picker-item">
-                      <div className="d-flex justify-content-between align-items-center">
-                        <a
-                          href="#find_size"
-                          data-bs-toggle="modal"
-                          className="find-size fw-6"
-                        >
-                          Find your size
-                        </a>
-                      </div>
-                      {sizes != null ? 
-                      (
-                        <>
-                        <div className="variant-picker-label">
-                          Size:
-                          <span className="fw-6 variant-picker-label-value">
-                            {currentSize}
-                          </span>
-                        </div>
-                        <form className="variant-picker-values">
-                        {sizes.map((size) => (
-                          <React.Fragment key={size.id}>
-                            <input
-                              type="radio"
-                              name="size1"
-                              id={size.id}
-                              readOnly
-                              checked={currentSize == size}
-                            />
-                            <label
-                              onClick={() => setCurrentSize(size)}
-                              className="style-text"
-                              htmlFor={size.id}
-                              data-value={size}
-                            >
-                              <p>{size}</p>
-                            </label>
-                          </React.Fragment>
-                        ))}
-                      </form>
-                        </>
-                      ): (
-                        <></>
-                      )
-                      }
-                    </div>
-                  </div> */}
                   <div className="tf-product-info-quantity">
-                    <div className="quantity-title fw-6">Số lượng: <span>{item.stock}</span></div>
-                    <Quantity maxStock={item.stock} />
+                    <div className="quantity-title fw-6">Số lượng: <span>{item?.stock}</span></div>
+                    {
+                      item?.stock > 0 && (
+                        <Quantity maxStock={item?.stock} />
+                      )
+                    }
                   </div>
                   <div className="tf-product-info-quantity">
                     <div className="quantity-title fw-6">Chi tiết sản phẩm: </div>
-                    <p>{item.description ? item.description : "Serum La Roche-Posay Mela B3 Serum Giảm Thâm Nám & Dưỡng Sáng Da 30ml là sản phẩm tinh chất đến từ thương hiệu La Roche-Posay - Pháp. Sản phẩm giúp giảm thâm nám & ngăn ngừa đốm nâu sâu từng nanomet tế bào da Mela B3 với 18 năm nghiên cứu và phát triển từ các chuyên gia da liễu hàng đầu trên thế giới. Với thành phần Melasyl TM độc quyền cùng 10% Niacinamide giúp hiệu quả rõ rệt sau 1 tuần sử dụng."}</p>
+                    <p>{item?.description ?? "Serum La Roche-Posay Mela B3 Serum Giảm Thâm Nám & Dưỡng Sáng Da 30ml là sản phẩm tinh chất đến từ thương hiệu La Roche-Posay - Pháp. Sản phẩm giúp giảm thâm nám & ngăn ngừa đốm nâu sâu từng nanomet tế bào da Mela B3 với 18 năm nghiên cứu và phát triển từ các chuyên gia da liễu hàng đầu trên thế giới. Với thành phần Melasyl TM độc quyền cùng 10% Niacinamide giúp hiệu quả rõ rệt sau 1 tuần sử dụng."}</p>
                   </div>
                   <div className="tf-product-info-buy-button">
                     <form onSubmit={(e) => e.preventDefault()} className="">
+                      {
+                        item?.stock > 0 && (
+                          <a
+                            onClick={() => addProductToCart(item?.id)}
+                            className="tf-btn btn-fill justify-content-center fw-6 fs-16 flex-grow-1 animate-hover-btn"
+                          >
+                            <span>
+                              {isAddedToCartProducts(item?.id)
+                                ? "Đã thêm vào giỏ hàng"
+                                : "Thêm vào giỏ hàng"}{" "}
+                              -
+                            </span>
+                            <span className="tf-qty-price">
+                              {item?.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
+                            </span>
+                          </a>
+                        )
+                      }
                       <a
-                        onClick={() => addProductToCart(item.id)}
-                        className="tf-btn btn-fill justify-content-center fw-6 fs-16 flex-grow-1 animate-hover-btn"
-                      >
-                        <span>
-                          {isAddedToCartProducts(item.id)
-                            ? "Đã thêm vào giỏ hàng"
-                            : "Thêm vào giỏ hàng"}{" "}
-                          -
-                        </span>
-                        <span className="tf-qty-price">
-                          {item.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
-                        </span>
-                      </a>
-                      <a
-                        onClick={() => addToWishlist(item.id)}
+                        onClick={() => addToWishlist(item?.id)}
                         className="tf-product-btn-wishlist hover-tooltip box-icon bg_white wishlist btn-icon-action"
                       >
                         <span
-                          className={`icon icon-heart ${
-                            isAddedtoWishlist(item.id) ? "added" : ""
-                          }`}
+                          className={`icon icon-heart ${isAddedtoWishlist(item?.id) ? "added" : ""
+                            }`}
                         />
                         <span className="tooltip">
                           {" "}
-                          {isAddedtoWishlist(item.id)
+                          {isAddedtoWishlist(item?.id)
                             ? "Already Wishlisted"
                             : "Add to Wishlist"}
                         </span>
@@ -245,36 +134,30 @@ export default function DetailsOuterZoom({ product = allProducts[product.id] }) 
                       <a
                         href="#compare"
                         data-bs-toggle="offcanvas"
-                        onClick={() => addToCompareItem(item.id)}
+                        onClick={() => addToCompareItem(item?.id)}
                         aria-controls="offcanvasLeft"
                         className="tf-product-btn-wishlist hover-tooltip box-icon bg_white compare btn-icon-action"
                       >
                         <span
-                          className={`icon icon-compare ${
-                            isAddedtoCompareItem(item.id) ? "added" : ""
-                          }`}
+                          className={`icon icon-compare ${isAddedtoCompareItem(item?.id) ? "added" : ""
+                            }`}
                         />
                         <span className="tooltip">
-                          {isAddedtoCompareItem(item.id)
+                          {isAddedtoCompareItem(item?.id)
                             ? "Already Compared"
                             : "Add to Compare"}
                         </span>
                         <span className="icon icon-check" />
                       </a>
-                      <div className="w-100">
-                        <a href="#" className="btns-full">
-                          Mua ngay
-                          {/* <Image
-                            alt=""
-                            src="/images/payments/paypal.png"
-                            width={64}
-                            height={18}
-                          /> */}
-                        </a>
-                        {/* <a href="#" className="payment-more-option">
-                          Thêm phương thức thanh toán khác
-                        </a> */}
-                      </div>
+                      {
+                        item?.stock > 0 && (
+                          <div className="w-100">
+                            <a href="#" className="btns-full">
+                              Mua ngay
+                            </a>
+                          </div>
+                        )
+                      }
                     </form>
                   </div>
                   <div className="tf-product-info-extra-link">
@@ -348,46 +231,14 @@ export default function DetailsOuterZoom({ product = allProducts[product.id] }) 
                           </p>
                         </div>
                       </div>
-                      {/* <div className="col-xl-6 col-12">
-                        <div className="tf-product-delivery mb-0">
-                          <div className="icon">
-                            <i className="icon-return-order" />
-                          </div>
-                          <p>
-                            Return within <span className="fw-7">30 days</span>{" "}
-                            of purchase. Duties &amp; taxes are non-refundable.
-                          </p>
-                        </div>
-                      </div> */}
                     </div>
                   </div>
-                  {/* <div className="tf-product-info-trust-seal">
-                    <div className="tf-product-trust-mess">
-                      <i className="icon-safe" />
-                      <p className="fw-6">
-                        Guarantee Safe <br />
-                        Checkout
-                      </p>
-                    </div>
-                    <div className="tf-payment">
-                      {paymentImages.map((image, index) => (
-                        <Image
-                          key={index}
-                          alt={image.alt}
-                          src={image.src}
-                          width={image.width}
-                          height={image.height}
-                        />
-                      ))}
-                    </div>
-                  </div> */}
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>{" "}
-      {/* <StickyItem /> */}
     </section>
   );
 }

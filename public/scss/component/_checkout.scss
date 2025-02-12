@@ -14,15 +14,16 @@
             cursor: pointer;
             transition: 0.3s;
             &:hover {
-              background: #f0f0f0;
+              background: #e6f9ea;
             }
             &.highlight {
-              background: #ffeb99;
-              border: 2px solid #ffcc00;
+              background: #28a745;
+              color: white;
             }
             &.disabled {
               opacity: 0.5;
               cursor: not-allowed;
+              background: white;
             }
           }
           

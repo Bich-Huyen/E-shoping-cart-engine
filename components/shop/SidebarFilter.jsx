@@ -17,10 +17,10 @@ import axios from "axios";
 
 // const brands = Array.from(new Set(products1.map(product => product.brand)));
 
-// const availabilities = [
-//   { id: 1, isAvailable: true, text: "Available", count: 14 },
-//   { id: 2, isAvailable: false, text: "Out of Stock", count: 2 },
-// ];
+const availabilities = [
+  { id: 1, isAvailable: true, text: "Còn hàng", count: 14 },
+  { id: 2, isAvailable: false, text: "Tạm hết", count: 2 },
+];
 
 export default function SidebarFilter({ setProducts }) {
 
@@ -45,16 +45,16 @@ export default function SidebarFilter({ setProducts }) {
       setSelectedBrands((pre) => [...pre, brand]);
     }
   };
-  // const [selectedAvailabilities, setSelectedAvailabilities] = useState([]);
-  // const handleSelectAvailabilities = (availability) => {
-  //   if (selectedAvailabilities.includes(availability)) {
-  //     setSelectedAvailabilities((pre) => [
-  //       ...pre.filter((el) => el != availability),
-  //     ]);
-  //   } else {
-  //     setSelectedAvailabilities((pre) => [...pre, availability]);
-  //   }
-  // };
+  const [selectedAvailabilities, setSelectedAvailabilities] = useState([]);
+  const handleSelectAvailabilities = (availability) => {
+    if (selectedAvailabilities.includes(availability)) {
+      setSelectedAvailabilities((pre) => [
+        ...pre.filter((el) => availability.isAvailable ? el.stock > 0 : el.stock == 0),
+      ]); 
+    } else {
+      setSelectedAvailabilities((pre) => [...pre, availability]);
+    }
+  };
   // const [selectedSizes, setSelectedSizes] = useState([]);
   // const handleSelectSizes = (size) => {
   //   if (selectedSizes.includes(size)) {
@@ -143,23 +143,22 @@ export default function SidebarFilter({ setProducts }) {
     // }
 
     // console.log(filteredByselectedSizes);
-    // if (selectedAvailabilities.length) {
-    //   filteredArrays = [
-    //     ...filteredArrays,
-    //     [
-    //       ...products1.filter((elm) =>
-    //         selectedAvailabilities
-    //           .map((elm3) => elm3.isAvailable)
-    //           .some((elm4) => elm4 == elm.isAvailable)
-    //       ),
-    //     ],
-    //   ];
-    // }
+    if (selectedAvailabilities.length) {
+      filteredArrays = [
+        ...filteredArrays,
+        [
+          ...items.filter((elm) =>
+            selectedAvailabilities
+              // .map((elm3) => elm3.stock)
+              .some((elm4) => elm4.isAvailable ? elm.stock > 0 : elm.stock == 0)
+          ),
+        ],
+      ];
+    }
 
     const commonItems = items.filter((item) =>
       filteredArrays.every((array) => array.includes(item))
     );
-    console.log(commonItems);
     setProducts(commonItems);
   }, [
     price,
@@ -167,14 +166,14 @@ export default function SidebarFilter({ setProducts }) {
     items,
     // selectedColors,
     selectedBrands,
-    // selectedAvailabilities,
+    selectedAvailabilities,
     // selectedSizes,
   ]);
   const clearFilter = () => {
     // setSelectedColors([]);
     // setSelectedBrands([]);
     setSelectedCategories([]);
-    // setSelectedAvailabilities([]);
+    setSelectedAvailabilities([]);
     // setSelectedSizes([]);
     setPrice([0, 5000000]);
   };
@@ -185,7 +184,7 @@ export default function SidebarFilter({ setProducts }) {
       </div>
       <form action="#" id="facet-filter-form" className="facet-filter-form">
       <div className="widget-facet">
-          <div
+          {/* <div
             className="facet-title"
             data-bs-target="#categories"
             data-bs-toggle="collapse"
@@ -194,7 +193,7 @@ export default function SidebarFilter({ setProducts }) {
           >
             <span>Danh mục sản phẩm</span>
             <span className="icon icon-arrow-up" />
-          </div>
+          </div> */}
           {/* <div id="categories" className="collapse show">
             <ul className="tf-filter-group current-scrollbar mb_36">
             {item.map((categories) => (
@@ -231,7 +230,7 @@ export default function SidebarFilter({ setProducts }) {
             <span>Tồn kho</span>
             <span className="icon icon-arrow-up" />
           </div>
-          {/* <div id="availability" className="collapse show">
+          <div id="availability" className="collapse show">
             <ul className="tf-filter-group current-scrollbar mb_36">
               {availabilities.map((availability) => (
                 <li
@@ -253,8 +252,8 @@ export default function SidebarFilter({ setProducts }) {
                     <span>
                       (
                       {
-                        products1.filter(
-                          (elm) => elm.isAvailable == availability.isAvailable
+                        items.filter(
+                          (elm) => (availability.isAvailable ? elm.stock > 0 : elm.stock == 0)
                         ).length
                       }
                       )
@@ -263,7 +262,7 @@ export default function SidebarFilter({ setProducts }) {
                 </li>
               ))}
             </ul>
-          </div> */}
+          </div>
         </div>
         <div className="widget-facet wrap-price">
           <div
@@ -339,7 +338,7 @@ export default function SidebarFilter({ setProducts }) {
           </div>
         </div>
         <div className="widget-facet">
-          <div
+          {/* <div
             className="facet-title"
             data-bs-target="#color"
             data-bs-toggle="collapse"
@@ -348,7 +347,7 @@ export default function SidebarFilter({ setProducts }) {
           >
             <span>Màu</span>
             <span className="icon icon-arrow-up" />
-          </div>
+          </div> */}
           {/* <div id="color" className="collapse show">
             <ul className="tf-filter-group filter-color current-scrollbar mb_36">
               {filterColors.map((elm, i) => (
@@ -383,7 +382,7 @@ export default function SidebarFilter({ setProducts }) {
           </div> */}
         </div>
         <div className="widget-facet">
-          <div
+          {/* <div
             className="facet-title"
             data-bs-target="#size"
             data-bs-toggle="collapse"
@@ -392,7 +391,7 @@ export default function SidebarFilter({ setProducts }) {
           >
             <span>Size</span>
             <span className="icon icon-arrow-up" />
-          </div>
+          </div> */}
           {/* <div id="size" className="collapse show">
             <ul className="tf-filter-group current-scrollbar">
               {sizes.map((elm, i) => (

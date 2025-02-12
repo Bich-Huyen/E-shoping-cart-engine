@@ -42,15 +42,19 @@ export const ProductCard = ({ product }) => {
           />
         </Link>
         <div className="list-product-btn">
-          <a
-            href="#quick_add"
-            onClick={() => setQuickAddItem(product.id)}
-            data-bs-toggle="modal"
-            className="box-icon bg_white quick-add tf-btn-loading"
-          >
-            <span className="icon icon-bag" />
-            <span className="tooltip">Thêm vào giỏ hàng</span>
-          </a>
+          {
+            product.stock > 0 && (
+              <a
+                href="#quick_add"
+                onClick={() => setQuickAddItem(product.id)}
+                data-bs-toggle="modal"
+                className="box-icon bg_white quick-add tf-btn-loading"
+              >
+                <span className="icon icon-bag" />
+                <span className="tooltip">Thêm vào giỏ hàng</span>
+              </a>
+            )
+          }
           <a
             onClick={() => addToWishlist(product.id)}
             className="box-icon bg_white wishlist btn-icon-action"

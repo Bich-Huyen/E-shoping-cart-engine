@@ -19,7 +19,6 @@ export default function QuickAdd() {
   const [item, setItem] = useState(null);
   
   useEffect(() => {
-    console.log("quick add");
     axios.get("http://localhost:8080/api/products")
       .then(response => {
         if (response.data.productList && Array.isArray(response.data.productList)) {
@@ -51,9 +50,9 @@ export default function QuickAdd() {
               </div>
               <div className="content">
                 <Link href={`/product-detail/${item.id}`}>{item.name}</Link>
-                <div className="tf-product-info-price">
+                {/* <div className="tf-product-info-price">
                   <div className="market-price">{item.marketPrice.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</div>
-                </div>
+                </div> */}
                 <div className="tf-product-info-price">
                   <div className="price">{item.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</div>
                 </div>

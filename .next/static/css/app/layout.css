@@ -11308,15 +11308,16 @@ blockquote .text {
   transition: 0.3s;
 }
 .voucher-container .voucher-item:hover {
-  background: #f0f0f0;
+  background: #e6f9ea;
 }
 .voucher-container .voucher-item.highlight {
-  background: #ffeb99;
-  border: 2px solid #ffcc00;
+  background: #28a745;
+  color: white;
 }
 .voucher-container .voucher-item.disabled {
   opacity: 0.5;
   cursor: not-allowed;
+  background: white;
 }
 
 /*------------ sections ---------------- */

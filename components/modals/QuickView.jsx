@@ -20,7 +20,7 @@ export default function QuickView() {
     isAddedtoCompareItem,
     setQuickViewItem
   } = useContextElement();
-  
+
   const [currentColor, setCurrentColor] = useState(colors[0]);
   const [currentSize, setCurrentSize] = useState(sizeOptions[0]);
 
@@ -58,9 +58,9 @@ export default function QuickView() {
                     <Link className="link" href={`/product-detail/${quickViewItem.id}`}>{quickViewItem.name}</Link>
                   </h5>
                 </div>
-                <div className="tf-product-info-price">
+                {/* <div className="tf-product-info-price">
                   <div className="market-price">{quickViewItem.marketPrice ? quickViewItem.marketPrice.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }) : "N/A"}</div>
-                </div>
+                </div> */}
                 <div className="tf-product-info-price">
                   <div className="price">{quickViewItem.price ? quickViewItem.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }) : "N/A"}</div>
                 </div>
@@ -69,16 +69,24 @@ export default function QuickView() {
                 </div>
                 <div className="tf-product-info-quantity">
                   <div className="quantity-title fw-6">Số lượng : <span className="quantity">{" "}{quickViewItem.stock}</span></div>
-                  <Quantity maxStock={quickViewItem.stock} />
+                  {
+                    quickViewItem.stock > 0 && (
+                      <Quantity maxStock={quickViewItem.stock} />
+                    )
+                  }
                 </div>
-                <div className="tf-product-info-buy-button">
-                  <form onSubmit={(e) => e.preventDefault()}>
-                    <a className="tf-btn btn-fill justify-content-center fw-6 fs-16 flex-grow-1 animate-hover-btn" onClick={() => addProductToCart(quickViewItem.id)}>
-                      <span>{isAddedToCartProducts(quickViewItem.id) ? "Đã có trong giỏ hàng - " : "Thêm vào giỏ hàng - "}</span>
-                      <span className="tf-qty-price">{quickViewItem.price ? quickViewItem.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }) : "N/A"}</span>
-                    </a>
-                  </form>
-                </div>
+                {
+                  quickViewItem.stock > 0 && (
+                    <div className="tf-product-info-buy-button">
+                      <form onSubmit={(e) => e.preventDefault()}>
+                        <a className="tf-btn btn-fill justify-content-center fw-6 fs-16 flex-grow-1 animate-hover-btn" onClick={() => addProductToCart(quickViewItem.id)}>
+                          <span>{isAddedToCartProducts(quickViewItem.id) ? "Đã có trong giỏ hàng - " : "Thêm vào giỏ hàng - "}</span>
+                          <span className="tf-qty-price">{quickViewItem.price ? quickViewItem.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }) : "N/A"}</span>
+                        </a>
+                      </form>
+                    </div>
+                  )
+                }
                 <div>
                   <Link href={`/product-detail/${quickViewItem.id}`} className="tf-btn fw-6 btn-line">
                     Coi chi tiết
