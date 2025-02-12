@@ -1,8 +1,6 @@
 "use client";
 
-import { products1 } from "@/data/products";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { ProductCard } from "../shopCards/ProductCard";
 import { Navigation, Pagination } from "swiper/modules";
 
 export default function Products() {
@@ -36,11 +34,11 @@ export default function Products() {
             }}
             pagination={{ clickable: true, el: ".spd307" }}
           >
-            {products1.slice(0, 8).map((product, i) => (
+            {/* {products1.slice(0, 8).map((product, i) => (
               <SwiperSlide key={i} className="swiper-slide">
                 <ProductCard product={product} />
               </SwiperSlide>
-            ))}
+            ))} */}
           </Swiper>
           <div className="nav-sw nav-next-slider nav-next-product box-icon w_46 round snbp3070">
             <span className="icon icon-arrow-left" />

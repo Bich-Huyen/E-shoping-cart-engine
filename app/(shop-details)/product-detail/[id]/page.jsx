@@ -1,20 +1,14 @@
 import Footer1 from "@/components/footers/Footer1";
 import Header2 from "@/components/headers/Header2";
-import DefaultShopDetails from "@/components/shopDetails/DefaultShopDetails";
-import Products from "@/components/shopDetails/Products";
 import RecentProducts from "@/components/shopDetails/RecentProducts";
 import ShopDetailsTab from "@/components/shopDetails/ShopDetailsTab";
 import React from "react";
-import Link from "next/link";
 import DetailsOuterZoom from "@/components/shopDetails/DetailsOuterZoom";
-import { allProducts } from "@/data/products";
 export const metadata = {
   title: "Shop Details || Beatique",
   description: "Beatique",
 };
 export default function page({ params }) {
-  const product =
-    allProducts.filter((elm) => elm.id == params.id)[0] || allProducts[params.id];
   return (
     <>
       <Header2 />

@@ -1,10 +1,10 @@
-import { products1 } from "@/data/products";
+
 import React, { useState, useEffect } from "react";
 import { ProductCard } from "../shopCards/ProductCard";
 
 export default function ProductGrid({
   gridItems = 4,
-  allproducts = products1,
+  allproducts ,
 }) {
 
   return (

@@ -1,7 +1,6 @@
 "use client";
 
 import { ProductCard } from "@/components/shopCards/ProductCard";
-import { products1 } from "@/data/products";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -38,11 +37,11 @@ export default function Products() {
               nextEl: ".snbn301",
             }}
           >
-            {products1.map((product, i) => (
+            {/* {products1.map((product, i) => (
               <SwiperSlide key={i} className="swiper-slide">
                 <ProductCard product={product} />
               </SwiperSlide>
-            ))}
+            ))} */}
           </Swiper>
           <div className="nav-sw nav-next-slider nav-next-product box-icon w_46 round snbp301">
             <span className="icon icon-arrow-left" />

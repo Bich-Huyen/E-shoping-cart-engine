@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useContextElement } from "@/context/Context";
-import { allProducts } from "@/data/products";
 import axios from "axios";
 
 export default function Compare() {

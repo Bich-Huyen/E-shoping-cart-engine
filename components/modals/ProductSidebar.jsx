@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { featuredProducts2 } from "@/data/products";
 export default function ProductSidebar() {
   return (
     <div
@@ -112,7 +111,7 @@ export default function ProductSidebar() {
               </div>
               <div id="sale-products" className="collapse show">
                 <div className="widget-featured-products mb_36">
-                  {featuredProducts2.map((product, index) => (
+                  {/* {featuredProducts2.map((product, index) => (
                     <div className="featured-product-item" key={index}>
                       <Link
                         href={`/product-detail/${product.id}`}
@@ -137,7 +136,7 @@ export default function ProductSidebar() {
                         </span>
                       </div>
                     </div>
-                  ))}
+                  ))} */}
                 </div>
               </div>
             </div>
