@@ -8,7 +8,6 @@ import AddressSelector from "./address/AddressSelector";
 import ShippingFee from "./address/ShippingFee";
 import { vnpay } from "@/data/payment/vnpay";
 import { momo } from "@/data/payment/momo";
-import VoucherList from "./VoucherList";
 import axios from "axios";
 import { getAllDiscounts } from "@/utlis/getAllDiscounts";
 
