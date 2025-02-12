@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import Slider from "rc-slider";
-import { products1 } from "@/data/products";
 import axios from "axios";
 
 // const filterCategories = Array.from(

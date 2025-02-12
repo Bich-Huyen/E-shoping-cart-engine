@@ -2,9 +2,7 @@
 import Link from "next/link";
 import React from "react";
 
-import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { products1 } from "@/data/products";
 import { ProductCard } from "../shopCards/ProductCard";
 import { Navigation } from "swiper/modules";
 import {
@@ -107,14 +105,14 @@ export default function Nav({ isArrow = true, textColor = "", Linkfs = "" }) {
                     spaceBetween={30}
                     className="swiper tf-product-header wrap-sw-over"
                   >
-                    {[...products1]
+                    {/* {[...products1]
                       .slice(0, 4)
 
                       .map((elm, i) => (
                         <SwiperSlide key={i} className="swiper-slide">
                           <ProductCard product={elm} />
                         </SwiperSlide>
-                      ))}
+                      ))} */}
                   </Swiper>
                   <div className="nav-sw nav-next-slider nav-next-product-header box-icon w_46 round snmpn1">
                     <span className="icon icon-arrow-left" />

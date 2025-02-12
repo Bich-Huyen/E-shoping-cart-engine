@@ -1,6 +1,5 @@
 "use client";
 import { useContextElement } from "@/context/Context";
-import { products1 } from "@/data/products";
 import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
@@ -170,7 +169,7 @@ export default function ShopCart() {
                       }}
                       className="swiper tf-cart-slide"
                     >
-                      {products1.slice(2, 4).map((elm, i) => (
+                      {/* {products1.slice(2, 4).map((elm, i) => (
                         <SwiperSlide key={i} className="swiper-slide">
                           <div className="tf-minicart-recommendations-item">
                             <div className="tf-minicart-recommendations-item-image">
@@ -205,7 +204,7 @@ export default function ShopCart() {
                             </div>
                           </div>
                         </SwiperSlide>
-                      ))}
+                      ))} */}
                     </Swiper>
                   </div>
                 </div>

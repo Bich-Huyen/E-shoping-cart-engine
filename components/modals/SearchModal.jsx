@@ -2,7 +2,6 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { products1 } from "@/data/products";
 export default function SearchModal() {
   return (
     <div className="offcanvas offcanvas-end canvas-search" id="canvasSearch">
@@ -74,7 +73,7 @@ export default function SearchModal() {
                   Need some inspiration?
                 </div>
                 <div className="tf-search-hidden-inner">
-                  {products1.map((product, index) => (
+                  {/* {products1.map((product, index) => (
                     <div className="tf-loop-item" key={index}>
                       <div className="image">
                         <Link href={`/product-detail/${product.id}`}>
@@ -108,7 +107,7 @@ export default function SearchModal() {
                         </div>
                       </div>
                     </div>
-                  ))}
+                  ))} */}
                 </div>
               </div>
             </div>
