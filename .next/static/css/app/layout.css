@@ -5868,9 +5868,19 @@ header.header-bg {
   font-size: 20px;
   line-height: 24px;
 }
+#quick_add .tf-product-info-item .content .market-price {
+  font-size: 14px;
+  line-height: 16px;
+  color: #ff0000;
+  text-decoration: line-through;
+}
 #quick_add .tf-product-info-item .content .price {
-  font-size: 20px;
+  font-size: 18px;
   line-height: 20px;
+  color: #656565;
+}
+#quick_add .tf-product-info-quantity .quantity {
+  font-weight: normal;
 }
 #quick_add .payment-more-option {
   text-decoration: none;
@@ -5916,6 +5926,31 @@ header.header-bg {
 }
 #quick_view .tf-product-info-wrap .tf-product-info-list .tf-product-info-title {
   margin-bottom: 20px;
+}
+#quick_view .tf-product-info-wrap .tf-product-info-list .tf-product-info-price {
+  display: flex;
+  gap: 6px;
+}
+#quick_view .tf-product-info-wrap .tf-product-info-list .tf-product-info-price a {
+  font-size: 20px;
+  line-height: 24px;
+}
+#quick_view .tf-product-info-wrap .tf-product-info-list .tf-product-info-price .market-price {
+  font-size: 14px;
+  line-height: 16px;
+  color: #ff0000;
+  text-decoration: line-through;
+}
+#quick_view .tf-product-info-wrap .tf-product-info-list .tf-product-info-price .price {
+  font-size: 18px;
+  line-height: 20px;
+  color: #656565;
+}
+#quick_view .tf-product-info-wrap .tf-product-info-list .tf-product-info-quantity {
+  margin-bottom: 5px;
+}
+#quick_view .tf-product-info-wrap .tf-product-info-list .tf-product-info-quantity .quantity {
+  font-weight: normal;
 }
 #quick_view .tf-product-info-wrap .tf-product-info-list .tf-product-info-badges {
   margin-bottom: 18px;
@@ -7863,7 +7898,7 @@ header.header-bg {
 }
 .tf-product-info-price .price {
   color: var(--main);
-  font-size: 28px;
+  font-size: 15px;
   line-height: 28px;
 }
 .tf-product-info-price .price-on-sale {
@@ -11220,7 +11255,7 @@ blockquote .text {
   display: none;
 }
 
-/*------------ zoom ---------------- */
+/*------------ voucher ---------------- */
 .voucher-card {
   cursor: pointer;
   transition: all 0.3s ease-in-out;
@@ -11231,6 +11266,11 @@ blockquote .text {
 }
 
 .order {
+  border: 2px solid #28a745; /* Bootstrap success green */
+  background-color: #e6f9ea;
+}
+
+.fixed {
   border: 2px solid #28a745; /* Bootstrap success green */
   background-color: #e6f9ea;
 }
@@ -11250,6 +11290,33 @@ blockquote .text {
   border: 2px solid #28a745; /* Bootstrap primary blue */
   background-color: #28a745;
   color: white;
+}
+
+/*------------ checkout ---------------- */
+.voucher-container {
+  border: 1px solid #ddd;
+  max-height: 500px;
+  overflow-y: auto;
+}
+.voucher-container .voucher-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.voucher-container .voucher-item {
+  cursor: pointer;
+  transition: 0.3s;
+}
+.voucher-container .voucher-item:hover {
+  background: #f0f0f0;
+}
+.voucher-container .voucher-item.highlight {
+  background: #ffeb99;
+  border: 2px solid #ffcc00;
+}
+.voucher-container .voucher-item.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 /*------------ sections ---------------- */
@@ -12963,6 +13030,31 @@ blockquote .text {
 .tf-compare-stock .icon i {
   color: var(--white);
   font-size: 7px;
+}
+.tf-compare-stock .close {
+  width: 16px;
+  height: 16px;
+  background-color: #b73535;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tf-compare-stock .close i {
+  color: var(--white);
+  font-size: 7px;
+}
+.tf-compare-stock .close-quantity {
+  color: #b73535;
+}
+.tf-compare-stock .quantity {
+  width: 16px;
+  height: 16px;
+  color: #000000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .tf-main-area-page h4 {

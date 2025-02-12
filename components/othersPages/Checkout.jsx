@@ -9,9 +9,47 @@ import ShippingFee from "./address/ShippingFee";
 import { vnpay } from "@/data/payment/vnpay";
 import { momo } from "@/data/payment/momo";
 import VoucherList from "./VoucherList";
+import axios from "axios";
+import { getAllDiscounts } from "@/utlis/getAllDiscounts";
 
 const addressUrl = process.env.NEXT_PUBLIC_ADDRESS_URL;
 const token = process.env.NEXT_PUBLIC_API_TOKEN;
+
+const findBestDiscountCombination = (orderTotal, discounts) => {
+  let minFinalPrice = orderTotal;
+  let bestCombo = [];
+
+  const groupedDiscounts = discounts.reduce((acc, discount) => {
+    if (!acc[discount.type]) acc[discount.type] = [];
+    acc[discount.type].push(discount);
+    return acc;
+  }, {});
+
+  const backtrack = (applied, currentTotal, remainingGroups) => {
+    if (currentTotal < minFinalPrice) {
+      minFinalPrice = currentTotal;
+      bestCombo = [...applied];
+    }
+
+    Object.keys(remainingGroups).forEach((type) => {
+      remainingGroups[type].forEach((discount) => {
+        if (currentTotal >= discount.weight) {
+          const newTotal =
+            discount.type === "percentage"
+              ? currentTotal * (1 - discount.discount / 100)
+              : currentTotal - discount.discount;
+
+          const newGroups = { ...remainingGroups };
+          delete newGroups[type]; // Mỗi loại chỉ chọn 1 mã
+          backtrack([...applied, discount], newTotal, newGroups);
+        }
+      });
+    });
+  };
+
+  backtrack([], orderTotal, groupedDiscounts);
+  return { bestCombo, minFinalPrice };
+};
 
 export default function Checkout() {
   const { cartProducts, setCartProducts, totalPrice } = useContextElement();
@@ -30,14 +68,14 @@ export default function Checkout() {
 
   const [shippingDiscount, setShippingDiscount] = useState(0);
 
+  const [discounts, setDiscounts] = useState([]);
+  const [selectedVouchers, setSelectedVouchers] = useState([]);
+  const [finalPrice, setFinalPrice] = useState(totalPrice);
+
   const router = useRouter();
 
   const handlePaymentChange = (event) => {
     setSelectedPayment(event.target.id);
-  };
-
-  const handleVoucherSelect = (voucher) => {
-    console.log("Voucher được chọn:", voucher);
   };
 
   async function fetchData(endpoint, params = {}) {
@@ -92,20 +130,191 @@ export default function Checkout() {
     router.push("/payment-confirmation");
   };
 
-  const processPayment = () => {
+  const createAddress = async (street, city, state, postalCode, country) => {
+    try {
+      const addressData = {
+        street,
+        city,
+        state,
+        postalCode,
+        country,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+      };
+  
+      console.log("Creating address:", addressData);
+  
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/addresses/add`, addressData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+  
+      console.log("Address created:", response.data);
+      return response.data.id; // Trả về ID của địa chỉ vừa tạo
+    } catch (error) {
+      console.error("Error creating address:", error.response ? error.response.data : error.message);
+      return null;
+    }
+  };
+  
+
+  const createOrder = async (addressId) => {
+    try {
+      // Dữ liệu đơn hàng
+      const orderData = {
+        userId: "1", // Đổi thành userId thực tế từ context hoặc state
+        addressId, // ID của địa chỉ vừa tạo
+        totalAmount: finalPrice,
+        status: "progress",
+        orderDate: new Date().toISOString(),
+      };
+  
+      console.log("Sending order data:", orderData);
+  
+      // Gửi request tạo đơn hàng
+      const orderResponse = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/orders`, orderData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+  
+      const orderId = orderResponse.data.id; // Lấy ID đơn hàng vừa tạo
+      console.log("Order created with ID:", orderId);
+  
+      // Nếu có orderId, tiếp tục thêm sản phẩm vào đơn hàng
+      if (orderId) {
+        await addOrderItems(orderId);
+      }
+  
+      return orderId;
+    } catch (error) {
+      console.error("Error creating order:", error.response ? error.response.data : error.message);
+      return null;
+    }
+  };
+  
+  const addOrderItems = async (orderId) => {
+    try {
+      // Lặp qua từng sản phẩm trong giỏ hàng và thêm vào đơn hàng
+      for (const product of cartProducts) {
+        const itemData = {
+          productId: product.id, // Lấy ID sản phẩm từ giỏ hàng
+          quantity: product.quantity,
+          price: product.price * product.quantity, // Tổng giá của sản phẩm
+        };
+  
+        console.log(`Adding item to order ${orderId}:`, itemData);
+  
+        await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/orders/${orderId}/items`, itemData, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+  
+        console.log(`Product ${product.id} added to order ${orderId}`);
+      }
+    } catch (error) {
+      console.error("Error adding items to order:", error.response ? error.response.data : error.message);
+    }
+  };
+
+  const processPayment = async () => {
+    // Lấy thông tin địa chỉ từ form
+    const street = document.getElementById("address").value;
+    const city = document.getElementById("province").selectedOptions[0]?.text || "";
+    const state = document.getElementById("district").selectedOptions[0]?.text || "";
+    const postalCode = "700000"; // Cần có logic lấy postalCode thực tế
+    const country = "Vietnam"; // Có thể để mặc định
+  
+    if (!street || !city || !state) {
+      alert("Vui lòng nhập đầy đủ thông tin địa chỉ!");
+      return;
+    }
+  
+    const addressId = await createAddress(street, city, state, postalCode, country);
+    if (!addressId) {
+      alert("Lỗi khi tạo địa chỉ! Vui lòng thử lại.");
+      return;
+    }
+
+    const orderId = await createOrder(addressId);
+    if (!orderId) {
+      alert("Lỗi khi tạo đơn hàng! Vui lòng thử lại.");
+      return;
+    }
+
+    setCartProducts([]);
+  
     switch (selectedPayment) {
-      case 'vnpay':
+      case "vnpay":
         handleVnpay();
         break;
-      case 'momo':
+      case "momo":
         handleMomo();
         break;
-      case 'delivery':
+      case "delivery":
         handleCashOnDelivery();
         break;
       default:
-        alert('Vui lòng chọn phương thức thanh toán hợp lệ.');
+        alert("Vui lòng chọn phương thức thanh toán hợp lệ.");
     }
+  };
+
+  useEffect(() => {
+    getAllDiscounts().then((discounts) => {
+      setDiscounts(discounts);
+      // 🟢 Tự động áp dụng mã giảm giá tối ưu khi trang load lần đầu
+      const { bestCombo, minFinalPrice } = findBestDiscountCombination(totalPrice, discounts);
+      const autoSelected = bestCombo.reduce((acc, voucher) => {
+        acc[voucher.type] = voucher;
+        return acc;
+      }, {});
+      setSelectedVouchers(autoSelected);
+      setFinalPrice(minFinalPrice + shippingFee);
+    });
+  }, []);
+
+  useEffect(() => {
+    let newTotalPrice = totalPrice + shippingFee;
+    Object.values(selectedVouchers).forEach((voucher) => {
+      if (voucher.type === "percentage") {
+        newTotalPrice *= 1 - voucher.discount / 100;
+      } else {
+        newTotalPrice -= voucher.discount;
+      }
+    });
+    setFinalPrice(newTotalPrice);
+  }, [selectedVouchers, totalPrice, shippingFee]);
+
+  const handleVoucherSelect = (voucher) => {
+    setSelectedVouchers((prev) => {
+      const newVouchers = { ...prev };
+
+      // Nếu đã chọn thì bỏ chọn
+      if (newVouchers[voucher.type]?.code === voucher.code) {
+        delete newVouchers[voucher.type];
+      } else {
+        // Chọn mới (giữ lại loại khác, nhưng chỉ giữ 1 loại voucher mỗi `type`)
+        newVouchers[voucher.type] = voucher;
+      }
+
+      return newVouchers;
+    });
+  };
+
+  const isVoucherDisabled = (voucher) => {
+    const isSelected = selectedVouchers[voucher.type]?.code === voucher.code;
+    const otherTypeSelected = Object.values(selectedVouchers).some((v) => v.type !== voucher.type);
+    const notEnoughPrice = finalPrice < voucher.weight;
+
+    // Nếu đủ điều kiện, không cần làm mờ
+    if (!notEnoughPrice) {
+      return false;
+    }
+
+    // Nếu đã chọn voucher này thì không làm mờ
+    return !isSelected && (otherTypeSelected || notEnoughPrice);
   };
 
   return (
@@ -155,6 +364,63 @@ export default function Checkout() {
                 <textarea name="note" id="note" defaultValue={""} />
               </fieldset>
             </form>
+            <div className="coupon-box">
+            {/* 🟢 Danh sách voucher */}
+            <div className="voucher-container mt-3 p-3 rounded">
+              <h6 className="fw-bold mb-2">Danh sách mã giảm giá</h6>
+              <div className="voucher-list">
+                {discounts.length === 0 ? (
+                  <p className="text-muted">Không có mã giảm giá nào.</p>
+                ) : (
+                  discounts.map((voucher) => {
+                    const isSelected = selectedVouchers[voucher.type]?.code === voucher.code;
+                    return (
+                      <div
+                        key={voucher.code}
+                        className={`voucher-item p-2 rounded ${isSelected ? "highlight" : ""}`}
+                        style={{
+                          opacity: isVoucherDisabled(voucher) ? 0.5 : 1,
+                          pointerEvents: isVoucherDisabled(voucher) ? "none" : "auto",
+                        }}
+                        onClick={() => handleVoucherSelect(voucher)}
+                      >
+                        <p className="fw-bold mb-1">{voucher.code}</p>
+                        <p className="mb-1">{voucher.type === "percentage" ? `Giảm: ${voucher.discount}%` : `Giảm ${voucher.discount}₫`}</p>
+                        <p className="text-muted small">
+                          Điều kiện: {voucher.type === "fixed" || voucher.type === "percentage" ? `đơn hàng ≥ ${voucher.weight.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}` : `Đơn hàng phải có sản phẩm ${voucher.type}`}
+                        </p>
+                      </div>
+                    );
+                  })
+                )}
+              </div>
+            </div>
+            <div>
+            {/* {discounts.length === 0 ? (
+                  <p className="text-muted">Không có mã giảm giá nào.</p>
+                ) : (
+                  discounts.map((voucher) => {
+                    const isSelected = selectedVouchers[voucher.type]?.code === voucher.code;
+                    return (
+                      <div
+                        key={voucher.code}
+                        className={`voucher-item p-2 rounded ${isSelected ? "highlight" : ""}`}
+                        style={{
+                          opacity: isVoucherDisabled(voucher) ? 0.5 : 1,
+                          pointerEvents: isVoucherDisabled(voucher) ? "none" : "auto",
+                        }}
+                        onClick={() => handleVoucherSelect(voucher)}
+                      >
+                        <p className="mb-1">{voucher.type === "percentage" ? `Giảm: ${voucher.discount}%` : `Giảm ${voucher.discount}₫`}</p>
+                      </div>
+                    );
+                  })
+                )} */}
+              <h6>a</h6>
+            </div>
+            <h6 className="mt-3">Tổng thanh toán: <span className="fw-bold">{finalPrice.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</span></h6>
+
+          </div>
           </div>
           <div className="tf-page-cart-footer">
             <div className="tf-cart-footer-inner">
@@ -169,7 +435,7 @@ export default function Checkout() {
                       <figure className="img-product">
                         <Image
                           alt="product"
-                          src={elm.imgSrc}
+                          src={elm.imageUrl}
                           width={720}
                           height={1005}
                         />
@@ -177,7 +443,7 @@ export default function Checkout() {
                       </figure>
                       <div className="content">
                         <div className="info">
-                          <p className="name">{elm.title}</p>
+                          <p className="name">{elm.name}</p>
                           <span className="variant">M</span>
                         </div>
                         <span className="price">
@@ -205,16 +471,6 @@ export default function Checkout() {
                     </div>
                   </div>
                 )}
-                <div className="coupon-box">
-                  {/* <input type="text" placeholder="Mã giảm giá" />
-                  <a
-                    href="#"
-                    className="tf-btn btn-sm radius-3 btn-fill btn-icon animate-hover-btn"
-                  >
-                    Áp dụng
-                  </a> */}
-                  <VoucherList orderValue={totalPrice + shippingFee} shippingValue={shippingFee} onSelect={handleVoucherSelect} onDiscount={setDiscount} onShippingDiscount={setShippingDiscount} />
-                </div>
                 {
                   shippingFee > 0 && (
                     <div className="d-flex justify-content-between line pb_20">
@@ -245,7 +501,7 @@ export default function Checkout() {
                   </>
                 <div className="d-flex justify-content-between line pb_20">
                   <h6 className="fw-5">Tổng tiền</h6>
-                  <h6 className="total fw-5">{(totalPrice + shippingFee - discount - shippingDiscount).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</h6>
+                  <h6 className="total fw-5">{(finalPrice).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</h6>
                 </div>
                 <div className="wd-check-payment">
                   <div className="fieldset-radio mb_20">

@@ -7,9 +7,9 @@ export default function AddressSelector({ onWardSelect, onDistrictSelect }) {
   const [provinces, setProvinces] = useState([]);
   const [districts, setDistricts] = useState([]);
   const [wards, setWards] = useState([]);
-  const [selectedWard, setSelectedWard] = useState("");
-  const [selectedProvince, setSelectedProvince] = useState("");
-  const [selectedDistrict, setSelectedDistrict] = useState("");
+  const [selectedProvince, setSelectedProvince] = useState(localStorage.getItem("selectedProvince") || "");
+  const [selectedDistrict, setSelectedDistrict] = useState(localStorage.getItem("selectedDistrict") || "");
+  const [selectedWard, setSelectedWard] = useState(localStorage.getItem("selectedWard") || "");
 
   async function fetchData(endpoint, params = {}) {
     const url = new URL(`${addressUrl}/${endpoint}`);
@@ -34,6 +34,7 @@ export default function AddressSelector({ onWardSelect, onDistrictSelect }) {
     return response.json();
   }
 
+  // Load danh sách tỉnh/thành phố
   useEffect(() => {
     async function loadProvinces() {
       const data = await fetchData("province");
@@ -43,6 +44,7 @@ export default function AddressSelector({ onWardSelect, onDistrictSelect }) {
     loadProvinces();
   }, []);
 
+  // Load danh sách quận/huyện khi tỉnh/thành phố thay đổi
   useEffect(() => {
     async function loadDistricts() {
       if (!selectedProvince) {
@@ -58,6 +60,7 @@ export default function AddressSelector({ onWardSelect, onDistrictSelect }) {
     loadDistricts();
   }, [selectedProvince]);
 
+  // Load danh sách xã/phường khi quận/huyện thay đổi
   useEffect(() => {
     async function loadWards() {
       if (!selectedDistrict) {
@@ -72,8 +75,32 @@ export default function AddressSelector({ onWardSelect, onDistrictSelect }) {
     loadWards();
   }, [selectedDistrict]);
 
+  // Lưu giá trị vào localStorage mỗi khi người dùng chọn một tỉnh/thành phố
+  const handleProvinceChange = (e) => {
+    const value = e.target.value;
+    setSelectedProvince(value);
+    localStorage.setItem("selectedProvince", value);
+    setSelectedDistrict(""); // Reset quận/huyện khi tỉnh thay đổi
+    setSelectedWard(""); // Reset xã/phường khi tỉnh thay đổi
+  };
+
+  // Lưu giá trị vào localStorage mỗi khi người dùng chọn một quận/huyện
+  const handleDistrictChange = (e) => {
+    const value = e.target.value;
+    setSelectedDistrict(value);
+    localStorage.setItem("selectedDistrict", value);
+    setSelectedWard(""); // Reset xã/phường khi quận thay đổi
+  };
+
+  // Lưu giá trị vào localStorage mỗi khi người dùng chọn một xã/phường
+  const handleWardChange = (e) => {
+    const value = e.target.value;
+    setSelectedWard(value);
+    localStorage.setItem("selectedWard", value);
+  };
+
   useEffect(() => {
-    onWardSelect(selectedWard); 
+    onWardSelect(selectedWard);
     onDistrictSelect(selectedDistrict);
   }, [selectedWard]);
 
@@ -87,7 +114,7 @@ export default function AddressSelector({ onWardSelect, onDistrictSelect }) {
             className="tf-select w-100"
             id="province"
             value={selectedProvince}
-            onChange={(e) => setSelectedProvince(e.target.value)}
+            onChange={handleProvinceChange}
           >
             <option value="">Chọn tỉnh/thành phố</option>
             {provinces.map((province) => (
@@ -107,7 +134,7 @@ export default function AddressSelector({ onWardSelect, onDistrictSelect }) {
             className="tf-select w-100"
             id="district"
             value={selectedDistrict}
-            onChange={(e) => setSelectedDistrict(e.target.value)}
+            onChange={handleDistrictChange}
           >
             <option value="">Chọn quận/huyện</option>
             {districts.map((district) => (
@@ -127,7 +154,7 @@ export default function AddressSelector({ onWardSelect, onDistrictSelect }) {
             className="tf-select w-100"
             id="ward"
             value={selectedWard}
-            onChange={(e) => setSelectedWard(e.target.value)}
+            onChange={handleWardChange}
           >
             <option value="">Chọn xã/phường</option>
             {wards.map((ward) => (

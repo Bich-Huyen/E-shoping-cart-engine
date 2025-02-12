@@ -8,28 +8,6 @@ export default function Cart() {
 
   const { cartProducts, setCartProducts, totalPrice } = useContextElement();
 
-  // Tải và khởi tạo bot Coze
-  // useEffect(() => {
-  //   const script = document.createElement("script");
-  //   script.src =
-  //     "https://sf-cdn.coze.com/obj/unpkg-va/flow-platform/chat-app-sdk/1.1.0-beta.0/libs/oversea/index.js";
-  //   script.onload = () => {
-  //     new CozeWebSDK.WebChatClient({
-  //       config: {
-  //         bot_id: "7459343149057097744", 
-  //       },
-  //       componentProps: {
-  //         title: "Beautique Advisor",
-  //         style: {
-  //           height: "50vh", 
-  //           titleColor: "#000000", 
-  //         },
-  //       },
-  //     });
-  //   };
-  //   document.body.appendChild(script);
-  // }, []);
-
   const setQuantity = (id, quantity) => {
     if (quantity >= 1) {
       const item = cartProducts.filter((elm) => elm.id == id)[0];
@@ -101,7 +79,7 @@ export default function Cart() {
                         >
                           <Image
                             alt="img-product"
-                            src={elm.imgSrc}
+                            src={elm.imageUrl}
                             width={668}
                             height={932}
                           />
@@ -111,9 +89,9 @@ export default function Cart() {
                             href={`/product-detail/${elm.id}`}
                             className="cart-title link"
                           >
-                            {elm.title}
+                            {elm.name}
                           </Link>
-                          <div className="cart-meta-variant">White / M</div>
+                          {/* <div className="cart-meta-variant">White / M</div> */}
                           <span
                             className="remove-cart link remove"
                             onClick={() => removeItem(elm.id)}

@@ -510,10 +510,22 @@
         font-size: 20px;
         line-height: 24px;
       }
-      .price {
-        font-size: 20px;
-        line-height: 20px;
+      .market-price {
+        font-size: 14px;
+        line-height: 16px;
+        color: #ff0000;
+        text-decoration: line-through;
       }
+      .price {
+        font-size: 18px;
+        line-height: 20px;
+        color: #656565;
+      }
+    }
+  }
+  .tf-product-info-quantity {
+    .quantity {
+      font-weight: normal;
     }
   }
   .payment-more-option {
@@ -563,6 +575,31 @@
       }
       .tf-product-info-title {
         margin-bottom: 20px;
+      }
+      .tf-product-info-price {
+        display: flex;
+        gap: 6px;
+        a {
+          font-size: 20px;
+          line-height: 24px;
+        }
+        .market-price {
+          font-size: 14px;
+          line-height: 16px;
+          color: #ff0000;
+          text-decoration: line-through;
+        }
+        .price {
+          font-size: 18px;
+          line-height: 20px;
+          color: #656565;
+        }
+      }
+      .tf-product-info-quantity {
+        margin-bottom: 5px;
+        .quantity {
+          font-weight: normal;
+        }
       }
       .tf-product-info-badges {
         margin-bottom: 18px;

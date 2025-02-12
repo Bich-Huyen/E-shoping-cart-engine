@@ -1802,6 +1802,31 @@
             font-size: 7px;
         }
     }
+    .close {
+        width: 16px;
+        height: 16px;
+        background-color: #b73535;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        i {
+            color: var(--white);  
+            font-size: 7px;
+        }
+    }
+    .close-quantity {
+        color: #b73535;
+    }
+    .quantity {
+        width: 16px;
+        height: 16px;
+        color: #000000;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }
 
 

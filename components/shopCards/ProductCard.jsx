@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useContextElement } from "@/context/Context";
 import CountdownComponent from "../common/Countdown";
 export const ProductCard = ({ product }) => {
-  const [currentImage, setCurrentImage] = useState(product.imgSrc);
+  const [currentImage, setCurrentImage] = useState(product.imageUrl);
   const { setQuickViewItem } = useContextElement();
   const {
     setQuickAddItem,
@@ -15,7 +15,7 @@ export const ProductCard = ({ product }) => {
     isAddedtoCompareItem,
   } = useContextElement();
   useEffect(() => {
-    setCurrentImage(product.imgSrc);
+    setCurrentImage(product.imageUrl);
   }, [product]);
 
   return (
@@ -24,7 +24,7 @@ export const ProductCard = ({ product }) => {
         <Link href={`/product-detail/${product.id}`} className="product-img">
           <Image
             className="lazyload img-product"
-            data-src={product.imgSrc}
+            data-src={product.imageUrl}
             src={currentImage}
             alt="image-product"
             width={720}
@@ -33,9 +33,9 @@ export const ProductCard = ({ product }) => {
           <Image
             className="lazyload img-hover"
             data-src={
-              product.imgHoverSrc ? product.imgHoverSrc : product.imgSrc
+              product.imageUrl ? product.imageUrl : product.imageUrl
             }
-            src={product.imgHoverSrc ? product.imgHoverSrc : product.imgSrc}
+            src={product.imageUrl ? product.imageUrl : product.imageUrl}
             alt="image-product"
             width={720}
             height={1005}
@@ -49,7 +49,7 @@ export const ProductCard = ({ product }) => {
             className="box-icon bg_white quick-add tf-btn-loading"
           >
             <span className="icon icon-bag" />
-            <span className="tooltip">Quick Add</span>
+            <span className="tooltip">Thêm vào giỏ hàng</span>
           </a>
           <a
             onClick={() => addToWishlist(product.id)}
@@ -62,8 +62,8 @@ export const ProductCard = ({ product }) => {
             />
             <span className="tooltip">
               {isAddedtoWishlist(product.id)
-                ? "Already Wishlisted"
-                : "Add to Wishlist"}
+                ? "Đã Thích"
+                : "Thêm vào yêu thích"  }
             </span>
             <span className="icon icon-delete" />
           </a>
@@ -82,8 +82,8 @@ export const ProductCard = ({ product }) => {
             <span className="tooltip">
               {" "}
               {isAddedtoCompareItem(product.id)
-                ? "Already Compared"
-                : "Add to Compare"}
+                ? "So sánh"
+                : "Thêm so sánh"}
             </span>
             <span className="icon icon-check" />
           </a>
@@ -94,7 +94,7 @@ export const ProductCard = ({ product }) => {
             className="box-icon bg_white quickview tf-btn-loading"
           >
             <span className="icon icon-view" />
-            <span className="tooltip">Quick View</span>
+            <span className="tooltip">Xem nhanh</span>
           </a>
         </div>
         {product.countdown && (
@@ -107,9 +107,9 @@ export const ProductCard = ({ product }) => {
       </div>
       <div className="card-product-info">
         <Link href={`/product-detail/${product.id}`} className="title link">
-          {product.title}
+          {product.name}
         </Link>
-        {product.isAvailable ? (
+        { product.stock > 0 ? (
     // Hiển thị giá bình thường nếu sản phẩm còn hàng
     <span className="price">
       {product.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}

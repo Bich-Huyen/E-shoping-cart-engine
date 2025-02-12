@@ -9,6 +9,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 export default function ShopCart() {
   const { cartProducts, totalPrice, setCartProducts, setQuickViewItem, addProductToCart } =
     useContextElement();
+
   const setQuantity = (id, quantity) => {
     if (quantity >= 1) {
       const item = cartProducts.filter((elm) => elm.id == id)[0];
@@ -76,7 +77,7 @@ export default function ShopCart() {
                           <Link href={`/product-detail/${elm.id}`}>
                             <Image
                               alt=""
-                              src={elm.imgSrc}
+                              src={elm.imageUrl}
                               width={668}
                               height={932}
                               style={{ objectFit: "cover" }}
@@ -88,7 +89,7 @@ export default function ShopCart() {
                             className="title link"
                             href={`/product-detail/${elm.id}`}
                           >
-                            {elm.title}
+                            {elm.name}
                           </Link>
                           {/* <div className="meta-variant">Light gray</div> */}
                           <div className="price fw-6">
@@ -138,15 +139,15 @@ export default function ShopCart() {
                       <div className="container">
                         <div className="row align-items-center mt-5 mb-5">
                           <div className="col-12 fs-18">
-                            Your shop cart is empty
+                            Giỏ hàng trống
                           </div>
                           <div className="col-12 mt-3">
                             <Link
-                              href={`/shop-default`}
+                              href={`/shop-filter-sidebar`}
                               className="tf-btn btn-fill animate-hover-btn radius-3 w-100 justify-content-center"
                               style={{ width: "fit-content" }}
                             >
-                              Explore Products!
+                              Mua ngay
                             </Link>
                           </div>
                         </div>
