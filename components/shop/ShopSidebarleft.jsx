@@ -5,7 +5,6 @@ import { layouts, sortingOptions } from "@/data/shop";
 import ProductGrid from "./ProductGrid";
 import Pagination from "../common/Pagination";
 import Sorting from "./Sorting";
-import { products1 } from "@/data/products";
 
 export default function ShopSidebarleft() {
   const [gridItems, setGridItems] = useState(3);
@@ -33,7 +32,7 @@ export default function ShopSidebarleft() {
             </ul>
             <div className="tf-control-sorting d-flex justify-content-end">
               <div className="tf-dropdown-sort" data-bs-toggle="dropdown">
-                <Sorting setFinalSorted={setFinalSorted} products={products1} />
+                {/* <Sorting setFinalSorted={setFinalSorted} products={products1} /> */}
               </div>
             </div>
           </div>

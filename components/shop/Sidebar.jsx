@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { featuredProducts } from "@/data/products";
 import { galleryItems } from "@/data/gallery";
 import { categories } from "@/data/categories";
 import { socialLinks } from "@/data/socials";
@@ -45,7 +44,7 @@ export default function Sidebar() {
         </div>
         <div id="sale-products" className="collapse show">
           <div className="widget-featured-products mb_36">
-            {featuredProducts.map((product, index) => (
+            {/* {featuredProducts.map((product, index) => (
               <div className="featured-product-item" key={index}>
                 <Link
                   href={`/product-detail/${product.id}`}
@@ -69,7 +68,7 @@ export default function Sidebar() {
                   <span className="price">${product.price.toFixed(2)}</span>
                 </div>
               </div>
-            ))}
+            ))} */}
           </div>
         </div>
       </div>
