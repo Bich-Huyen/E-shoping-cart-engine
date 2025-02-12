@@ -51,9 +51,9 @@ export default function page({ params }) {
           </div>
         </div>
       </div>
-      <DetailsOuterZoom product={product} />
+      <DetailsOuterZoom productId={params.id} />
       <ShopDetailsTab />
-      <Products />
+      {/* <Products /> */}
       <RecentProducts />
       <Footer1 />
     </>

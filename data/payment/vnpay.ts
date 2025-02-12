@@ -12,7 +12,7 @@ interface PaymentResponse {
 
 export const vnpay = async (amount: number, bankCode: string): Promise<PaymentResponse> => {
     try {
-        const response = await apiClient.get<PaymentResponse>(`order/payment/vn-pay`, {
+        const response = await apiClient.get<PaymentResponse>(`payment/vn-pay`, {
             params: { amount, bankCode },
         });
         return response.data;

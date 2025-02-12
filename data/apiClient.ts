@@ -2,7 +2,7 @@
 import axios, { AxiosInstance } from 'axios';
 
 const apiClient: AxiosInstance = axios.create({
-    baseURL: 'http://localhost:8888/api/v1', // Đường dẫn cơ bản cho API
+    baseURL: 'http://localhost:8080', // Đường dẫn cơ bản cho API
     headers: {
         'Content-Type': 'application/json', // Định dạng dữ liệu gửi đi là JSON
     },

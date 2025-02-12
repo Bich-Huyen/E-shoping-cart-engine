@@ -8,28 +8,6 @@ export default function Cart() {
 
   const { cartProducts, setCartProducts, totalPrice } = useContextElement();
 
-  // Tải và khởi tạo bot Coze
-  // useEffect(() => {
-  //   const script = document.createElement("script");
-  //   script.src =
-  //     "https://sf-cdn.coze.com/obj/unpkg-va/flow-platform/chat-app-sdk/1.1.0-beta.0/libs/oversea/index.js";
-  //   script.onload = () => {
-  //     new CozeWebSDK.WebChatClient({
-  //       config: {
-  //         bot_id: "7459343149057097744", 
-  //       },
-  //       componentProps: {
-  //         title: "Beautique Advisor",
-  //         style: {
-  //           height: "50vh", 
-  //           titleColor: "#000000", 
-  //         },
-  //       },
-  //     });
-  //   };
-  //   document.body.appendChild(script);
-  // }, []);
-
   const setQuantity = (id, quantity) => {
     if (quantity >= 1) {
       const item = cartProducts.filter((elm) => elm.id == id)[0];
@@ -101,7 +79,7 @@ export default function Cart() {
                         >
                           <Image
                             alt="img-product"
-                            src={elm.imgSrc}
+                            src={elm.imageUrl}
                             width={668}
                             height={932}
                           />
@@ -111,9 +89,9 @@ export default function Cart() {
                             href={`/product-detail/${elm.id}`}
                             className="cart-title link"
                           >
-                            {elm.title}
+                            {elm.name}
                           </Link>
-                          <div className="cart-meta-variant">White / M</div>
+                          {/* <div className="cart-meta-variant">White / M</div> */}
                           <span
                             className="remove-cart link remove"
                             onClick={() => removeItem(elm.id)}
@@ -127,7 +105,7 @@ export default function Cart() {
                         cart-data-title="Price"
                       >
                         <div className="cart-price">
-                          ${elm.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
+                          {elm.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
                           {/**{product.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })} */}
                         </div>
                       </td>
@@ -189,7 +167,7 @@ export default function Cart() {
                           className="cart-total"
                           style={{ minWidth: "60px" }}
                         >
-                          ${(elm.price * elm.quantity).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
+                          {(elm.price * elm.quantity).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
                         </div>
                       </td>
                     </tr>
@@ -245,10 +223,10 @@ export default function Cart() {
                     </div>
                   </span>
                 </div>
-                <div className="tf-progress-msg">
+                {/* <div className="tf-progress-msg">
                   Đơn hàng tối thiểu <span className="price fw-6">200,000 VNĐ</span> để được {" "}
                   <span className="fw-6">Miễn phí giao hàng</span>
-                </div>
+                </div> */}
               </div>
               <div className="tf-page-cart-checkout">
                 <div className="shipping-calculator">
@@ -291,7 +269,7 @@ export default function Cart() {
                     </div> */}
                   </div>
                 </div>
-                <div className="cart-checkbox">
+                {/* <div className="cart-checkbox">
                   <input
                     type="checkbox"
                     className="tf-check"
@@ -301,7 +279,7 @@ export default function Cart() {
                     <span>Do you want a gift wrap?</span> Only
                     <span className="fw-5">$5.00</span>
                   </label>
-                </div>
+                </div> */}
                 <div className="tf-cart-totals-discounts">
                   <h3>Tổng tiền: </h3>
                   <span className="total-value">

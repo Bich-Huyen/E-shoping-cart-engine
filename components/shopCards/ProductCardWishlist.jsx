@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useContextElement } from "@/context/Context";
 import CountdownComponent from "../common/Countdown";
 export const ProductCardWishlist = ({ product }) => {
-  const [currentImage, setCurrentImage] = useState(product.imgSrc);
+  const [currentImage, setCurrentImage] = useState(product.imageUrl);
   const { setQuickViewItem } = useContextElement();
   const {
     setQuickAddItem,
@@ -22,22 +22,25 @@ export const ProductCardWishlist = ({ product }) => {
         <Link href={`/product-detail/${product.id}`} className="product-img">
           <Image
             className="lazyload img-product"
-            data-src={product.imgSrc}
+            data-src={product.imageUrl}
             src={currentImage}
             alt="image-product"
             width={720}
             height={1005}
+            layout="responsive"
             objectFit="contain"
           />
           <Image
             className="lazyload img-hover"
             data-src={
-              product.imgHoverSrc ? product.imgHoverSrc : product.imgSrc
+              product.imageUrl ? product.imageUrl : product.imageUrl
             }
-            src={product.imgHoverSrc ? product.imgHoverSrc : product.imgSrc}
+            src={product.imageUrl ? product.imageUrl : product.imageUrl}
             alt="image-product"
             width={720}
             height={1005}
+            layout="responsive"
+            objectFit="contain"
           />
         </Link>
         <div className="list-product-btn type-wishlist">
@@ -60,7 +63,7 @@ export const ProductCardWishlist = ({ product }) => {
             <span className="icon icon-bag" />
             <span className="tooltip">Thêm nhanh</span>
           </a>
-          <a
+          {/* <a
             onClick={() => addToWishlist(product.id)}
             className="box-icon bg_white wishlist btn-icon-action"
           >
@@ -75,7 +78,7 @@ export const ProductCardWishlist = ({ product }) => {
                 : "Add to Wishlist"}
             </span>
             <span className="icon icon-delete" />
-          </a>
+          </a> */}
           <a
             href="#compare"
             data-bs-toggle="offcanvas"
@@ -91,8 +94,8 @@ export const ProductCardWishlist = ({ product }) => {
             <span className="tooltip">
               {" "}
               {isAddedtoCompareItem(product.id)
-                ? "Already Compared"
-                : "Add to Compare"}
+                ? "So sánh"
+                : "Thêm so sánh"}
             </span>
             <span className="icon icon-check" />
           </a>
@@ -123,7 +126,7 @@ export const ProductCardWishlist = ({ product }) => {
       </div>
       <div className="card-product-info">
         <Link href={`/product-detail/${product.id}`} className="title link">
-          {product.title}
+          {product.name}
         </Link>
         <span className="price">{product.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</span>
         {/* {product.colors && (
@@ -131,17 +134,17 @@ export const ProductCardWishlist = ({ product }) => {
             {product.colors.map((color) => (
               <li
                 className={`list-color-item color-swatch ${
-                  currentImage == color.imgSrc ? "active" : ""
+                  currentImage == color.imageUrl ? "active" : ""
                 } `}
                 key={color.name}
-                onMouseOver={() => setCurrentImage(color.imgSrc)}
+                onMouseOver={() => setCurrentImage(color.imageUrl)}
               >
                 <span className="tooltip">{color.name}</span>
                 <span className={`swatch-value ${color.colorClass}`} />
                 <Image
                   className="lazyload"
-                  data-src={color.imgSrc}
-                  src={color.imgSrc}
+                  data-src={color.imageUrl}
+                  src={color.imageUrl}
                   alt="image-product"
                   width={720}
                   height={1005}

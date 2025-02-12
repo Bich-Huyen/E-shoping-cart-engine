@@ -1,17 +1,22 @@
 "use client";
 import { layouts } from "@/data/shop";
 import ProductGrid from "./ProductGrid";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import SidebarFilter from "./SidebarFilter";
 
-import Pagination from "../common/Pagination";
 import Sorting from "./Sorting";
 
 export default function FilterSidebar() {
   const [gridItems, setGridItems] = useState(3);
   const [products, setProducts] = useState([]);
   const [finalSorted, setFinalSorted] = useState([]);
+
+  useEffect(() => {
+  },[
+    products,
+    finalSorted
+  ])
   return (
     <>
       <section className="flat-spacing-1">
@@ -35,7 +40,7 @@ export default function FilterSidebar() {
             </ul>
             <div className="tf-control-sorting d-flex justify-content-end">
               <div className="tf-dropdown-sort" data-bs-toggle="dropdown">
-                <Sorting setFinalSorted={setFinalSorted} products={products} />
+                <Sorting setFinalSorted={setFinalSorted} allProducts={products} />
               </div>
             </div>
           </div>

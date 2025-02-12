@@ -1,0 +1,13 @@
+config:
+  target: "https://auth-service-j8yk.onrender.com"  # Check if this is correct
+  phases:
+    - duration: 60   # Run test for 60 seconds
+      arrivalRate: 10 # 10 users per second
+  http:
+    timeout: 30      # Optional: Set timeout in seconds
+scenarios:
+  - flow:
+      - get:
+          url: "/products"  # Ensure this path is correct
+          headers:
+            Content-Type: "application/json"

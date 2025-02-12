@@ -1,21 +1,35 @@
 "use client";
-import { allProducts } from "@/data/products";
 import { openCartModal } from "@/utlis/openCartModal";
-// import { openCart } from "@/utlis/toggleCart";
-import React, { useEffect } from "react";
-import { useContext, useState } from "react";
+import React, { useEffect, useContext, useState } from "react";
+import axios from "axios";
+
 const dataContext = React.createContext();
 export const useContextElement = () => {
   return useContext(dataContext);
 };
 
 export default function Context({ children }) {
+  const [products, setProducts] = useState([]);
   const [cartProducts, setCartProducts] = useState([]);
-  const [wishList, setWishList] = useState([1, 2, 3]);
-  const [compareItem, setCompareItem] = useState([1, 2, 3]);
-  const [quickViewItem, setQuickViewItem] = useState(allProducts[0]);
+  const [wishList, setWishList] = useState([]);
+  const [compareItem, setCompareItem] = useState([]);
+  const [quickViewItem, setQuickViewItem] = useState(null);
   const [quickAddItem, setQuickAddItem] = useState(1);
   const [totalPrice, setTotalPrice] = useState(0);
+
+  const [recentProducts, setRecentProducts] = useState([]);
+
+  useEffect(() => {
+    axios.get(`${process.env.NEXT_PUBLIC_API_URL}/products`)
+      .then(response => {
+        if (response.data.productList && Array.isArray(response.data.productList)) {
+          setProducts(response.data.productList);
+          setQuickViewItem(response.data.productList);
+        }
+      })
+      .catch(error => console.error("Error fetching products:", error));
+  }, []); // Run only once on mount
+
   useEffect(() => {
     const subtotal = cartProducts.reduce((accumulator, product) => {
       return accumulator + product.quantity * product.price;
@@ -24,78 +38,75 @@ export default function Context({ children }) {
   }, [cartProducts]);
 
   const addProductToCart = (id, qty) => {
-    if (!cartProducts.filter((elm) => elm.id == id)[0]) {
+    if (!cartProducts.some(elm => elm.id === id)) {
       const item = {
-        ...allProducts.filter((elm) => elm.id == id)[0],
-        quantity: qty ? qty : 1,
+        ...products.find(elm => elm.id === id),
+        quantity: qty || 1,
       };
-      setCartProducts((pre) => [...pre, item]);
+      console.log(products)
+      setCartProducts(prev => [...prev, item]);
       openCartModal();
-
-      // openCart();
     }
-  };
-  const isAddedToCartProducts = (id) => {
-    if (cartProducts.filter((elm) => elm.id == id)[0]) {
-      return true;
-    }
-    return false;
   };
 
-  const addToWishlist = (id) => {
-    if (!wishList.includes(id)) {
-      setWishList((pre) => [...pre, id]);
-    } else {
-      setWishList((pre) => [...pre].filter((elm) => elm != id));
-    }
+  const isAddedToCartProducts = id => cartProducts.some(elm => elm.id === id);
+
+  const addToWishlist = id => {
+    setWishList(prev => prev.includes(id) ? prev.filter(elm => elm !== id) : [...prev, id]);
   };
-  const removeFromWishlist = (id) => {
-    if (wishList.includes(id)) {
-      setWishList((pre) => [...pre.filter((elm) => elm != id)]);
-    }
+
+  const addToRecent = (productId) => {
+    setRecentProducts((prev) => {
+      if (!prev.includes(productId)) {
+        return [...prev, productId];
+      }
+      return prev;
+    });
   };
-  const addToCompareItem = (id) => {
+  const removeFromWishlist = id => {
+    setWishList(prev => prev.filter(elm => elm !== id));
+  };
+
+  const addToCompareItem = id => {
     if (!compareItem.includes(id)) {
-      setCompareItem((pre) => [...pre, id]);
+      setCompareItem(prev => [...prev, id]);
     }
   };
-  const removeFromCompareItem = (id) => {
-    if (compareItem.includes(id)) {
-      setCompareItem((pre) => [...pre.filter((elm) => elm != id)]);
-    }
+
+  const removeFromCompareItem = id => {
+    setCompareItem(prev => prev.filter(elm => elm !== id));
   };
-  const isAddedtoWishlist = (id) => {
-    if (wishList.includes(id)) {
-      return true;
-    }
-    return false;
-  };
-  const isAddedtoCompareItem = (id) => {
-    if (compareItem.includes(id)) {
-      return true;
-    }
-    return false;
-  };
+
+  const isAddedtoWishlist = id => wishList.includes(id);
+
+  const isAddedtoCompareItem = id => compareItem.includes(id);
+
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem("cartList"));
-    if (items?.length) {
-      setCartProducts(items);
-    }
+    if (items?.length) setCartProducts(items);
   }, []);
 
   useEffect(() => {
     localStorage.setItem("cartList", JSON.stringify(cartProducts));
   }, [cartProducts]);
+
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem("wishlist"));
-    if (items?.length) {
-      setWishList(items);
-    }
+    if (items?.length) setWishList(items);
   }, []);
 
   useEffect(() => {
     localStorage.setItem("wishlist", JSON.stringify(wishList));
   }, [wishList]);
+
+  useEffect(() => {
+    const items = JSON.parse(localStorage.getItem("recent"));
+    if (items?.length) setRecentProducts(items);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("recent",JSON.stringify(recentProducts));
+  }, [recentProducts]);
 
   const contextElement = {
     cartProducts,
@@ -107,8 +118,8 @@ export default function Context({ children }) {
     addToWishlist,
     isAddedtoWishlist,
     quickViewItem,
-    wishList,
     setQuickViewItem,
+    wishList,
     quickAddItem,
     setQuickAddItem,
     addToCompareItem,
@@ -116,7 +127,11 @@ export default function Context({ children }) {
     removeFromCompareItem,
     compareItem,
     setCompareItem,
+    recentProducts,
+    setRecentProducts,
+    addToRecent,
   };
+
   return (
     <dataContext.Provider value={contextElement}>
       {children}

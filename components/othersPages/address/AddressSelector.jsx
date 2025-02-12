@@ -1,3 +1,4 @@
+"use client";
 import { useState, useEffect } from "react";
 
 export default function AddressSelector({ onWardSelect, onDistrictSelect }) {
@@ -7,9 +8,17 @@ export default function AddressSelector({ onWardSelect, onDistrictSelect }) {
   const [provinces, setProvinces] = useState([]);
   const [districts, setDistricts] = useState([]);
   const [wards, setWards] = useState([]);
-  const [selectedWard, setSelectedWard] = useState("");
   const [selectedProvince, setSelectedProvince] = useState("");
   const [selectedDistrict, setSelectedDistrict] = useState("");
+  const [selectedWard, setSelectedWard] = useState("");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setSelectedProvince(localStorage.getItem("selectedProvince") || "");
+      setSelectedDistrict(localStorage.getItem("selectedDistrict") || "");
+      setSelectedWard(localStorage.getItem("selectedWard") || "");
+    }
+  }, []);
 
   async function fetchData(endpoint, params = {}) {
     const url = new URL(`${addressUrl}/${endpoint}`);
@@ -39,7 +48,6 @@ export default function AddressSelector({ onWardSelect, onDistrictSelect }) {
       const data = await fetchData("province");
       setProvinces(data.data.reverse());
     }
-
     loadProvinces();
   }, []);
 
@@ -54,7 +62,6 @@ export default function AddressSelector({ onWardSelect, onDistrictSelect }) {
       const data = await fetchData("district", { province_id: selectedProvince });
       setDistricts(data.data);
     }
-
     loadDistricts();
   }, [selectedProvince]);
 
@@ -68,14 +75,34 @@ export default function AddressSelector({ onWardSelect, onDistrictSelect }) {
       const data = await fetchData("ward", { district_id: selectedDistrict });
       setWards(data.data);
     }
-
     loadWards();
   }, [selectedDistrict]);
 
+  const handleProvinceChange = (e) => {
+    const value = e.target.value;
+    setSelectedProvince(value);
+    if (typeof window !== "undefined") localStorage.setItem("selectedProvince", value);
+    setSelectedDistrict("");
+    setSelectedWard("");
+  };
+
+  const handleDistrictChange = (e) => {
+    const value = e.target.value;
+    setSelectedDistrict(value);
+    if (typeof window !== "undefined") localStorage.setItem("selectedDistrict", value);
+    setSelectedWard("");
+  };
+
+  const handleWardChange = (e) => {
+    const value = e.target.value;
+    setSelectedWard(value);
+    if (typeof window !== "undefined") localStorage.setItem("selectedWard", value);
+  };
+
   useEffect(() => {
-    onWardSelect(selectedWard); 
+    onWardSelect(selectedWard);
     onDistrictSelect(selectedDistrict);
-  }, [selectedWard]);
+  }, [selectedWard, selectedDistrict]);
 
   return (
     <div>
@@ -87,7 +114,7 @@ export default function AddressSelector({ onWardSelect, onDistrictSelect }) {
             className="tf-select w-100"
             id="province"
             value={selectedProvince}
-            onChange={(e) => setSelectedProvince(e.target.value)}
+            onChange={handleProvinceChange}
           >
             <option value="">Chọn tỉnh/thành phố</option>
             {provinces.map((province) => (
@@ -107,7 +134,7 @@ export default function AddressSelector({ onWardSelect, onDistrictSelect }) {
             className="tf-select w-100"
             id="district"
             value={selectedDistrict}
-            onChange={(e) => setSelectedDistrict(e.target.value)}
+            onChange={handleDistrictChange}
           >
             <option value="">Chọn quận/huyện</option>
             {districts.map((district) => (
@@ -127,7 +154,7 @@ export default function AddressSelector({ onWardSelect, onDistrictSelect }) {
             className="tf-select w-100"
             id="ward"
             value={selectedWard}
-            onChange={(e) => setSelectedWard(e.target.value)}
+            onChange={handleWardChange}
           >
             <option value="">Chọn xã/phường</option>
             {wards.map((ward) => (

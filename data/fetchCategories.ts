@@ -7,7 +7,7 @@ interface Category {
   link: string;
 }
 
-const apiUrl = `${process.env.NEXT_PUBLIC_URL}/product/category`;
+const apiUrl = `${process.env.NEXT_PUBLIC_URL}/category`;
 
 const categoriesPromise: Promise<Category[]> = axios.get(apiUrl)
   .then(response => {

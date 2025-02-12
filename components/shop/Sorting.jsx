@@ -1,21 +1,29 @@
 "use client";
-import { products1 } from "@/data/products";
 import { sortingOptions } from "@/data/shop";
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 
-export default function Sorting({ products = products1, setFinalSorted }) {
+export default function Sorting({ setFinalSorted, allProducts }) {
+  const [products, setProducts] = useState(allProducts || []);
   const [selectedOptions, setSelectedOptions] = useState(sortingOptions[0]);
 
+  // Update products when allProducts changes
+  useEffect(() => {
+    if (allProducts && Array.isArray(allProducts)) {
+      setProducts(allProducts);
+      setFinalSorted([...allProducts]); // Ensure sorted products update
+    }
+  }, [allProducts]);
   useEffect(() => {
     if (selectedOptions.text == "Mặc định") {
       setFinalSorted([...products]);
     } else if (selectedOptions.text == "Tên, A-Z") {
       setFinalSorted(
-        [...products].sort((a, b) => a.title.localeCompare(b.title))
+        [...products].sort((a, b) => a.name.localeCompare(b.title))
       );
     } else if (selectedOptions.text == "Tên, Z-A") {
       setFinalSorted(
-        [...products].sort((a, b) => b.title.localeCompare(a.title))
+        [...products].sort((a, b) => b.name.localeCompare(a.title))
       );
     } else if (selectedOptions.text == "Giá, thấp - cao") {
       setFinalSorted([...products].sort((a, b) => a.price - b.price));
@@ -26,7 +34,6 @@ export default function Sorting({ products = products1, setFinalSorted }) {
 
   return (
     <>
-      {" "}
       <div className="btn-select">
         <span className="text-sort-value">{selectedOptions.text}</span>
         <span className="icon icon-arrow-down" />

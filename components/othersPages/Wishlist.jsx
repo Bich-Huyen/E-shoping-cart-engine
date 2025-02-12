@@ -1,21 +1,37 @@
 "use client";
-import { allProducts } from "@/data/products";
+
 import { useContextElement } from "@/context/Context";
 import { useEffect, useState } from "react";
 import { ProductCardWishlist } from "../shopCards/ProductCardWishlist";
 import Link from "next/link";
+import axios from "axios";
+import httpClient from "@/utlis/httpClient";
 
 export default function Wishlist() {
   const { wishList } = useContextElement();
   const [wishListItems, setWishListItems] = useState([]);
+  const [items, setItem] = useState([])
+
+  useEffect(() => {
+    axios.get(`${process.env.NEXT_PUBLIC_API_URL}/products`)
+    // httpClient.get("/products?ngrok-skip-browser-warning=true")
+      .then(response => {
+        if (response.data && Array.isArray(response.data.productList)) {
+          setItem(response.data.productList);
+        } else {
+          console.error("Unexpected API response:", response.data);
+        }
+      })
+      .catch(error => console.error("Error fetching product:", error));
+  }, []);
+
   useEffect(() => {
     if (wishList) {
-      console.log(wishList);
       setWishListItems(
-        [...allProducts].filter((el) => wishList.includes(el.id))
+        [...items].filter((el) => wishList.includes(el.id))
       );
     }
-  }, [wishList]);
+  }, [wishList, items]);
 
   return (
     <section className="flat-spacing-2">

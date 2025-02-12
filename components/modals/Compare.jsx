@@ -4,13 +4,26 @@ import Link from "next/link";
 import Image from "next/image";
 import { useContextElement } from "@/context/Context";
 import { allProducts } from "@/data/products";
+import axios from "axios";
+
 export default function Compare() {
   const { removeFromCompareItem, compareItem, setCompareItem } =
     useContextElement();
   const [items, setItems] = useState([]);
+
   useEffect(() => {
-    setItems([...allProducts.filter((elm) => compareItem.includes(elm.id))]);
+    axios.get(`${process.env.NEXT_PUBLIC_API_URL}/products`)
+      .then(response => {
+        if (response.data && Array.isArray(response.data.productList)) {
+          setItems(response.data.productList.filter(elm => compareItem.includes(elm.id)));
+        }
+      })
+      .catch(error => console.error("Error fetching products:", error));
   }, [compareItem]);
+
+  // useEffect(() => {
+  //   setItems([...allProducts.filter((elm) => compareItem.includes(elm.id))]);
+  // }, [compareItem]);
 
   return (
     <div className="offcanvas offcanvas-bottom canvas-compare" id="compare">
@@ -30,7 +43,7 @@ export default function Compare() {
               <div className="col-12">
                 <div className="tf-compare-list">
                   <div className="tf-compare-head">
-                    <div className="title">Compare Products</div>
+                    <div className="title">So sánh sản phẩm</div>
                   </div>
                   <div className="tf-compare-offcanvas">
                     {items.map((elm, i) => (
@@ -47,7 +60,7 @@ export default function Compare() {
                             <Image
                               className="radius-3"
                               alt=""
-                              src={elm.imgSrc}
+                              src={elm.imageUrl}
                               style={{ objectFit: "contain" }}
                               width={720}
                               height={1005}
@@ -63,13 +76,13 @@ export default function Compare() {
                         href={`/compare`}
                         className="tf-btn radius-3 btn-fill justify-content-center fw-6 fs-14 flex-grow-1 animate-hover-btn"
                       >
-                        Compare
+                        So sánh
                       </Link>
                       <div
                         className="tf-compapre-button-clear-all link"
                         onClick={() => setCompareItem([])}
                       >
-                        Clear All
+                        Xóa hết
                       </div>
                     </div>
                   </div>
